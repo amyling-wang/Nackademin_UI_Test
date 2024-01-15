@@ -1,16 +1,37 @@
-﻿using OpenQA.Selenium;
+﻿using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium;
+using SeleniumExtras.WaitHelpers;
+using FacebookTest.Config;
 
 namespace FacebookTest.Utilities
 {
     public class Base
     {
-        //protected IWebDriver driver;
-        //public Base(IWebDriver driver) {  this.driver = driver; }
+        IWebDriver driver;
+        public Base(IWebDriver driver)
+        {
+            this.driver = driver;
+        }
+        public IWebElement FindElement(By by)
+        {
+            return driver.FindElement(by);
+        }
+        public void WaitAndClick(IWebElement element)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 
-        //public static IWebElement FindElement(By by)
-        //{
-        //    return driver.FindElement(by);
-        //}
+            IWebElement webelement = wait.Until(ExpectedConditions.ElementToBeClickable(element));
+            webelement.Click();
+        }
+        public void GoToUrl()
+        {
 
+            driver.Url = ConfigValues.Url;
+        }
+        public void waitUntilElementIsVisible(By by)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+            wait.Until(ExpectedConditions.ElementIsVisible(by));
+        }
     }
 }

@@ -1,40 +1,34 @@
 ﻿using FacebookTest.Config;
-using FacebookTest.Support;
+using FacebookTest.Utilities;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
-
-
 
 namespace FacebookTest.Objects
 {
-    public class LoginPage
+    public class LoginPage : Base
     {
-        
-        IWebDriver driver;
-        public LoginPage(IWebDriver driver) 
+        public LoginPage(IWebDriver driver) : base(driver)
         {
-            this.driver = driver;
         }
-        private By acceptCookieButton = By.XPath("//button[contains(@id,'u_0_k')]");
-        private By emailField = By.XPath("//input[@id='email']");
-        private By passwordField = By.XPath("//input[@id='pass']");
-        private By loginButton = By.XPath("//button[@name='login']");
+
+        //IWebDriver driver;
+        //public LoginPage(IWebDriver driver) 
+        //{
+        //    this.driver = driver;
+        //}
+        private IWebElement acceptCookieButton => FindElement(By.XPath("//button[contains(@id,'u_0_k')]"));
+        private IWebElement emailField => FindElement(By.XPath("//input[@id='email']"));
+        private IWebElement passwordField => FindElement(By.XPath("//input[@id='pass']"));
+        private IWebElement loginButton => FindElement(By.XPath("//button[@name='login']"));
         private By facebookLogo = By.XPath("//a[@aria-label='Facebook']");
-        public void GoToUrl()
-        {
-            
-            driver.Url = ConfigValues.Url;
-        }
+       
         public void LogIn()
         {
             GoToUrl();
-            driver.WaitAndClick(acceptCookieButton);
-            driver.FindElement(emailField).SendKeys(ConfigValues.Username);
-            driver.FindElement(passwordField).SendKeys(ConfigValues.Password);
-            driver.FindElement(loginButton).Click();
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
-            wait.Until(ExpectedConditions.ElementIsVisible(facebookLogo));          
+            WaitAndClick(acceptCookieButton);
+            emailField.SendKeys(ConfigValues.Username);
+            passwordField.SendKeys(ConfigValues.Password);
+            loginButton.Click();
+            waitUntilElementIsVisible(facebookLogo);          
 
         }
     }
