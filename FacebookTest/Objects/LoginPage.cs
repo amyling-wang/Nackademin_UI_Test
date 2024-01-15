@@ -1,7 +1,9 @@
-﻿using FacebookTest.Config;
+﻿using EnvDTE;
+using FacebookTest.Config;
 using Interop.UIAutomationClient;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.PageObjects;
 using SeleniumExtras.WaitHelpers;
 
 
@@ -17,6 +19,7 @@ namespace FacebookTest.Objects
         {
             this.driver = driver;
         }
+       
         public void GoToUrl()
         {
             

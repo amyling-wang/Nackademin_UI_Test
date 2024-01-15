@@ -5,9 +5,9 @@ namespace FacebookTest.Config
     public class ConfigValues
     {
         private static IConfigurationRoot _configuration = new ConfigurationBuilder().Build();
-        private static string _url;
-        private static string _username;
-        private static string _password;
+        private static string url;
+        private static string username;
+        private static string password;
         public static void LoadConfiguration()
         {
             //var enviromentName = Environment.GetEnvironmentVariable("ENVIRONMENT");
@@ -23,34 +23,34 @@ namespace FacebookTest.Config
         {  
             get 
             {
-                if (string.IsNullOrEmpty(_url))
+                if (string.IsNullOrEmpty(url))
                 {
-                    _url = _configuration.GetSection("AppSettings:url").Value;
+                    url = _configuration.GetSection("AppSettings:url").Value;
                 }
-                return _url; 
+                return url; 
             } 
-            set { _url = value; }
+            set { url = value; }
         }
         public static string Username
         {
             get
             {
-                if (string.IsNullOrEmpty(_username))
+                if (string.IsNullOrEmpty(username))
                 {
-                    _username = _configuration.GetSection("USERNAME").Value;
+                    username = _configuration.GetSection("USERNAME").Value;
                 }
-                return _username;
+                return username;
             }
         }
         public static string Password
         {
             get
             {
-                if (string.IsNullOrEmpty(_password))
+                if (string.IsNullOrEmpty(password))
                 {
-                    _password = _configuration.GetSection("PASSWORD").Value;
+                    password = _configuration.GetSection("PASSWORD").Value;
                 }
-                return _password;
+                return password;
             }
         }
     }

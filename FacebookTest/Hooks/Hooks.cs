@@ -25,10 +25,10 @@ namespace FacebookTest.Hooks
         //[AfterFeature]
         //public static void AfterFeature()
         //{
-
+           
         //}
         [BeforeScenario]
-        public void BeforeScenarioWithTag()
+        public void BeforeScenario()
         {
             IWebDriver driver = new EdgeDriver();
             driver.Manage().Window.Maximize();

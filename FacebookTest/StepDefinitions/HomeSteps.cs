@@ -5,16 +5,24 @@ namespace FacebookTest.StepDefinitions
     [Binding]
     internal class HomeSteps
     {
-        LoginPage loginPage;
-        public HomeSteps(LoginPage loginPage)
+        HomePage _homePage;
+        public HomeSteps(HomePage homePage)
         {
-            this.loginPage = loginPage;
-        }
-        [Given(@"I sign in to Facebook")]
-        public void GivenISignInToFacebook()
+            _homePage = homePage;
+        }       
+        [Then(@"I create a story")]
+        public void ThenICreateAStory()
         {
-            loginPage.LogIn();
+            _homePage.CreateStory();
         }
+        [Then(@"I delete the story")]
+        public void ThenIDeleteTheStory()
+        {
+            _homePage.DeleteStory();
+        }
+
+
+
 
     }
 }

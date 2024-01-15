@@ -2,8 +2,8 @@
 
 Background: 
 	Given I sign in to Facebook
+	When I click on Home tab
 
-Scenario: [scenario name]
-	Given [context]
-	When [action]
-	Then [outcome]
+Scenario: Verify create story function
+	Then I create a story
+	Then I delete the story
