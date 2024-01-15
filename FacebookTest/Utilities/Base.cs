@@ -2,7 +2,6 @@
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 using FacebookTest.Config;
-using NUnit.Framework;
 
 namespace FacebookTest.Utilities
 {
@@ -15,7 +14,7 @@ namespace FacebookTest.Utilities
         }
         public IWebElement FindElement(By by)
         {
-                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
                 wait.Until(ExpectedConditions.ElementIsVisible(by));
                 return driver.FindElement(by);
            

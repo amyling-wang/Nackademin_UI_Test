@@ -12,6 +12,7 @@
     <PackageReference Include="DotNetSeleniumExtras.PageObjects.Core" Version="4.14.1" />
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="EnvDTE" Version="17.8.37221" />
+    <PackageReference Include="ExtentReports" Version="5.0.2" />
     <PackageReference Include="Interop.UIAutomationClient.Signed" Version="10.19041.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
@@ -25,6 +26,7 @@
     <PackageReference Include="nunit" Version="3.13.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.1.0" />
     <PackageReference Include="FluentAssertions" Version="6.2.0" />
+    <PackageReference Include="xunit.assert" Version="2.6.6" />
   </ItemGroup>
 
   <ItemGroup>
