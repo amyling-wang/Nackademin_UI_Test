@@ -1,10 +1,7 @@
-﻿using EnvDTE;
-using FacebookTest.Config;
+﻿using FacebookTest.Config;
 using FacebookTest.Support;
-using Interop.UIAutomationClient;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.PageObjects;
 using SeleniumExtras.WaitHelpers;
 
 
@@ -23,6 +20,7 @@ namespace FacebookTest.Objects
         private By emailField = By.XPath("//input[@id='email']");
         private By passwordField = By.XPath("//input[@id='pass']");
         private By loginButton = By.XPath("//button[@name='login']");
+        private By facebookLogo = By.XPath("//a[@aria-label='Facebook']");
         public void GoToUrl()
         {
             
@@ -36,7 +34,7 @@ namespace FacebookTest.Objects
             driver.FindElement(passwordField).SendKeys(ConfigValues.Password);
             driver.FindElement(loginButton).Click();
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[@aria-label='Facebook']")));           
+            wait.Until(ExpectedConditions.ElementIsVisible(facebookLogo));          
 
         }
     }
