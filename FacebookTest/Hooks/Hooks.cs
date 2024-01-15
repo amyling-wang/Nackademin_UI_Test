@@ -1,12 +1,8 @@
-﻿using AventStack.ExtentReports.Gherkin.Model;
-using BoDi;
+﻿using BoDi;
 using FacebookTest.Config;
 using FacebookTest.Utilities;
-using Gherkin.CucumberMessages.Types;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
-using TechTalk.SpecFlow;
 using Xunit.Sdk;
 
 namespace FacebookTest.Hooks
