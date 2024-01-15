@@ -6,4 +6,4 @@ Background:
 
 Scenario: Verify create story function
 	Then I create a story
-	Then I delete the story
+	Then I delete the story if present

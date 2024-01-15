@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 using FacebookTest.Config;
+using NUnit.Framework;
 
 namespace FacebookTest.Utilities
 {
@@ -14,14 +15,14 @@ namespace FacebookTest.Utilities
         }
         public IWebElement FindElement(By by)
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
-            wait.Until(ExpectedConditions.ElementIsVisible(by));
-            return driver.FindElement(by);
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+                wait.Until(ExpectedConditions.ElementIsVisible(by));
+                return driver.FindElement(by);
+           
         }
         public void WaitAndClick(IWebElement element)
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));            
             IWebElement webelement = wait.Until(ExpectedConditions.ElementToBeClickable(element));
             webelement.Click();
         }

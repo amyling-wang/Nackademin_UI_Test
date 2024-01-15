@@ -15,7 +15,7 @@ namespace FacebookTest.StepDefinitions
         {
             _homePage.CreateStory();
         }
-        [Then(@"I delete the story")]
+        [Then(@"I delete the story if present")]
         public void ThenIDeleteTheStory()
         {
             _homePage.DeleteStory();
