@@ -1,12 +1,17 @@
 ﻿using FacebookTest.Config;
 using FacebookTest.Utilities;
 using OpenQA.Selenium;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace FacebookTest.Objects
 {
-    public class LoginPage : Base
+    internal class SharedPage : Base
     {
-        public LoginPage(IWebDriver driver) : base(driver)
+        public SharedPage(IWebDriver driver) : base(driver)
         {
         }
 
@@ -20,7 +25,8 @@ namespace FacebookTest.Objects
         private IWebElement passwordField => FindElement(By.XPath("//input[@id='pass']"));
         private IWebElement loginButton => FindElement(By.XPath("//button[@name='login']"));
         private By facebookLogo = By.XPath("//a[@aria-label='Facebook']");
-       
+        private IWebElement overlappElement => FindElement(By.XPath("(//div[contains(@class,'x1uvtmcs')])[3]"));
+        private IWebElement homeTab(string tabName) => FindElement(By.XPath($"//a[@aria-label='{tabName}']"));
         public void LogIn()
         {
             GoToUrl();
@@ -28,8 +34,14 @@ namespace FacebookTest.Objects
             emailField.SendKeys(ConfigValues.Username);
             passwordField.SendKeys(ConfigValues.Password);
             loginButton.Click();
-            waitUntilElementIsVisible(facebookLogo);          
+            waitUntilElementIsVisible(facebookLogo);
 
+        }
+        public void ClickOnTab(string tabName)
+        {
+            WaitAndClick(overlappElement);
+            WaitAndClick(homeTab(tabName));
         }
     }
 }
+    

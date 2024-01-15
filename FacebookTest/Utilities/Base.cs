@@ -14,6 +14,8 @@ namespace FacebookTest.Utilities
         }
         public IWebElement FindElement(By by)
         {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+            wait.Until(ExpectedConditions.ElementIsVisible(by));
             return driver.FindElement(by);
         }
         public void WaitAndClick(IWebElement element)

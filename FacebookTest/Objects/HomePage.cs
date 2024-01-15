@@ -1,56 +1,42 @@
 ﻿using OpenQA.Selenium;
-
-using FacebookTest.Support;
+using FacebookTest.Utilities;
 
 namespace FacebookTest.Objects
 {
-    internal class HomePage
+    internal class HomePage : Base
     {
-        IWebDriver driver;      
-        public HomePage(IWebDriver driver)
+        public HomePage(IWebDriver driver) : base(driver)
         {
-            this.driver = driver;
-           // PageFactory.InitElements(driver, this);
         }
-        private By createStoryField = By.XPath("//span[text()='Create story']//ancestor::div[contains(@class,'x78zum5 xdt5ytf xz62fqu')]");
-        private By createTextStoryCard = By.XPath("//div[text()='Create a text story']//ancestor::div[contains(@class,'x1qjc9v5 x1q0q8m5')]");
-        private By startTypingBox = By.XPath("//span[text()='Start typing']//parent::div[contains(@class,'xjbqb8w x1iyjqo2')]");
-        private By textArea = By.XPath("//textarea");
-        private By shareStoryButton = By.XPath("//span[text()='Share to story']");
-        private By yourStoryCard = By.XPath("(//span[text()='Your story']/ancestor::div[contains(@class,'x9f619 x1n2onr6 x1ja2u2z x78zum5 xdt5ytf x2lah0s')])[2]/preceding-sibling::*[last()]");
-        private By pauseButtonOnStory = By.XPath("//div[@aria-label='Pause']");
-        private By points = By.XPath("(//div[contains(@class,'x1ypdohk xdj266r')]//span)[3]");
-        private By deletePhotoButton = By.XPath("//span[text()='Delete photo']");
-        private By deleteButton = By.XPath("//div[@aria-label='Delete']");
-        private By overlappElement = By.XPath("(//div[contains(@class,'x1uvtmcs')])[3]");
-        private By homeTab(string tabName) => By.XPath($"//a[@aria-label='{tabName}']");
-        //private string tabXPath(string tabName) => $"//a[@aria-label='{tabName}']";
-        //[FindsBy(How = How.XPath)]
-        //private IWebElement tabs;     
-
-        public void ClickOnTab(string tabName)
-        {
-            //driver.FindElement(By.XPath("(//div[contains(@class,'x1uvtmcs')])[2]")).Click();
-            //driver.FindElement(By.XPath($"//a[@aria-label='{tabName}']")).Click();
-            driver.WaitAndClick(overlappElement);
-            driver.WaitAndClick(homeTab(tabName));
-        }
+        private IWebElement createStoryField => FindElement(By.XPath("//span[text()='Create story']//ancestor::div[contains(@class,'x78zum5 xdt5ytf xz62fqu')]"));
+        private IWebElement createTextStoryCard => FindElement(By.XPath("//div[text()='Create a text story']//ancestor::div[contains(@class,'x1qjc9v5 x1q0q8m5')]"));
+        private IWebElement startTypingBox => FindElement(By.XPath("//span[text()='Start typing']//parent::div[contains(@class,'xjbqb8w x1iyjqo2')]"));
+        private IWebElement textArea => FindElement(By.XPath("//textarea"));
+        private IWebElement shareStoryButton => FindElement(By.XPath("//span[text()='Share to story']"));
+        private IWebElement yourStoryCard => FindElement(By.XPath("(//span[text()='Your story']/ancestor::div[contains(@class,'x9f619 x1n2onr6 x1ja2u2z x78zum5 xdt5ytf x2lah0s')])[2]/preceding-sibling::*[last()]"));
+        private IWebElement pauseButtonOnStory => FindElement(By.XPath("//div[@aria-label='Pause']"));
+        private IWebElement points => FindElement(By.XPath("(//div[contains(@class,'x1ypdohk xdj266r')]//span)[3]"));
+        private IWebElement deletePhotoButton => FindElement(By.XPath("//span[text()='Delete photo']"));
+        private IWebElement deleteButton => FindElement(By.XPath("//div[@aria-label='Delete']"));
+        private IWebElement closeStoryButton => FindElement(By.XPath("(//div[@aria-label='Close'])[1]"));
+        
         public void CreateStory()
-        {         
-            driver.WaitAndClick(createStoryField);
-            driver.WaitAndClick(createTextStoryCard);
-            driver.WaitAndClick(startTypingBox);
-            driver.FindElement(textArea).SendKeys("Test");
-            driver.FindElement(shareStoryButton).Click();
+        {   
+            
+            WaitAndClick(createStoryField);
+            WaitAndClick(createTextStoryCard);
+            WaitAndClick(startTypingBox);
+            textArea.SendKeys("Test");
+            shareStoryButton.Click();
         }
         public void DeleteStory()
         {
-            driver.WaitAndClick(yourStoryCard);        
-            driver.WaitAndClick(pauseButtonOnStory);
-            driver.WaitAndClick(points);
-            driver.WaitAndClick(deletePhotoButton);
-            driver.WaitAndClick(deleteButton);
-            driver.FindElement(By.XPath("(//div[@aria-label='Close'])[1]")).Click();
+            WaitAndClick(yourStoryCard);        
+            WaitAndClick(pauseButtonOnStory);
+            WaitAndClick(points);
+            WaitAndClick(deletePhotoButton);
+            WaitAndClick(deleteButton);
+            closeStoryButton.Click();
         }
 
 
