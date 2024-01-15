@@ -11,12 +11,12 @@ namespace FacebookTest.StepDefinitions
             _homePage = homePage;
         }       
         [Then(@"I create a story")]
-        public void ThenICreateAStory()
+        public void CreateAStory()
         {
             _homePage.CreateStory();
         }
         [Then(@"I delete the story if present")]
-        public void ThenIDeleteTheStory()
+        public void DeleteTheStory()
         {
             _homePage.DeleteStory();
         }

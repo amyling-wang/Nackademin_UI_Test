@@ -18,11 +18,9 @@ namespace FacebookTest.Objects
         private IWebElement points => FindElement(By.XPath("(//div[contains(@class,'x1ypdohk xdj266r')]//span)[3]"));
         private IWebElement deletePhotoButton => FindElement(By.XPath("//span[text()='Delete photo']"));
         private IWebElement deleteButton => FindElement(By.XPath("//div[@aria-label='Delete']"));
-        private IWebElement closeStoryButton => FindElement(By.XPath("(//div[@aria-label='Close'])[1]"));
-        
+        private IWebElement closeStoryButton => FindElement(By.XPath("(//div[@aria-label='Close'])[1]"));        
         public void CreateStory()
-        {   
-            
+        {               
             WaitAndClick(createStoryField);
             WaitAndClick(createTextStoryCard);
             WaitAndClick(startTypingBox);

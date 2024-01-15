@@ -6,14 +6,16 @@ namespace FacebookTest.StepDefinitions
     internal class SharedSteps
     {
         SharedPage sharedPage;
-        public SharedSteps(SharedPage sharedPage)
+        LoginPage loginPage;
+        public SharedSteps(SharedPage sharedPage, LoginPage loginPage)
         {
             this.sharedPage = sharedPage;
+            this.loginPage = loginPage;
         }
         [Given(@"I sign in to Facebook")]
         public void GivenISignInToFacebook()
         {
-            sharedPage.LogIn();
+            loginPage.Login();
         }
         [When(@"I click on (.*) tab")]
         public void WhenIClickOnHomeTab(string tabName)

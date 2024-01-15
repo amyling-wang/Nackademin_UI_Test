@@ -30,7 +30,7 @@ namespace FacebookTest.Utilities
 
             driver.Url = ConfigValues.Url;
         }
-        public void waitUntilElementIsVisible(By by)
+        public void WaitUntilElementIsVisible(By by)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
             wait.Until(ExpectedConditions.ElementIsVisible(by));
