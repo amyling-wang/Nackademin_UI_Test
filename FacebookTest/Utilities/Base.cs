@@ -22,6 +22,7 @@ namespace FacebookTest.Utilities
             }
             catch
             {
+                // Assertion here? New method for only ckecking the locators?
                 return null;
             }
 

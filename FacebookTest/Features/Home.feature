@@ -19,4 +19,4 @@ Scenario: Verify side menu and create story function
 		| Ads Manager  |
 		
 	Then I create a story
-	Then I delete the story if present
+	And I delete the story if present
