@@ -18,7 +18,9 @@ namespace FacebookTest.Objects
         private IWebElement points => FindElement(By.XPath("(//div[contains(@class,'x1ypdohk xdj266r')]//span)[3]"));
         private IWebElement deletePhotoButton => FindElement(By.XPath("//span[text()='Delete photo']"));
         private IWebElement deleteButton => FindElement(By.XPath("//div[@aria-label='Delete']"));
-        private IWebElement closeStoryButton => FindElement(By.XPath("(//div[@aria-label='Close'])[1]"));        
+        private IWebElement closeStoryButton => FindElement(By.XPath("(//div[@aria-label='Close'])[1]"));
+        //private By sideMenus(string menuName) => By.XPath($"//ul//span[text()='{menuName}']");
+        private IWebElement sideMenus(string menuName) => FindElement(By.XPath($"//ul//span[text()='{menuName}']"));
         public void CreateStory()
         {               
             WaitAndClick(createStoryField);
@@ -36,7 +38,11 @@ namespace FacebookTest.Objects
             WaitAndClick(deleteButton);
             closeStoryButton.Click();
         }
-
+        public IWebElement GetSideMeny(string menuName)
+        {
+            IWebElement menuLocator = sideMenus(menuName);
+            return menuLocator;
+        }
 
     }
 }

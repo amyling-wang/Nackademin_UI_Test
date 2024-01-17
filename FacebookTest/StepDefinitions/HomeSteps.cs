@@ -1,4 +1,5 @@
 ﻿using FacebookTest.Objects;
+using Xunit;
 
 namespace FacebookTest.StepDefinitions
 {
@@ -20,6 +21,16 @@ namespace FacebookTest.StepDefinitions
         {
             _homePage.DeleteStory();
         }
+        [Then(@"I verify below mentioned side menus are shown on the page")]
+        public void VerifySideMenusVisibilityOnHome(Table table)
+        {
+            var menus = table.Rows.Select(r => r["Side meny"]).ToList();
+            foreach (var menu in menus)
+            {
+                Assert.True(_homePage.GetSideMeny(menu) is not null, $"Menu with name '{menu}' does not exist on the page");
+            }
+        }
+
 
 
 

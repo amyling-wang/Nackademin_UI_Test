@@ -86,12 +86,12 @@ namespace FacebookTest.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify create story function")]
-        public virtual void VerifyCreateStoryFunction()
+        [NUnit.Framework.DescriptionAttribute("Verify side menu and create story function")]
+        public virtual void VerifySideMenuAndCreateStoryFunction()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify create story function", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify side menu and create story function", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -115,10 +115,35 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Side meny"});
+                table1.AddRow(new string[] {
+                            "Find friends"});
+                table1.AddRow(new string[] {
+                            "Welcome"});
+                table1.AddRow(new string[] {
+                            "Saved"});
+                table1.AddRow(new string[] {
+                            "Memories"});
+                table1.AddRow(new string[] {
+                            "Groups"});
+                table1.AddRow(new string[] {
+                            "Video"});
+                table1.AddRow(new string[] {
+                            "Marketplace"});
+                table1.AddRow(new string[] {
+                            "Feeds"});
+                table1.AddRow(new string[] {
+                            "Events"});
+                table1.AddRow(new string[] {
+                            "Ads Manager"});
 #line 8
+ testRunner.Then("I verify below mentioned side menus are shown on the page", ((string)(null)), table1, "Then ");
+#line hidden
+#line 21
  testRunner.Then("I create a story", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 9
+#line 22
  testRunner.Then("I delete the story if present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

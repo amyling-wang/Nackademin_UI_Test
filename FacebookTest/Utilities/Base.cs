@@ -14,10 +14,18 @@ namespace FacebookTest.Utilities
         }
         public IWebElement FindElement(By by)
         {
+            try
+            {
                 WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
                 wait.Until(ExpectedConditions.ElementIsVisible(by));
                 return driver.FindElement(by);
-           
+            }
+            catch
+            {
+                return null;
+            }
+
+
         }
         public void WaitAndClick(IWebElement element)
         {
