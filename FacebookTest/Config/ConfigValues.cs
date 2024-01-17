@@ -5,9 +5,9 @@ namespace FacebookTest.Config
     public class ConfigValues
     {
         private static IConfigurationRoot _configuration = new ConfigurationBuilder().Build();
-        private static string url;
-        private static string username;
-        private static string password;
+        private static string? url;
+        private static string? username;
+        private static string? password;
         public static void LoadConfiguration()
         {
             //var enviromentName = Environment.GetEnvironmentVariable("ENVIRONMENT");

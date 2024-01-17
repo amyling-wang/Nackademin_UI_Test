@@ -19,7 +19,6 @@ namespace FacebookTest.Objects
         private IWebElement DeletePhotoButton => FindElement(By.XPath("//span[text()='Delete photo']"));
         private IWebElement DeleteButton => FindElement(By.XPath("//div[@aria-label='Delete']"));
         private IWebElement CloseStoryButton => FindElement(By.XPath("(//div[@aria-label='Close'])[1]"));
-        //private By sideMenus(string menuName) => By.XPath($"//ul//span[text()='{menuName}']");
         private IWebElement SideMenus(string menuName) => FindElement(By.XPath($"//ul//span[text()='{menuName}']"));
         public void CreateStory()
         {               
@@ -31,12 +30,15 @@ namespace FacebookTest.Objects
         }
         public void DeleteStory()
         {
-            WaitAndClick(YourStoryCard);        
-            WaitAndClick(PauseButtonOnStory);
-            WaitAndClick(Points);
-            WaitAndClick(DeletePhotoButton);
-            WaitAndClick(DeleteButton);
-            CloseStoryButton.Click();
+            if(YourStoryCard != null) 
+            {
+                WaitAndClick(YourStoryCard);
+                WaitAndClick(PauseButtonOnStory);
+                WaitAndClick(Points);
+                WaitAndClick(DeletePhotoButton);
+                WaitAndClick(DeleteButton);
+                CloseStoryButton.Click();
+            }            
         }
         public IWebElement GetSideMeny(string menuName)
         {

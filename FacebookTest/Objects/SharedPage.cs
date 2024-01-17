@@ -8,7 +8,7 @@ namespace FacebookTest.Objects
         public SharedPage(IWebDriver driver) : base(driver)
         {
         }      
-        private IWebElement overlappElement => FindElement(By.XPath("(//div[contains(@class,'x1uvtmcs')])[3]"));
+        private IWebElement overlappElement => FindElement(By.XPath("//div[contains(text(),'To allow or block browser notifications')]//ancestor::div[contains(@class,'x1uvtmcs')]"));
         private IWebElement homeTab(string tabName) => FindElement(By.XPath($"//a[@aria-label='{tabName}']"));
              
         public void ClickOnTab(string tabName)

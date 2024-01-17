@@ -17,6 +17,6 @@ Scenario: Verify side menu and create story function
 		| Feeds        |
 		| Events       |
 		| Ads Manager  |
-		
-	Then I create a story
-	And I delete the story if present
+	Then I delete the story if present	
+	And I create a story
+	Then I delete the story if present

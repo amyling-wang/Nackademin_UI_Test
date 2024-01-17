@@ -140,11 +140,14 @@ this.FeatureBackground();
 #line 8
  testRunner.Then("I verify below mentioned side menus are shown on the page", ((string)(null)), table1, "Then ");
 #line hidden
+#line 20
+ testRunner.Then("I delete the story if present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
 #line 21
- testRunner.Then("I create a story", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I create a story", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 22
- testRunner.And("I delete the story if present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("I delete the story if present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

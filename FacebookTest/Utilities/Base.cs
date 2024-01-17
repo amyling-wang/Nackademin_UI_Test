@@ -16,13 +16,12 @@ namespace FacebookTest.Utilities
         {
             try
             {
-                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
                 wait.Until(ExpectedConditions.ElementIsVisible(by));
                 return driver.FindElement(by);
             }
             catch
             {
-                // Assertion here? New method for only ckecking the locators?
                 return null;
             }
 
