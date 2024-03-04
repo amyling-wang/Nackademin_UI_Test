@@ -10,17 +10,24 @@ namespace FacebookTest.StepDefinitions
         public SharedSteps(SharedPage sharedPage, LogIn loginPage)
         {
             this.sharedPage = sharedPage;
-            this.loginPage = loginPage;
+           // this.loginPage = loginPage;
         }
-        [Given(@"I sign in to Facebook")]
-        public void GivenISignInToFacebook()
+        //[Given(@"I sign in to Facebook")]
+        //public void GivenISignInToFacebook()
+        //{
+        //    loginPage.Login();
+        //}
+        //[When(@"I click on (.*) tab")]
+        //public void WhenIClickOnHomeTab(string tabName)
+        //{
+        //    sharedPage.ClickOnTab(tabName);
+        //}
+
+        [Given(@"I navigate to Nackademin")]
+        public void NavigateToNackademin()
         {
-            loginPage.Login();
+            sharedPage.GoToStartSida();
         }
-        [When(@"I click on (.*) tab")]
-        public void WhenIClickOnHomeTab(string tabName)
-        {
-            sharedPage.ClickOnTab(tabName);
-        }
+
     }
 }
