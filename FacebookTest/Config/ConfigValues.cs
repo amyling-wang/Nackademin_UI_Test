@@ -31,6 +31,20 @@ namespace FacebookTest.Config
             } 
             set { url = value; }
         }
+        private static int Timeout;
+        public int PageLoadTiemout()
+        {
+            if (_configuration != null && _configuration.GetSection("AppSettings:PageLoadTimeout").Exists())
+            {
+                Timeout = Convert.ToInt32(_configuration.GetSection("AppSettings:PageLoadTimeout").Value) * 1000;
+            }
+            else if (Timeout == 0)
+            {
+                throw new ApplicationException("Browser pageload timeout cannot be '0'");
+            }
+
+            return Timeout;
+        }
         //public static string Username
         //{
         //    get

@@ -1,27 +1,31 @@
-﻿using FacebookTest.Utilities;
+﻿using FacebookTest.Config;
+using FacebookTest.Utilities;
 using OpenQA.Selenium;
 
 namespace FacebookTest.Objects
 {
-    internal class SharedPage : Base
+    internal class SharedPage
     {
-        public SharedPage(IWebDriver driver) : base(driver)
-        {
-        }      
-        private IWebElement overlappElement => FindElement(By.XPath("(//div[contains(@class,'x1uvtmcs')])[3]"));
-        private IWebElement homeTab(string tabName) => FindElement(By.XPath($"//a[@aria-label='{tabName}']"));
-        private IWebElement AcceptAllCookieButton() => FindElement(By.XPath("//a[contains(text(),'Acceptera alla')]"));
+            
+        private By OverlappElement => By.XPath("(//div[contains(@class,'x1uvtmcs')])[3]");
+        private By HomeTab(string tabName) => By.XPath($"//a[@aria-label='{tabName}']");
+        private By AcceptAllCookieButton() => By.XPath("//a[contains(text(),'Acceptera alla')]");
 
 
         public void ClickOnTab(string tabName)
         {
-            WaitAndClick(overlappElement);
-            WaitAndClick(homeTab(tabName));
+            OverlappElement.WaitAndClickElement();
+            HomeTab(tabName).WaitAndClickElement();
+        }
+        public void GoToUrl()
+        {
+            string url = ConfigValues.Url;
+            Base.GetDriver().Url = url;
         }
         public void GoToStartSida()
         {
-            GoToUrl();
-            WaitAndClick(AcceptAllCookieButton());
+            GoToUrl();          
+            AcceptAllCookieButton().WaitAndClickElement();
         }
     }
 }

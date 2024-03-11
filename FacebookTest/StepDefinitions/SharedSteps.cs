@@ -6,8 +6,7 @@ namespace FacebookTest.StepDefinitions
     internal class SharedSteps
     {
         SharedPage sharedPage;
-        LogIn loginPage;
-        public SharedSteps(SharedPage sharedPage, LogIn loginPage)
+        public SharedSteps(SharedPage sharedPage)
         {
             this.sharedPage = sharedPage;
            // this.loginPage = loginPage;

@@ -3,11 +3,9 @@ using FacebookTest.Utilities;
 
 namespace FacebookTest.Objects
 {
-    internal class HomePage : Base
+    internal class HomePage
     {
-        public HomePage(IWebDriver driver) : base(driver)
-        {
-        }
+        
         //private IWebElement createStoryField => FindElement(By.XPath("//span[text()='Create story']//ancestor::div[contains(@class,'x78zum5 xdt5ytf xz62fqu')]"));
         //private IWebElement createTextStoryCard => FindElement(By.XPath("//div[text()='Create a text story']//ancestor::div[contains(@class,'x1qjc9v5 x1q0q8m5')]"));
         //private IWebElement startTypingBox => FindElement(By.XPath("//span[text()='Start typing']//parent::div[contains(@class,'xjbqb8w x1iyjqo2')]"));
@@ -19,7 +17,7 @@ namespace FacebookTest.Objects
         //private IWebElement deletePhotoButton => FindElement(By.XPath("//span[text()='Delete photo']"));
         //private IWebElement deleteButton => FindElement(By.XPath("//div[@aria-label='Delete']"));
         //private IWebElement closeStoryButton => FindElement(By.XPath("(//div[@aria-label='Close'])[1]"));
-        private IWebElement pageTitle() => FindElement(By.XPath("//div[contains(@class,'logo_container')]//a"));
+        private By PageTitle() => By.XPath("//div[contains(@class,'logo_container')]//a");
         //public void CreateStory()
         //{               
         //    WaitAndClick(createStoryField);
@@ -40,7 +38,7 @@ namespace FacebookTest.Objects
 
         public void ClickOnPageTitle()
         {
-            WaitAndClick(pageTitle());
+            PageTitle().WaitAndClickElement();
         }
     }
 }
