@@ -7,10 +7,10 @@ using OpenQA.Selenium.Interactions;
 namespace FacebookTest.Utilities
 {
     public static class Base
-    {
-        public static IWebDriver GetDriver()
+    {        
+        private static IWebDriver GetDriver()
         {
-            return Driver.GetWebDriver();
+            return DriverManager.GetDriver();
         }       
         public static IWebElement FindElement(this By locator)
         {
@@ -28,10 +28,7 @@ namespace FacebookTest.Utilities
             IWebElement webelement = wait.Until(ExpectedConditions.ElementToBeClickable(element));
             webelement.Click();
         }
-        public static void GoToUrl()
-        {
-            GetDriver().Url = ConfigValues.Url;
-        }
+        
         public static void WaitUntilElementIsVisible(this By locator, double? timeToWaitInMilliSeconds = null)
         {
             try

@@ -4,13 +4,17 @@ using OpenQA.Selenium;
 
 namespace FacebookTest.Objects
 {
-    internal class SharedPage
+    internal class SharedPage 
     {
-            
+        readonly IWebDriver webDriver;
+        public SharedPage()
+        {
+            webDriver = DriverManager.GetDriver();
+        }
         private By OverlappElement => By.XPath("(//div[contains(@class,'x1uvtmcs')])[3]");
         private By HomeTab(string tabName) => By.XPath($"//a[@aria-label='{tabName}']");
         private By AcceptAllCookieButton() => By.XPath("//a[contains(text(),'Acceptera alla')]");
-
+        
 
         public void ClickOnTab(string tabName)
         {
@@ -20,7 +24,7 @@ namespace FacebookTest.Objects
         public void GoToUrl()
         {
             string url = ConfigValues.Url;
-            Base.GetDriver().Url = url;
+            webDriver.Url = url;
         }
         public void GoToStartSida()
         {
