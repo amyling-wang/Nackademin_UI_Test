@@ -49,11 +49,12 @@ namespace FacebookTest.Hooks
         [AfterScenario]
         public void AfterScenario()
         {
-            var driver = _container.Resolve<IWebDriver>();
-            if (driver != null)
-            {
-                driver.Quit();
-            }
+            //var driver = _container.Resolve<IWebDriver>();
+            _driverManager.Quit();
+            //if (driver != null)
+            //{
+            //    driver.Quit();
+            //}
         }
         [AfterStep]
         public void AfterStep(ScenarioContext scenarioContext)
