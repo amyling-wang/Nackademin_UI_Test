@@ -5,7 +5,8 @@ namespace FacebookTest.Config
     public class ConfigValues
     {
         private static IConfigurationRoot _configuration = new ConfigurationBuilder().Build();
-        private static string url;
+        private static string? url;
+        //private static string browser;
         //private static string username;
         //private static string password;
         public static void LoadConfiguration()
@@ -19,14 +20,14 @@ namespace FacebookTest.Config
             _configuration = builder.Build();            
 
         }
-        public static string Url 
+        public static string? Url 
         {  
             get 
             {
                 if (string.IsNullOrEmpty(url))
                 {
                     url = _configuration.GetSection("AppSettings:url").Value;
-                }
+                }               
                 return url; 
             } 
             set { url = value; }
@@ -34,9 +35,9 @@ namespace FacebookTest.Config
         private static int Timeout;
         public int PageLoadTiemout()
         {
-            if (_configuration != null && _configuration.GetSection("AppSettings:PageLoadTimeout").Exists())
+            if (_configuration != null && _configuration.GetSection("AppSettings:pageLoadTimeout").Exists())
             {
-                Timeout = Convert.ToInt32(_configuration.GetSection("AppSettings:PageLoadTimeout").Value) * 1000;
+                Timeout = Convert.ToInt32(_configuration.GetSection("AppSettings:pageLoadTimeout").Value) * 1000;
             }
             else if (Timeout == 0)
             {
@@ -45,6 +46,7 @@ namespace FacebookTest.Config
 
             return Timeout;
         }
+        public static string? Browser => _configuration.GetSection("AppSettings:browserToUse").Value;
         //public static string Username
         //{
         //    get

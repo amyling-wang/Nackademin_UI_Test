@@ -1,5 +1,8 @@
-﻿using OpenQA.Selenium;
+﻿using FacebookTest.Config;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Safari;
 
 namespace FacebookTest.Utilities
 {
@@ -9,7 +12,7 @@ namespace FacebookTest.Utilities
         private static DriverManager? instance;
         public DriverManager() 
         {
-            driver = new ChromeDriver();
+            driver = DriverToUse();
             driver.Manage().Window.Maximize();
         }
         public static DriverManager GetInstance()
@@ -31,6 +34,26 @@ namespace FacebookTest.Utilities
         {
             driver.Quit();
             instance = null;
+        }
+        private IWebDriver DriverToUse()
+        {          
+            if (ConfigValues.Browser.Equals("Chrome"))
+            {
+                return new ChromeDriver();
+                
+            }
+            else if (ConfigValues.Browser.Equals("Edge"))
+            {
+                return new EdgeDriver();
+            }
+            else if (ConfigValues.Browser.Equals("Safari"))
+            {
+                return new SafariDriver();
+            }
+            else
+            {
+                return new ChromeDriver();
+            }           
         }
 
     }
