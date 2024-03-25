@@ -23,7 +23,7 @@ namespace FacebookTest.Objects
         }
         public void GoToUrl()
         {
-            string url = ConfigValues.Url;
+            string? url = ConfigValues.Url;
             webDriver.Url = url;
         }
         public void GoToStartSida()
