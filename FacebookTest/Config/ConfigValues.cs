@@ -20,18 +20,18 @@ namespace FacebookTest.Config
             _configuration = builder.Build();            
 
         }
-        public static string? Url 
-        {  
-            get 
-            {
-                if (string.IsNullOrEmpty(url))
-                {
-                    url = _configuration.GetSection("AppSettings:url").Value;
-                }               
-                return url; 
-            } 
-            set { url = value; }
-        }
+        //public static string? Url 
+        //{  
+        //    get 
+        //    {
+        //        if (string.IsNullOrEmpty(url))
+        //        {
+        //            url = _configuration.GetSection("AppSettings:url").Value;
+        //        }               
+        //        return url; 
+        //    } 
+        //    set { url = value; }
+        //}
         private static int Timeout;
         public int PageLoadTiemout()
         {
@@ -47,6 +47,7 @@ namespace FacebookTest.Config
             return Timeout;
         }
         public static string? Browser => _configuration.GetSection("AppSettings:browserToUse").Value;
+        public static string? Url => _configuration.GetSection("AppSettings:url").Value;
         //public static string Username
         //{
         //    get
