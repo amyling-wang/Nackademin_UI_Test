@@ -17,7 +17,7 @@ namespace FacebookTest.Objects
         //private IWebElement deletePhotoButton => FindElement(By.XPath("//span[text()='Delete photo']"));
         //private IWebElement deleteButton => FindElement(By.XPath("//div[@aria-label='Delete']"));
         //private IWebElement closeStoryButton => FindElement(By.XPath("(//div[@aria-label='Close'])[1]"));
-        private By PageTitle() => By.XPath("//div[contains(@class,'logo_container')]//a");
+        private By PageTitle() => By.XPath("(//a[@href='https://nackademin.se/'])[1]");
         //public void CreateStory()
         //{               
         //    WaitAndClick(createStoryField);
