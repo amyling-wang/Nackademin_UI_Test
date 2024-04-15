@@ -10,16 +10,22 @@ namespace FacebookTest.StepDefinitions
         public HomeSteps(HomePage homePage)
         {
             _homePage = homePage;
-        }       
-        [Then(@"I create a story")]
-        public void CreateAStory()
-        {
-            _homePage.CreateStory();
         }
-        [Then(@"I delete the story if present")]
-        public void DeleteTheStory()
+        //[Then(@"I create a story")]
+        //public void CreateAStory()
+        //{
+        //    _homePage.CreateStory();
+        //}
+        //[Then(@"I delete the story if present")]
+        //public void DeleteTheStory()
+        //{
+        //    _homePage.DeleteStory();
+        //}
+
+        [When(@"I click on page title Nackademin")]
+        public void WhenIClickOnPageTitleNackademin()
         {
-            _homePage.DeleteStory();
+            _homePage.ClickOnPageTitle();
         }
         [Then(@"I verify below mentioned side menus are shown on the page")]
         public void VerifySideMenusVisibilityOnHome(Table table)
@@ -30,7 +36,6 @@ namespace FacebookTest.StepDefinitions
                 Assert.True(_homePage.GetSideMeny(menu) is not null, $"Menu with name '{menu}' does not exist on the page");
             }
         }
-
 
 
 

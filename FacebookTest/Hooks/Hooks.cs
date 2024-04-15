@@ -11,9 +11,11 @@ namespace FacebookTest.Hooks
     public sealed class Hooks 
     {
         private readonly IObjectContainer _container;
+        DriverManager _driverManager;
         public Hooks(IObjectContainer container)
         {
             _container = container;
+            _driverManager = DriverManager.GetInstance();
         }
 
         [BeforeFeature]
@@ -30,9 +32,9 @@ namespace FacebookTest.Hooks
         [BeforeScenario]
         public void BeforeScenario()
         {
-            IWebDriver driver = new EdgeDriver();
-            driver.Manage().Window.Maximize();
-            _container.RegisterInstanceAs<IWebDriver>(driver);
+           // DriverManager.GetDriver();
+           
+            _container.RegisterInstanceAs<IWebDriver>(_driverManager.GetWebDriver());
         }
 
         //[BeforeScenario(Order = 1)]
@@ -47,11 +49,12 @@ namespace FacebookTest.Hooks
         [AfterScenario]
         public void AfterScenario()
         {
-            var driver = _container.Resolve<IWebDriver>();
-            if (driver != null)
-            {
-                driver.Quit();
-            }
+            //var driver = _container.Resolve<IWebDriver>();
+            _driverManager.Quit();
+            //if (driver != null)
+            //{
+            //    driver.Quit();
+            //}
         }
         [AfterStep]
         public void AfterStep(ScenarioContext scenarioContext)
