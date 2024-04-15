@@ -4,9 +4,9 @@ using OpenQA.Selenium;
 
 namespace FacebookTest.Objects
 {
-    internal class LogIn : Base
+    internal class LoginPage : Base
     {
-        public LogIn(IWebDriver driver) : base(driver)
+        public LoginPage(IWebDriver driver) : base(driver)
         {
         }
 
