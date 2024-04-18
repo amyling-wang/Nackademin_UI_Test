@@ -13,7 +13,7 @@ namespace FacebookTest.Objects
         }
         //private static By OverlappElement => By.XPath("(//div[contains(@class,'x1uvtmcs')])[3]");
         //private static By HomeTab(string tabName) => By.XPath($"//a[@aria-label='{tabName}']");
-        private static By AcceptAllCookieButton() => By.XPath("//button[text()='Tillåt alla']");
+        public static By AcceptAllCookieButton() => By.XPath("//button[text()='Tillåt alla']");
         
 
         //public void ClickOnTab(string tabName)
@@ -31,6 +31,8 @@ namespace FacebookTest.Objects
             GoToUrl();
             AcceptAllCookieButton().WaitAndClickElement();
         }
+       
+
     }
 }
     

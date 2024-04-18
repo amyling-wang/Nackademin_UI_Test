@@ -6,7 +6,7 @@ Background:
 
 Scenario: Verify image on Nackademin home
 	When I click on page title Nackademin
-	Then I should see a image with text 'Din fram tid börjar här'
+	Then I should see image with text 'Din framtid börjar här'
 	Then I click on the button Hitta utbildning
 	And I should see page with title Utbildningar
 	Then I close the child window

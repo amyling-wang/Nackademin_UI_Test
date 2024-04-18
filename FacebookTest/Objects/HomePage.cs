@@ -17,7 +17,10 @@ namespace FacebookTest.Objects
         //private IWebElement deletePhotoButton => FindElement(By.XPath("//span[text()='Delete photo']"));
         //private IWebElement deleteButton => FindElement(By.XPath("//div[@aria-label='Delete']"));
         //private IWebElement closeStoryButton => FindElement(By.XPath("(//div[@aria-label='Close'])[1]"));
-        private By PageTitle() => By.XPath("(//a[@href='https://nackademin.se/'])[1]");
+        private static By PageTitle() => By.XPath("(//a[@href='https://nackademin.se/'])[1]");
+        private static By MainImage => By.XPath("//div[contains(@class,'img_container')]/img[contains(@class,'hero_background_image')]");
+        private static By TextOnImage(string text) => By.XPath($"//h1[text()='{text}']");
+        private static By HittaUtbildningButton(string buttonText) => By.XPath($"//a[text()='{buttonText}']");
         //public void CreateStory()
         //{               
         //    WaitAndClick(createStoryField);
@@ -39,6 +42,22 @@ namespace FacebookTest.Objects
         public void ClickOnPageTitle()
         {
             PageTitle().WaitAndClickElement();
+            if (SharedPage.AcceptAllCookieButton().IsExist())
+            {
+                SharedPage.AcceptAllCookieButton().WaitAndClickElement();
+            }
+        }
+        public static bool IsMainImageShown()
+        {
+            return MainImage.IsExist();
+        }
+        public static bool IsTextOnImageShown(string text)
+        {
+            return TextOnImage(text).IsExist();
+        }
+        public static void ClickOnHittaUtbildningButton(string text)
+        {
+            HittaUtbildningButton(text).ClickElement();
         }
     }
 }

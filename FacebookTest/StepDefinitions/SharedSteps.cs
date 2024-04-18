@@ -1,4 +1,5 @@
 ﻿using FacebookTest.Objects;
+using FacebookTest.Utilities;
 
 namespace FacebookTest.StepDefinitions
 {
@@ -27,6 +28,10 @@ namespace FacebookTest.StepDefinitions
         {
             sharedPage.GoToStartSida();
         }
-
+        [Then(@"I close the child window")]
+        public static void ThenICloseTheChildWindow()
+        {
+            DriverManager.CloseWindow();
+        }
     }
 }

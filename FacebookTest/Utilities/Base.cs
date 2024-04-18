@@ -87,7 +87,7 @@ namespace FacebookTest.Utilities
             int secondsToWait = config.PageLoadTiemout() / 1000;
             for (int i = 0; i < secondsToWait; i++)
             {
-                if (locator.IsEnabled())
+                if (locator.IsExist())
                 {
                     break;
                 }
@@ -99,11 +99,10 @@ namespace FacebookTest.Utilities
                 }
             }
         }
-        public static bool IsEnabled(this By locator)
+        public static bool IsExist(this By locator)
         {
             return locator.FindElement().Enabled;
         }
-       
         private static WebDriverWait CreateSpecificTimeWait(double? timeToWaitInMilliSeconds = null)
         {
             if (timeToWaitInMilliSeconds == null)
@@ -118,6 +117,10 @@ namespace FacebookTest.Utilities
             locator.WaitUntilElementIsVisible();
             locator.WaitToBecomeClickable();
 
+            ClickElement(locator, locatorDetails);
+        }
+        public static void ClickElement(this By locator, string locatorDetails = null)
+        {
             try
             {
                 locator.FindElement().Click();
@@ -134,7 +137,6 @@ namespace FacebookTest.Utilities
                 }
             }
         }
-
         public static void MoveToElementAndClick(this By locator)
         {
             locator.MoveToElement();

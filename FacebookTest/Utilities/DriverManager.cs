@@ -30,6 +30,18 @@ namespace FacebookTest.Utilities
         {
             return GetInstance().GetWebDriver();
         }
+        public static void SwitchDriverToChildWindow()
+        {
+            GetDriver().SwitchTo().Window(GetDriver().WindowHandles[1]);
+        }
+        public static void SwitchDriverToParentWindow()
+        {
+            GetDriver().SwitchTo().Window(GetDriver().WindowHandles[0]);
+        }
+        public static void CloseWindow()
+        {
+            GetDriver().Close();
+        }
         public void Quit()
         {
             driver.Quit();
