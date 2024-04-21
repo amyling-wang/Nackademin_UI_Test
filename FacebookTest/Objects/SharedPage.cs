@@ -29,9 +29,15 @@ namespace FacebookTest.Objects
         public void GoToStartSida()
         {
             GoToUrl();
-            AcceptAllCookieButton().WaitAndClickElement();
+            ClickOnAcceptAllCookieIfExist();
         }
-       
+        public static void ClickOnAcceptAllCookieIfExist()
+        {
+            if (AcceptAllCookieButton().IsExist())
+            {
+                AcceptAllCookieButton().WaitAndClickElement();
+            }
+        }
 
     }
 }

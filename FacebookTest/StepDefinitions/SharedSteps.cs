@@ -27,11 +27,6 @@ namespace FacebookTest.StepDefinitions
         public void NavigateToNackademin()
         {
             sharedPage.GoToStartSida();
-        }
-        [Then(@"I close the child window")]
-        public static void ThenICloseTheChildWindow()
-        {
-            DriverManager.CloseWindow();
-        }
+        }        
     }
 }

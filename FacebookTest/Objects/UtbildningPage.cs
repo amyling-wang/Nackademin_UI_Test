@@ -9,6 +9,7 @@ namespace FacebookTest.Objects
         private static By PageTitle(string text) => By.XPath($"//h1[text()='{text}']");
         public static bool IsTitleTextShown(string text)
         {
+            PageTitle(text).WaitUntilElementIsVisible();
             return PageTitle(text).IsExist();
         }
     }

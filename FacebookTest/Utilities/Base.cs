@@ -101,7 +101,7 @@ namespace FacebookTest.Utilities
         }
         public static bool IsExist(this By locator)
         {
-            return locator.FindElement().Enabled;
+            return GetDriver().FindElements(locator).Any();
         }
         private static WebDriverWait CreateSpecificTimeWait(double? timeToWaitInMilliSeconds = null)
         {

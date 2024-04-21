@@ -18,9 +18,13 @@ namespace FacebookTest.Objects
         //private IWebElement deleteButton => FindElement(By.XPath("//div[@aria-label='Delete']"));
         //private IWebElement closeStoryButton => FindElement(By.XPath("(//div[@aria-label='Close'])[1]"));
         private static By PageTitle() => By.XPath("(//a[@href='https://nackademin.se/'])[1]");
-        private static By MainImage => By.XPath("//div[contains(@class,'img_container')]/img[contains(@class,'hero_background_image')]");
+        private static By MainImage() => By.XPath("//div[contains(@class,'img_container')]/img[contains(@class,'hero_background_image')]");
         private static By TextOnImage(string text) => By.XPath($"//h1[text()='{text}']");
         private static By HittaUtbildningButton(string buttonText) => By.XPath($"//a[text()='{buttonText}']");
+        private static By CartImg(string titleText) => By.XPath($"//div[text()='{titleText}']/preceding-sibling::div/img");
+        private static By TitleUnderCart(string titleText) => By.XPath($"//div[text()='{titleText}']");
+        private static By InformationTextUnderCart(string titleText) => By.XPath($"//div[text()='{titleText}']/following-sibling::div");
+        private static By LäsMerLink(string titleText) => By.XPath($"//div[text()='{titleText}']/following-sibling::a");
         //public void CreateStory()
         //{               
         //    WaitAndClick(createStoryField);
@@ -39,25 +43,37 @@ namespace FacebookTest.Objects
         //    closeStoryButton.Click();
         //}
 
-        public void ClickOnPageTitle()
+        public static bool IsCartImgShown(string titleText)
         {
-            PageTitle().WaitAndClickElement();
-            if (SharedPage.AcceptAllCookieButton().IsExist())
-            {
-                SharedPage.AcceptAllCookieButton().WaitAndClickElement();
-            }
+            return CartImg(titleText).IsExist();
+        }
+        public static bool IsTitleUnderCartShown(string titleText)
+        {
+            return TitleUnderCart(titleText).IsExist();
+        }
+        public static bool IsInformationTextShownUnderCart(string titleText)
+        {
+            return InformationTextUnderCart(titleText).IsExist();
         }
         public static bool IsMainImageShown()
         {
-            return MainImage.IsExist();
+            return MainImage().IsExist();
         }
-        public static bool IsTextOnImageShown(string text)
+        public static bool IsTextOnImageShown(string titleText)
         {
-            return TextOnImage(text).IsExist();
+            return TextOnImage(titleText).IsExist();
+        }
+        public static void ClickOnLäsMerLinkUnderCart(string titleText)
+        {
+            LäsMerLink(titleText).MoveToElementAndClick();
         }
         public static void ClickOnHittaUtbildningButton(string text)
         {
             HittaUtbildningButton(text).ClickElement();
+        }
+        public static void ClickOnPageTitle()
+        {
+            PageTitle().WaitAndClickElement();           
         }
     }
 }

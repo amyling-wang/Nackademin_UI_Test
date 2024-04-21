@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace FacebookTest.Features
+namespace NackademinUITest.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -83,12 +83,12 @@ namespace FacebookTest.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify image on Nackademin home")]
-        public void VerifyImageOnNackademinHome()
+        [NUnit.Framework.DescriptionAttribute("Verify main image section on Home")]
+        public void VerifyMainImageSectionOnHome()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify image on Nackademin home", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify main image section on Home", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -114,8 +114,83 @@ this.FeatureBackground();
 #line 11
  testRunner.And("I should see page with title Utbildningar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 12
- testRunner.Then("I close the child window", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify Program, Kurser and För Företag section")]
+        public void VerifyProgramKurserAndForForetagSection()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify Program, Kurser and För Företag section", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 13
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Cart name"});
+                table1.AddRow(new string[] {
+                            "Program"});
+                table1.AddRow(new string[] {
+                            "Kurser"});
+                table1.AddRow(new string[] {
+                            "För Företag"});
+#line 14
+ testRunner.Then("I verify below mentiond carts and related links for them", ((string)(null)), table1, "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify sections with with link to Om oss, Antagning and Hitta drömjobbet")]
+        public void VerifySectionsWithWithLinkToOmOssAntagningAndHittaDromjobbet()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify sections with with link to Om oss, Antagning and Hitta drömjobbet", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 20
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Section title",
+                            "Section category",
+                            "Section link"});
+                table2.AddRow(new string[] {
+                            "30 år nära arbetslivet",
+                            "NACKADEMIN",
+                            "Om oss"});
+                table2.AddRow(new string[] {
+                            "Starta din framtid hos Nackademin",
+                            "ANTAGNING",
+                            "Antagning"});
+                table2.AddRow(new string[] {
+                            "Nå ditt drömjobb med Nackademin",
+                            "VÄGEN TILL DRÖMJOBBET",
+                            "Hitta drömjobbet"});
+#line 21
+ testRunner.Then("I Verify below sections on the page", ((string)(null)), table2, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
