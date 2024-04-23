@@ -38,7 +38,7 @@ namespace FacebookTest.StepDefinitions
             DriverManager.CloseWindow();
             DriverManager.SwitchDriverToParentWindow();
         }
-        [Then(@"I verify below mentiond carts and related links for them")]
+        [Then(@"I verify below mentiond cards and related links for them")]
         public static void ThenIVerifyBelowMentiondCartsAndRelatedLinksForThem(Table table)
         {
             var cartNames = table.Rows.Select(r => r["Cart name"]).ToList();

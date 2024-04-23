@@ -11,7 +11,7 @@ Scenario: Verify main image section on Home
 	And I should see page with title Utbildningar
 
 Scenario: Verify Program, Kurser and För Företag section
-	Then I verify below mentiond carts and related links for them
+	Then I verify below mentiond cards and related links for them
 		| Cart name   |
 		| Program     |
 		| Kurser      |
@@ -23,3 +23,11 @@ Scenario: Verify sections with with link to Om oss, Antagning and Hitta drömjob
 		| 30 år nära arbetslivet            | NACKADEMIN            | Om oss           |
 		| Starta din framtid hos Nackademin | ANTAGNING             | Antagning        |
 		| Nå ditt drömjobb med Nackademin   | VÄGEN TILL DRÖMJOBBET | Hitta drömjobbet |
+
+Scenario: Verify Inspiration section on Home page
+	Then I should see section with title Inspiration and information text under it
+	Then I verify below mentioned carts and related information are shown in Inspiration section
+		| Cart name                                                                 | Type            |
+		| Här är yrkeshögskoleutbildningarna som leder till jobb                    | Pressmeddelande |
+		| 7 yrken med hög lön och kort utbildning                                   | Pressmeddelande |
+		| Intervju med Alice Olsson –  en av finalisterna för Årets Byggkvinna 2024 | Intervjuer      |
