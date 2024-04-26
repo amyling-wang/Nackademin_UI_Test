@@ -14,10 +14,41 @@ namespace FacebookTest.Objects
         private static By InformationTextUnderCart(string titleText) => By.XPath($"//div[text()='{titleText}']/following-sibling::div");
         private static By LäsMerLink(string titleText) => By.XPath($"//div[text()='{titleText}']/following-sibling::a");
         private static By ImgInSingleCartSection(string titleText) => By.XPath($"//h2[text()='{titleText}']//ancestor::div[contains(@class,'half text_content')]/following-sibling::div//img");
-        private static By TitleForCartInSingleCartSection(string titleText) => By.XPath($"//h2[text()='{titleText}']");
+        private static By SectionTitle(string titleText) => By.XPath($"//h2[text()='{titleText}']");
         private static By InformationTextForCartInSingleCartSection(string titleText) => By.XPath($"//h2[text()='{titleText}']/../following-sibling::div/p");
         private static By LinkUnderCartInSingelCartSection(string titleText, string buttonText) => By.XPath($"//h2[text()='{titleText}']/../following-sibling::div/a[text()='{buttonText}']");
         private static By TitleAboveCart(string titleUnderCart, string titleAboveCart) => By.XPath($"//h2[text()='{titleUnderCart}']/../preceding-sibling::p[text()='{titleAboveCart}']");
+        private static By ArticlesForInspirations => By.XPath("//div[text()='Inspiration']//following-sibling::div[2]/div[contains(@class,'w-full')]");
+        private static By InformationTextForSection(string sectionName) => By.XPath($"//h2[text()='{sectionName}']/../following-sibling::div/p");
+        private static By CommonQuestions => By.XPath("//div[contains(@class,'faq_content')]");
+        private static By AnswerToRandomQuestion => By.XPath("//div[contains(@class,'faq_answer')]/p");
+        //private static By NewsLetterSectionTitle(string sectionName) => By.XPath($"//h2[text()='{sectionName}']");
+        private static By EmailFieldOnHomePage(string sectionName, string field) => By.XPath($"//h2[text()='{sectionName}']//ancestor::div[contains(@class,'newsletter_block')]//input[@placeholder='{field}']");
+        private static By MessageForSendingMailAddress(string sectionName, string messageSubtext) => By.XPath($"//h2[text()='{sectionName}']//ancestor::div[contains(@class,'newsletter_block')]//*[contains(text(),'{messageSubtext}')]");
+        private static By ButtonForSectionOnHomePage(string sectionName, string buttonText) => By.XPath($"//h2[text()='{sectionName}']//ancestor::div[contains(@class,'newsletter_block')]//input[@Value='{buttonText}']");
+        private static By LinkInSidfooterSection(string linkText) => By.XPath($"//div[contains(@class,'column_links')]//a[text()='{linkText}']");
+        public static bool IsMessageWithSubtextExist(string sectionName, string subtext)
+        {
+            MessageForSendingMailAddress(sectionName, subtext).WaitUntilElementIsVisible();
+            return MessageForSendingMailAddress(sectionName, subtext).IsExist();
+        }
+        //public static bool IsNewsLetterSectionTitleShown(string sectionName)
+        //{
+        //    NewsLetterSectionTitle(sectionName).MoveToElement();
+        //    return NewsLetterSectionTitle(sectionName).IsExist();
+        //}
+        public static bool IsAnswerToRandomQuestionShown()
+        {
+            return AnswerToRandomQuestion.IsExist();
+        }
+        public static bool IsInformationTextShownForSection(string sectionName)
+        {
+            return InformationTextForSection(sectionName).IsExist();
+        }
+        public static int GetCountOfInspirationArticles()
+        {
+            return ArticlesForInspirations.GetCountOfElements();
+        }
         public static bool IsImgInSingleCartSectionShown(string title)
         {
             return ImgInSingleCartSection(title).IsExist();
@@ -28,7 +59,7 @@ namespace FacebookTest.Objects
         }
         public static bool IsTitleForCartInSingleCartSectionShown(string title)
         {
-            return TitleForCartInSingleCartSection(title).IsExist();
+            return SectionTitle(title).IsExist();
         }
         public static bool IsInformationTextForCartInSingleCartSectionShown(string title)
         {
@@ -54,10 +85,17 @@ namespace FacebookTest.Objects
         {
             LäsMerLink(titleText).MoveToElementAndClick();
         }
+        public static void ClickOnButtonForSection(string buttonText, string sectionName)
+        {
+            ButtonForSectionOnHomePage(sectionName, buttonText).MoveToElement();
+            ButtonForSectionOnHomePage(sectionName, buttonText).ClickUsingJavaScriptExecutor();
+        }
+
         public static void ClickOnHittaUtbildningButton(string text)
         {
             HittaUtbildningButton(text).ClickElement();
         }
+
         public static void ClickOnPageTitle()
         {
             PageTitle().WaitAndClickElement();           
@@ -65,6 +103,18 @@ namespace FacebookTest.Objects
         public static void ClickOnButtonUnderCartInSingleCartSection(string title, string buttonText)
         {
             LinkUnderCartInSingelCartSection(title, buttonText).MoveToElementAndClick();
+        }
+        public static void ClickOnRandomQuestion()
+        {
+            CommonQuestions.MoveToElementAndClick();
+        }
+        public static void EnterEmailInField(string email, string field, string sectionName)
+        {
+            EmailFieldOnHomePage(sectionName, field).SendKeysAndWait(email);
+        }
+        public static void ClickOnLinkInSidfooter(string linkText)
+        {
+            LinkInSidfooterSection(linkText).MoveToElementAndClick();
         }
     }
 }

@@ -6,7 +6,7 @@ using OpenQA.Selenium.Interactions;
 
 namespace FacebookTest.Utilities
 {
-    public static class Base
+    public static class SeleniumExtensions
     {        
         private static IWebDriver GetDriver()
         {
@@ -61,6 +61,7 @@ namespace FacebookTest.Utilities
                 }
             }
         }
+    
         public static void WaitToBecomeClickable(this By locator, string locatorName = null)
         {
             locator.WaitToBecomeEnabled();
@@ -227,5 +228,18 @@ namespace FacebookTest.Utilities
         {
             return locator.FindElement().Text.Trim();
         }
+
+        public static int GetCountOfElements(this By locator)
+        {
+            return GetDriver().FindElements(locator).Count;
+        }
+        public static void SendKeysAndWait(this By locator, string text)
+        {
+            locator.WaitToBecomeAvailable();
+            locator.WaitToBecomeEnabled();
+            locator.WaitToBecomeClickable();
+            locator.FindElement().SendKeys(text);
+        }
+
     }
 }

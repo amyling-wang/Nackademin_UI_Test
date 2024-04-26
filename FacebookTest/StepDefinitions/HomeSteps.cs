@@ -25,7 +25,7 @@ namespace FacebookTest.StepDefinitions
             Assert.True(SharedPage.IsTextOnImageShown(text), "Text on image is not shown on Nackademins Home page");
             
         }
-        [Then(@"I click on the button (.*)")]
+        [When(@"I click on the button (.*)")]
         public static void ThenIClickOnTheButtonHittaUtbildning(string buttonText)
         {
             HomePage.ClickOnHittaUtbildningButton(buttonText);
@@ -100,6 +100,52 @@ namespace FacebookTest.StepDefinitions
                 DriverManager.CloseWindow();
                 DriverManager.SwitchDriverToParentWindow();
             }
+        }
+        [Then(@"I should see (.*) articles by default under section with title Inspiration")]
+        public static void ThenIShouldSeeArtiklarByDefaultUnderSectionWithTitleInspiration(int countOfArticles)
+        {
+            var actualCount = HomePage.GetCountOfInspirationArticles();
+            Assert.True(actualCount == countOfArticles, $"Expected count for article is {countOfArticles}, but it is {actualCount}");
+        }
+        [Then(@"I should see section with title (.*)")]
+        public static void ThenIShouldSeeSectionWithTitleFragorOchSvar(string sectionName)
+        {
+            Assert.True(HomePage.IsTitleForCartInSingleCartSectionShown(sectionName), $"Section with name {sectionName} is not shown on Home page");
+        }
+        [Then(@"I should see information text for section (.*)")]
+        public static void ThenIShouldSeeInformationTextForSectionFragorOchSvar(string sectionName)
+        {
+            Assert.True(HomePage.IsInformationTextShownForSection(sectionName), $"Information text for section '{sectionName}' is not present on Home page");
+        }
+        [When(@"I click on any question")]
+        public static void WhenIClickOnAnyQuestion()
+        {
+            HomePage.ClickOnRandomQuestion();
+        }
+        [Then(@"I should see related content under it")]
+        public void ThenIShouldSeeRelatedContentUnderIt()
+        {
+            Assert.True(HomePage.IsAnswerToRandomQuestionShown(), "Answer is not shown when clicking on a random question");
+        }
+        //[Then(@"I should see title (.*) for newsletter section")]
+        //public static void ThenIShouldSeeFaVartNyhetsbrevOnHomePage(string sectionName)
+        //{
+        //    Assert.True(HomePage.IsNewsLetterSectionTitleShown(sectionName), "News letter section title is not shown");
+        //}
+        [Then(@"I enter (.*) in (.*) field in section (.*)")]
+        public void EnterEmailAddressInField(string email, string fieldName, string sectionName)
+        {
+            HomePage.EnterEmailInField(email, fieldName, sectionName);
+        }
+        [Then(@"I should see the message contains (.*) in section (.*)")]
+        public static void VerifyMessage(string messageSubtext, string sectionName)
+        {
+            Assert.True(HomePage.IsMessageWithSubtextExist(sectionName, messageSubtext), $"Did not get any message that contains subtext '{messageSubtext}' in section '{sectionName}' on Home page after entering a email address");
+        }
+        [When(@"I click on button (.*) in section for (.*)")]
+        public void ClickOnPrenumereraButton(string buttonText, string sectionName)
+        {
+            HomePage.ClickOnButtonForSection(buttonText, sectionName);
         }
 
     }
