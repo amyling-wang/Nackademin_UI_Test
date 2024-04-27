@@ -1,6 +1,10 @@
 ﻿using FacebookTest.Objects;
 using FacebookTest.Utilities;
+using OpenQA.Selenium.Support.Events;
+using SeleniumExtras.PageObjects;
 using Xunit;
+using static System.Collections.Specialized.BitVector32;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace FacebookTest.StepDefinitions
 {
@@ -12,17 +16,17 @@ namespace FacebookTest.StepDefinitions
         {
             _homePage = homePage;
         }
-        [When(@"I click on page title Nackademin")]
-        public void WhenIClickOnPageTitleNackademin()
+        [When(@"I click on link navigates to Home page in page (.*)")]
+        public void WhenIClickOnPageTitleNackademin(string section)
         {
-            HomePage.ClickOnPageTitle();
+            HomePage.ClickOnHomeLink(section);
             SharedPage.ClickOnAcceptAllCookieIfExist();
         }
         [Then(@"I should see image with text '(.*)'")]
         public void ThenIShouldSeeImageWithText(string text)
         {
             Assert.True(HomePage.IsMainImageShown(), "Main image is not shown on Nackademins Home page");
-            Assert.True(SharedPage.IsTextOnImageShown(text), "Text on image is not shown on Nackademins Home page");
+            Assert.True(SharedPage.IsHeaderTitleShown(text), "Text on image is not shown on Nackademins Home page");
             
         }
         [When(@"I click on the button (.*)")]
@@ -31,10 +35,14 @@ namespace FacebookTest.StepDefinitions
             HomePage.ClickOnHittaUtbildningButton(buttonText);
         }
         [Then(@"I should see page with title (.*)")]
-        public static void ThenIShouldSeePageWithTitleUtbildningarOnAChildWindow(string titleText)
+        public static void ThenIShouldSeePageWithTitleUtbildningarOnAChildWindow(string pageName)
+        {
+            VerifyLandingPageInChildWindow(pageName);
+        }
+        public static void VerifyLandingPageInChildWindow(string pageName)
         {
             DriverManager.SwitchDriverToChildWindow();
-            Assert.True(SharedPage.IsTextOnImageShown(titleText), "Title is not shown on Utbildnings page when clicking on Utbildnings button on Home page");
+            Assert.True(SharedPage.IsHeaderTitleShown(pageName), "Title is not shown on Utbildnings page when clicking on Utbildnings button on Home page");
             DriverManager.CloseWindow();
             DriverManager.SwitchDriverToParentWindow();
         }
@@ -55,19 +63,17 @@ namespace FacebookTest.StepDefinitions
                     {
                         pageTitle = "Kurs";
                     }
-                    SharedPage.IsTextOnImageShown(pageTitle);
-                    HomePage.ClickOnPageTitle();
+                    Assert.True(SharedPage.IsHeaderTitleShown(pageTitle), $"Title text '{pageTitle}' is not shown on '{pageTitle}' page");
+                    DriverManager.NavigateBack();
                     SharedPage.ClickOnAcceptAllCookieIfExist();
                 }
                 else
                 {
-                    DriverManager.SwitchDriverToChildWindow();
-                    Assert.True(FörFöretagPage.IsPageTitleForFörFöretagShown("För företag"), $"Title text '{pageTitle}' is not shown on 'För företag' page");
-                    DriverManager.CloseWindow();
-                    DriverManager.SwitchDriverToParentWindow();
+                    VerifyLandingPageInChildWindow("För företag");
                 }
             }
         }
+        
         [Then(@"I Verify below sections on the page")]
         public static void ThenIVerifyBelowSectionsOnThePage(Table table)
         {
@@ -135,17 +141,60 @@ namespace FacebookTest.StepDefinitions
         [Then(@"I enter (.*) in (.*) field in section (.*)")]
         public void EnterEmailAddressInField(string email, string fieldName, string sectionName)
         {
-            HomePage.EnterEmailInField(email, fieldName, sectionName);
+            if(sectionName.Equals("site footer"))
+            {
+                HomePage.EnterEmailInFieldInSiteFooterSection(email);
+            }
+            else
+            {
+                HomePage.EnterEmailInField(email, fieldName, sectionName);
+            }
         }
         [Then(@"I should see the message contains (.*) in section (.*)")]
         public static void VerifyMessage(string messageSubtext, string sectionName)
         {
-            Assert.True(HomePage.IsMessageWithSubtextExist(sectionName, messageSubtext), $"Did not get any message that contains subtext '{messageSubtext}' in section '{sectionName}' on Home page after entering a email address");
+            //This step might need to be updated if message shows up in site footer section
+            Assert.True(HomePage.IsMessageWithSubtextExist(messageSubtext), $"Did not get any message that contains subtext '{messageSubtext}' in section '{sectionName}' on Home page after entering a email address");
         }
-        [When(@"I click on button (.*) in section for (.*)")]
-        public void ClickOnPrenumereraButton(string buttonText, string sectionName)
+        [When(@"I click on button Prenumerera in section for (.*)")]
+        public static void ClickOnPrenumereraButton(string sectionName)
         {
-            HomePage.ClickOnButtonForSection(buttonText, sectionName);
+            if(sectionName.Equals("site footer"))
+            {
+                HomePage.ClickOnButtonInSiteFooterSection();
+            }
+            else
+            {
+                HomePage.ClickOnButtonInNewsLetterSection();
+            }
+        }
+        
+        [Then(@"I verify below mentioned links in (.*) section")]
+        public static void ThenIVerifyBelowMentiondLinksInSidfooterSection(string sectionName, Table table)
+        {
+            var links = table.Rows.Select(r => r["Link name"]).ToList();
+            var pageNames = table.Rows.Select(r => r["Landing page"]).ToList();
+            for (int i = 0; i < links.Count; i++)
+            {
+                if(sectionName.Equals("site footer"))
+                {
+                    HomePage.ClickOnLinkInSidfooter(links[i]);
+                    VerifyLandingPageInChildWindow(pageNames[i]);
+                }
+                else
+                {
+                    HomePage.ClickOnLinkUnderArrowInMenySection(links[i]);
+                    Assert.True(SharedPage.IsHeaderTitleShown(pageNames[i]), $"Title text '{pageNames[i]}' is not shown on '{pageNames[i]}' page");
+                    DriverManager.NavigateBack();
+                    //SharedPage.ClickOnAcceptAllCookieIfExist();
+
+                }
+            }
+        }
+        [Then(@"I click on button beside (.*) in meny section")]
+        public static void ThenIClickOnButtonBesideUtbildingarInMenySection(string link)
+        {
+            HomePage.ClickOnArrowButtonInMenySection(link);
         }
 
     }

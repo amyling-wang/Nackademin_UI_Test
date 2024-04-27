@@ -103,7 +103,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 8
- testRunner.When("I click on page title Nackademin", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I click on link navigates to Home page in page header", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
  testRunner.Then("I should see image with text \'Din framtid börjar här\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -326,7 +326,40 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 50
- testRunner.Then("I should see NACKADEMIN in sidfooter for Home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("I click on link navigates to Home page in page footer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Link name",
+                            "Landing page"});
+                table3.AddRow(new string[] {
+                            "Utbildningar",
+                            "Utbildningar"});
+                table3.AddRow(new string[] {
+                            "Antagning",
+                            "Antagning"});
+                table3.AddRow(new string[] {
+                            "För företag",
+                            "För företag"});
+                table3.AddRow(new string[] {
+                            "Inspiration",
+                            "Inspiration"});
+                table3.AddRow(new string[] {
+                            "Om Nackademin",
+                            "Om Nackademin"});
+                table3.AddRow(new string[] {
+                            "Pressrum",
+                            "Pressrum"});
+                table3.AddRow(new string[] {
+                            "Kontakta oss",
+                            "Kontakta oss"});
+                table3.AddRow(new string[] {
+                            "Medarbetare",
+                            "Medarbetare"});
+                table3.AddRow(new string[] {
+                            "Frågor och svar",
+                            "FAQ"});
+#line 51
+ testRunner.Then("I verify below mentioned links in site footer section", ((string)(null)), table3, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -343,7 +376,7 @@ this.FeatureBackground();
             argumentsOfScenario.Add("Email", email);
             argumentsOfScenario.Add("Message", message);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify post email in sidfooter section on Home page", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 53
+#line 63
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -356,14 +389,86 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
-#line 54
- testRunner.Then(string.Format("I enter {0} in Din e-postadress field in sidfooter section", email), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 64
+ testRunner.Then(string.Format("I enter {0} in Din e-postadress field in section site footer", email), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 55
- testRunner.When("I click on button Prenumerera in sidfooter section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 65
+ testRunner.When("I click on button Prenumerera in section for site footer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 56
- testRunner.Then(string.Format("I should see the message contains {0} in sidfooter section", message), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 66
+ testRunner.Then(string.Format("I should see the message contains {0} in section site footer", message), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify Home Page meny section")]
+        public void VerifyHomePageMenySection()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify Home Page meny section", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 73
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+#line 74
+ testRunner.Then("I click on button beside Utbildningar in meny section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Link name",
+                            "Landing page"});
+                table4.AddRow(new string[] {
+                            "Alla utbildningar",
+                            "Utbildningar"});
+                table4.AddRow(new string[] {
+                            "Kurser",
+                            "Kurs"});
+                table4.AddRow(new string[] {
+                            "Program",
+                            "Program"});
+                table4.AddRow(new string[] {
+                            "Platsbunden",
+                            "Platsbunden"});
+                table4.AddRow(new string[] {
+                            "Distans",
+                            "Distans"});
+                table4.AddRow(new string[] {
+                            "Online",
+                            "Online"});
+                table4.AddRow(new string[] {
+                            "YH-flex",
+                            "YH-flex"});
+                table4.AddRow(new string[] {
+                            "Design",
+                            "Design"});
+                table4.AddRow(new string[] {
+                            "Elteknik & energi",
+                            "Elteknik & energi"});
+                table4.AddRow(new string[] {
+                            "IT",
+                            "IT"});
+                table4.AddRow(new string[] {
+                            "Kommunikation",
+                            "Kommunikation"});
+                table4.AddRow(new string[] {
+                            "Spel",
+                            "Spel"});
+                table4.AddRow(new string[] {
+                            "Vård",
+                            "Vård & hälsa"});
+#line 75
+ testRunner.Then("I verify below mentioned links in meny section", ((string)(null)), table4, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

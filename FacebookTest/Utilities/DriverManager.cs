@@ -67,6 +67,9 @@ namespace FacebookTest.Utilities
                 return new ChromeDriver();
             }           
         }
-
+        public static void NavigateBack()
+        {
+            GetDriver().Navigate().Back();
+        }
     }
 }

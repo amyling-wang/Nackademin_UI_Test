@@ -5,7 +5,7 @@ namespace FacebookTest.Objects
 {
     internal class HomePage
     {
-        private static By PageTitle() => By.XPath("(//a[@href='https://nackademin.se/'])[1]");
+        private static By HomePageLink(string section) => By.XPath($"//{section}//a[@href='https://nackademin.se/']");
         private static By MainImage() => By.XPath("//div[contains(@class,'img_container')]/img[contains(@class,'hero_background_image')]");
         
         private static By HittaUtbildningButton(string buttonText) => By.XPath($"//a[text()='{buttonText}']");
@@ -23,14 +23,18 @@ namespace FacebookTest.Objects
         private static By CommonQuestions => By.XPath("//div[contains(@class,'faq_content')]");
         private static By AnswerToRandomQuestion => By.XPath("//div[contains(@class,'faq_answer')]/p");
         //private static By NewsLetterSectionTitle(string sectionName) => By.XPath($"//h2[text()='{sectionName}']");
-        private static By EmailFieldOnHomePage(string sectionName, string field) => By.XPath($"//h2[text()='{sectionName}']//ancestor::div[contains(@class,'newsletter_block')]//input[@placeholder='{field}']");
-        private static By MessageForSendingMailAddress(string sectionName, string messageSubtext) => By.XPath($"//h2[text()='{sectionName}']//ancestor::div[contains(@class,'newsletter_block')]//*[contains(text(),'{messageSubtext}')]");
-        private static By ButtonForSectionOnHomePage(string sectionName, string buttonText) => By.XPath($"//h2[text()='{sectionName}']//ancestor::div[contains(@class,'newsletter_block')]//input[@Value='{buttonText}']");
+        private static By EmailFieldInNewsLetterSection(string sectionName, string field) => By.XPath($"//h2[text()='{sectionName}']//ancestor::div[contains(@class,'newsletter_block')]//input[@placeholder='{field}']");
+        private static By MessageForSendingMailAddress(string messageSubtext) => By.XPath($"//div[contains(@class,'newsletter_block')]//*[contains(text(),'{messageSubtext}')]");
+        private static By PrenumereraButtonInNewsLetterSection => By.XPath("//div[contains(@class,'newsletter_block')]//input[@Value='Prenumerera']");
         private static By LinkInSidfooterSection(string linkText) => By.XPath($"//div[contains(@class,'column_links')]//a[text()='{linkText}']");
-        public static bool IsMessageWithSubtextExist(string sectionName, string subtext)
+        private static By EmailFieldInSiteFooterSection => By.XPath("//footer[@id='site-footer']//input[@placeholder='Din e-postadress']");
+        private static By PrenumereraButtonInSiteFooter => By.XPath("//footer[@id='site-footer']//input[@value='Prenumerera']");
+        private static By ArrowButtonInMenySection(string link) => By.XPath($"//a[contains(text(),'{link}')]/button");
+        private static By LinkUnderArrowInMenySection(string link) => By.XPath($"//li[contains(@class,'menu_item')]/a[contains(text(),'{link}')]");
+        public static bool IsMessageWithSubtextExist(string subtext)
         {
-            MessageForSendingMailAddress(sectionName, subtext).WaitUntilElementIsVisible();
-            return MessageForSendingMailAddress(sectionName, subtext).IsExist();
+            MessageForSendingMailAddress(subtext).WaitUntilElementIsVisible();
+            return MessageForSendingMailAddress(subtext).IsExist();
         }
         //public static bool IsNewsLetterSectionTitleShown(string sectionName)
         //{
@@ -85,10 +89,15 @@ namespace FacebookTest.Objects
         {
             LäsMerLink(titleText).MoveToElementAndClick();
         }
-        public static void ClickOnButtonForSection(string buttonText, string sectionName)
+        public static void ClickOnButtonInNewsLetterSection()
         {
-            ButtonForSectionOnHomePage(sectionName, buttonText).MoveToElement();
-            ButtonForSectionOnHomePage(sectionName, buttonText).ClickUsingJavaScriptExecutor();
+            PrenumereraButtonInNewsLetterSection.MoveToElement();
+            PrenumereraButtonInNewsLetterSection.ClickUsingJavaScriptExecutor();
+        }
+        public static void ClickOnButtonInSiteFooterSection()
+        {
+            PrenumereraButtonInSiteFooter.MoveToElement();
+            PrenumereraButtonInSiteFooter.ClickUsingJavaScriptExecutor();
         }
 
         public static void ClickOnHittaUtbildningButton(string text)
@@ -96,9 +105,10 @@ namespace FacebookTest.Objects
             HittaUtbildningButton(text).ClickElement();
         }
 
-        public static void ClickOnPageTitle()
+        public static void ClickOnHomeLink(string section)
         {
-            PageTitle().WaitAndClickElement();           
+            HomePageLink(section).WaitToBecomeAvailable();
+            HomePageLink(section).MoveToElementAndClick();
         }
         public static void ClickOnButtonUnderCartInSingleCartSection(string title, string buttonText)
         {
@@ -110,11 +120,23 @@ namespace FacebookTest.Objects
         }
         public static void EnterEmailInField(string email, string field, string sectionName)
         {
-            EmailFieldOnHomePage(sectionName, field).SendKeysAndWait(email);
+            EmailFieldInNewsLetterSection(sectionName, field).SendKeysAndWait(email);
         }
         public static void ClickOnLinkInSidfooter(string linkText)
         {
             LinkInSidfooterSection(linkText).MoveToElementAndClick();
         }
-    }
+        public static void EnterEmailInFieldInSiteFooterSection(string email)
+        {
+            EmailFieldInSiteFooterSection.SendKeysAndWait(email);
+        }
+        public static void ClickOnArrowButtonInMenySection(string link)
+        {
+            ArrowButtonInMenySection(link).WaitAndClickElement();
+        }
+        public static void ClickOnLinkUnderArrowInMenySection(string link)
+        {
+            LinkUnderArrowInMenySection(link).WaitAndClickElement();
+        }
+    }  
 }

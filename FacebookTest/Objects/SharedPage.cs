@@ -15,7 +15,7 @@ namespace FacebookTest.Objects
         //private static By OverlappElement => By.XPath("(//div[contains(@class,'x1uvtmcs')])[3]");
         //private static By HomeTab(string tabName) => By.XPath($"//a[@aria-label='{tabName}']");
         public static By AcceptAllCookieButton() => By.XPath("//button[text()='Tillåt alla']");
-        private static By MainText(string text) => By.XPath($"//span[text()='{text}']");
+        private static By HeaderTitle(string text) => By.XPath($"//span[text()='{text}']");
         private static By MainText() => By.XPath("//h1");
 
 
@@ -29,10 +29,10 @@ namespace FacebookTest.Objects
             string? url = ConfigValues.Url;
             webDriver.Url = url;
         }
-        public static bool IsTextOnImageShown(string titleText)
+        public static bool IsHeaderTitleShown(string titleText)
         {
-            MainText(titleText).WaitUntilElementIsVisible();
-            return MainText(titleText).IsExist();
+            HeaderTitle(titleText).WaitUntilElementIsVisible();
+            return HeaderTitle(titleText).IsExist();
         }
         public static string GetTextOnMainImage()
         {
