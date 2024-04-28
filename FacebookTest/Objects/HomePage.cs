@@ -7,8 +7,6 @@ namespace FacebookTest.Objects
     {
         private static By HomePageLink(string section) => By.XPath($"//{section}//a[@href='https://nackademin.se/']");
         private static By MainImage() => By.XPath("//div[contains(@class,'img_container')]/img[contains(@class,'hero_background_image')]");
-        
-        private static By HittaUtbildningButton(string buttonText) => By.XPath($"//a[text()='{buttonText}']");
         private static By ImgInMultipleCartsSection(string titleText) => By.XPath($"//div[text()='{titleText}']/preceding-sibling::div/img");
         private static By TitleUnderCart(string titleText) => By.XPath($"//div[text()='{titleText}']");
         private static By InformationTextUnderCart(string titleText) => By.XPath($"//div[text()='{titleText}']/following-sibling::div");
@@ -99,12 +97,6 @@ namespace FacebookTest.Objects
             PrenumereraButtonInSiteFooter.MoveToElement();
             PrenumereraButtonInSiteFooter.ClickUsingJavaScriptExecutor();
         }
-
-        public static void ClickOnHittaUtbildningButton(string text)
-        {
-            HittaUtbildningButton(text).ClickElement();
-        }
-
         public static void ClickOnHomeLink(string section)
         {
             HomePageLink(section).WaitToBecomeAvailable();

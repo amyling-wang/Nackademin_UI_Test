@@ -47,16 +47,19 @@ namespace FacebookTest.Utilities
             driver.Quit();
             instance = null;
         }
-        private IWebDriver DriverToUse()
+        private static IWebDriver DriverToUse()
         {          
             if (ConfigValues.Browser.Equals("Chrome"))
             {
-                return new ChromeDriver();
-                
+                ChromeOptions options = new();
+                options.AddUserProfilePreference("profile.default_content_setting_values.cookies", 2);
+                return new ChromeDriver(options);                
             }
             else if (ConfigValues.Browser.Equals("Edge"))
             {
-                return new EdgeDriver();
+                EdgeOptions options = new();
+                options.AddUserProfilePreference("profile.default_content_setting_values.cookies", 2);
+                return new EdgeDriver(options);
             }
             else if (ConfigValues.Browser.Equals("Safari"))
             {

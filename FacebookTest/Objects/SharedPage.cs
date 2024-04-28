@@ -17,6 +17,7 @@ namespace FacebookTest.Objects
         public static By AcceptAllCookieButton() => By.XPath("//button[text()='Tillåt alla']");
         private static By HeaderTitle(string text) => By.XPath($"//span[text()='{text}']");
         private static By MainText() => By.XPath("//h1");
+        private static By Button(string buttonText) => By.XPath($"//a[text()='{buttonText}']");
 
 
         //public void ClickOnTab(string tabName)
@@ -24,6 +25,10 @@ namespace FacebookTest.Objects
         //    OverlappElement.WaitAndClickElement();
         //    HomeTab(tabName).WaitAndClickElement();
         //}
+        public static void ClickOnButton(string text)
+        {
+            Button(text).MoveToElementAndClick();
+        }
         public void GoToUrl()
         {
             string? url = ConfigValues.Url;
@@ -41,15 +46,15 @@ namespace FacebookTest.Objects
         public void GoToStartSida()
         {
             GoToUrl();
-            ClickOnAcceptAllCookieIfExist();
+            //ClickOnAcceptAllCookieIfExist();
         }
-        public static void ClickOnAcceptAllCookieIfExist()
-        {
-            if (AcceptAllCookieButton().IsExist())
-            {
-                AcceptAllCookieButton().WaitAndClickElement();
-            }
-        }
+        //public static void ClickOnAcceptAllCookieIfExist()
+        //{
+        //    if (AcceptAllCookieButton().IsExist())
+        //    {
+        //        AcceptAllCookieButton().WaitAndClickElement();
+        //    }
+        //}
 
     }
 }

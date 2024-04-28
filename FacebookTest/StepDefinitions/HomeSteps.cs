@@ -20,19 +20,19 @@ namespace FacebookTest.StepDefinitions
         public void WhenIClickOnPageTitleNackademin(string section)
         {
             HomePage.ClickOnHomeLink(section);
-            SharedPage.ClickOnAcceptAllCookieIfExist();
+            //SharedPage.ClickOnAcceptAllCookieIfExist();
         }
         [Then(@"I should see image with text '(.*)'")]
-        public void ThenIShouldSeeImageWithText(string text)
+        public static void ThenIShouldSeeImageWithText(string text)
         {
             Assert.True(HomePage.IsMainImageShown(), "Main image is not shown on Nackademins Home page");
-            Assert.True(SharedPage.IsHeaderTitleShown(text), "Text on image is not shown on Nackademins Home page");
+            Assert.True(SharedPage.GetTextOnMainImage().Equals(text), $"Expected text on image is {text}, but it is shown {SharedPage.GetTextOnMainImage()} on Nackademins Home page");
             
         }
         [When(@"I click on the button (.*)")]
-        public static void ThenIClickOnTheButtonHittaUtbildning(string buttonText)
+        public static void ClickOnButton(string buttonText)
         {
-            HomePage.ClickOnHittaUtbildningButton(buttonText);
+            HomePage.ClickOnButton(buttonText);
         }
         [Then(@"I should see page with title (.*)")]
         public static void ThenIShouldSeePageWithTitleUtbildningarOnAChildWindow(string pageName)
@@ -65,7 +65,7 @@ namespace FacebookTest.StepDefinitions
                     }
                     Assert.True(SharedPage.IsHeaderTitleShown(pageTitle), $"Title text '{pageTitle}' is not shown on '{pageTitle}' page");
                     DriverManager.NavigateBack();
-                    SharedPage.ClickOnAcceptAllCookieIfExist();
+                    //SharedPage.ClickOnAcceptAllCookieIfExist();
                 }
                 else
                 {
@@ -88,7 +88,7 @@ namespace FacebookTest.StepDefinitions
                 Assert.True(HomePage.IsTitleAboveCartShown(sectionTitles[i], sectionCategories[i]), $"Title above cart for '{sectionTitles[i]} is not shown");
                 HomePage.ClickOnButtonUnderCartInSingleCartSection(sectionTitles[i], sectionLinks[i]);
                 DriverManager.SwitchDriverToChildWindow();
-                SharedPage.ClickOnAcceptAllCookieIfExist();
+                //SharedPage.ClickOnAcceptAllCookieIfExist();
                 //var buttonTextArray = sectionLinks[i].Split(' ').Select(t => t.ToLower()).ToArray();
                 var mainTextForPage = SharedPage.GetTextOnMainImage();
                 if (sectionLinks[i].Equals("Antagning"))
