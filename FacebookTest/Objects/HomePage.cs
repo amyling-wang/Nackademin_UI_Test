@@ -3,7 +3,7 @@ using FacebookTest.Utilities;
 
 namespace FacebookTest.Objects
 {
-    internal class HomePage
+    internal class HomePage : SharedPage
     {
         private static By HomePageLink(string section) => By.XPath($"//{section}//a[@href='https://nackademin.se/']");
         private static By MainImage() => By.XPath("//div[contains(@class,'img_container')]/img[contains(@class,'hero_background_image')]");

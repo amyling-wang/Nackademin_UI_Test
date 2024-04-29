@@ -12,9 +12,9 @@ namespace FacebookTest.StepDefinitions
     internal class HomeSteps
     {
         HomePage _homePage;
-        public HomeSteps(HomePage homePage)
+        public HomeSteps()
         {
-            _homePage = homePage;
+            _homePage = new HomePage();
         }
         [When(@"I click on link navigates to Home page in page (.*)")]
         public void WhenIClickOnPageTitleNackademin(string section)
@@ -30,9 +30,9 @@ namespace FacebookTest.StepDefinitions
             
         }
         [When(@"I click on the button (.*)")]
-        public static void ClickOnButton(string buttonText)
+        public void ClickOnButton(string buttonText)
         {
-            HomePage.ClickOnButton(buttonText);
+            _homePage.ClickOnButton(buttonText);
         }
         [Then(@"I should see page with title (.*)")]
         public static void ThenIShouldSeePageWithTitleUtbildningarOnAChildWindow(string pageName)

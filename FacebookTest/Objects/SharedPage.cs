@@ -1,7 +1,6 @@
 ﻿using FacebookTest.Config;
 using FacebookTest.Utilities;
 using OpenQA.Selenium;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace FacebookTest.Objects
 {
@@ -25,7 +24,7 @@ namespace FacebookTest.Objects
         //    OverlappElement.WaitAndClickElement();
         //    HomeTab(tabName).WaitAndClickElement();
         //}
-        public static void ClickOnButton(string text)
+        public void ClickOnButton(string text)
         {
             Button(text).MoveToElementAndClick();
         }
