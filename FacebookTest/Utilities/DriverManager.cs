@@ -47,9 +47,9 @@ namespace FacebookTest.Utilities
             driver.Quit();
             instance = null;
         }
-        private static IWebDriver DriverToUse()
+        private IWebDriver DriverToUse()
         {          
-            if (ConfigValues.Browser.Equals("Chrome"))
+            if (string.IsNullOrEmpty(ConfigValues.Browser)|| ConfigValues.Browser.Equals("Chrome"))
             {
                 ChromeOptions options = new();
                 options.AddUserProfilePreference("profile.default_content_setting_values.cookies", 2);

@@ -84,9 +84,11 @@ namespace NackademinUITest.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Verify main image section on Home")]
+        [NUnit.Framework.CategoryAttribute("Smoke")]
         public void VerifyMainImageSectionOnHome()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "Smoke"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify main image section on Home", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 7

@@ -3,7 +3,7 @@
 Background: 
 	Given I navigate to Nackademin
 	
-
+@Smoke
 Scenario: Verify main image section on Home
 	When I click on link navigates to Home page in page header
 	Then I should see image with text 'Din framtid börjar här'

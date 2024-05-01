@@ -1,12 +1,13 @@
 ﻿using Microsoft.Extensions.Configuration;
+using NUnit.Framework;
 
 namespace FacebookTest.Config
 {
     public class ConfigValues
     {
         private static IConfigurationRoot _configuration = new ConfigurationBuilder().Build();
-        private static string? url;
-        //private static string browser;
+        private static string? url = TestContext.Parameters["url"];
+        private static string? browser = TestContext.Parameters["browser"];
         //private static string username;
         //private static string password;
         public static void LoadConfiguration()
@@ -20,18 +21,30 @@ namespace FacebookTest.Config
             _configuration = builder.Build();            
 
         }
-        //public static string? Url 
-        //{  
-        //    get 
-        //    {
-        //        if (string.IsNullOrEmpty(url))
-        //        {
-        //            url = _configuration.GetSection("AppSettings:url").Value;
-        //        }               
-        //        return url; 
-        //    } 
-        //    set { url = value; }
-        //}
+        public static string? Url
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(url))
+                {
+                    url = _configuration.GetSection("AppSettings:url").Value;
+                }
+                return url;
+            }
+            set { url = value; }
+        }
+        public static string? Browser
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(browser))
+                {
+                    browser = _configuration.GetSection("AppSettings:browserToUse").Value;
+                }
+                return browser;
+            }
+            set { browser = value; }
+        }
         private static int Timeout;
         public int PageLoadTiemout()
         {
@@ -46,8 +59,9 @@ namespace FacebookTest.Config
 
             return Timeout;
         }
-        public static string? Browser => _configuration.GetSection("AppSettings:browserToUse").Value;
-        public static string? Url => _configuration.GetSection("AppSettings:url").Value;
+
+        //public static string? Browser => _configuration.GetSection("AppSettings:browserToUse").Value;
+       // public static string? Url => _configuration.GetSection("AppSettings:url").Value;
         //public static string Username
         //{
         //    get
