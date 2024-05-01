@@ -33,4 +33,4 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: Test
-        run: dotnet test NackademinUITest.csproj --filter TestCategory=Smoke -- TestRunParameters.Parameter(name=\"browser\",value=\"Chrome\")
+        run: dotnet test NackademinUITest.csproj --filter TestCategory=Smoke -- TestRunParameters.Parameter\(name=\"browser\",value=\"Chrome\"\)
