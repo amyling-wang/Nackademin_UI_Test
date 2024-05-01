@@ -124,7 +124,8 @@ namespace FacebookTest.Objects
         }
         public static void ClickOnArrowButtonInMenySection(string link)
         {
-            ArrowButtonInMenySection(link).WaitAndClickElement();
+            ArrowButtonInMenySection(link).WaitToBecomeClickable();
+            ArrowButtonInMenySection(link).ClickUsingJavaScriptExecutor();
         }
         public static void ClickOnLinkUnderArrowInMenySection(string link)
         {
