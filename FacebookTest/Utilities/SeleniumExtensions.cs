@@ -29,7 +29,7 @@ namespace FacebookTest.Utilities
             webelement.Click();
         }
         
-        public static void WaitUntilElementIsVisible(this By locator, double? timeToWaitInMilliSeconds = null)
+        public static void WaitUntilElementIsVisible(this By locator, double? timeToWaitInMilliSeconds = null, string locatorDetails = null)
         {
             try
             {
@@ -38,7 +38,7 @@ namespace FacebookTest.Utilities
             }
             catch (Exception e)
             {
-                throw new WebDriverTimeoutException($"Locator is not visible on the webpage, exception message {e.Message}");
+                throw new WebDriverTimeoutException($"Locator for {locatorDetails} is not visible on the webpage, exception message {e.Message}");
             }
         }
 
@@ -120,8 +120,8 @@ namespace FacebookTest.Utilities
         }
         public static void WaitAndClickElement(this By locator, string locatorDetails = null)
         {
-            locator.WaitUntilElementIsVisible();
-            locator.WaitToBecomeClickable();
+            locator.WaitUntilElementIsVisible(locatorDetails : locatorDetails);
+            locator.WaitToBecomeClickable(locatorDetails);
 
             ClickElement(locator, locatorDetails);
         }

@@ -72,7 +72,7 @@ Examples:
 
 Scenario: Verify Home Page meny section
 	Then I click on button beside Utbildningar in meny section
-	Then I verify below mentioned links in meny section
+	Then I verify below mentioned links in meny section under Utbildningar
 		| Link name         | Landing page      |
 		| Alla utbildningar | Utbildningar      |
 		| Kurser            | Kurs              |
@@ -85,6 +85,7 @@ Scenario: Verify Home Page meny section
 		| Elteknik & energi | Elteknik & energi |
 		| IT                | IT                |
 		| Kommunikation     | Kommunikation     |
+		| Samhällsbyggnad   | Samhällsbyggnad   |
 		| Spel              | Spel              |
 		| Vård              | Vård & hälsa      |
 

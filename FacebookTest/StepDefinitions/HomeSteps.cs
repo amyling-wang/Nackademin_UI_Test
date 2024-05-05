@@ -42,6 +42,7 @@ namespace FacebookTest.StepDefinitions
         public static void VerifyLandingPageInChildWindow(string pageName)
         {
             DriverManager.SwitchDriverToChildWindow();
+            SharedPage.ClickOnAcceptAllCookieIfExist();
             Assert.True(SharedPage.IsHeaderTitleShown(pageName), "Title is not shown on Utbildnings page when clicking on Utbildnings button on Home page");
             DriverManager.CloseWindow();
             DriverManager.SwitchDriverToParentWindow();
@@ -65,7 +66,7 @@ namespace FacebookTest.StepDefinitions
                     }
                     Assert.True(SharedPage.IsHeaderTitleShown(pageTitle), $"Title text '{pageTitle}' is not shown on '{pageTitle}' page");
                     DriverManager.NavigateBack();
-                    //SharedPage.ClickOnAcceptAllCookieIfExist();
+                    SharedPage.ClickOnAcceptAllCookieIfExist();
                 }
                 else
                 {
@@ -88,7 +89,7 @@ namespace FacebookTest.StepDefinitions
                 Assert.True(HomePage.IsTitleAboveCartShown(sectionTitles[i], sectionCategories[i]), $"Title above cart for '{sectionTitles[i]} is not shown");
                 HomePage.ClickOnButtonUnderCartInSingleCartSection(sectionTitles[i], sectionLinks[i]);
                 DriverManager.SwitchDriverToChildWindow();
-                //SharedPage.ClickOnAcceptAllCookieIfExist();
+                SharedPage.ClickOnAcceptAllCookieIfExist();
                 //var buttonTextArray = sectionLinks[i].Split(' ').Select(t => t.ToLower()).ToArray();
                 var mainTextForPage = SharedPage.GetTextOnMainImage();
                 if (sectionLinks[i].Equals("Antagning"))
@@ -169,8 +170,8 @@ namespace FacebookTest.StepDefinitions
             }
         }
         
-        [Then(@"I verify below mentioned links in (.*) section")]
-        public static void ThenIVerifyBelowMentiondLinksInSidfooterSection(string sectionName, Table table)
+        [Then(@"I verify below mentioned links in (.*) section under (.*)")]
+        public static void ThenIVerifyBelowMentiondLinksInSidfooterSection(string sectionName, string category, Table table)
         {
             var links = table.Rows.Select(r => r["Link name"]).ToList();
             var pageNames = table.Rows.Select(r => r["Landing page"]).ToList();
@@ -180,14 +181,16 @@ namespace FacebookTest.StepDefinitions
                 {
                     HomePage.ClickOnLinkInSidfooter(links[i]);
                     VerifyLandingPageInChildWindow(pageNames[i]);
+                    SharedPage.ClickOnAcceptAllCookieIfExist();
                 }
                 else
                 {
-                    HomePage.ClickOnLinkUnderArrowInMenySection(links[i]);
+                    HomePage.ClickOnLinkUnderArrowInMenySection(links[i], category);
+                    SharedPage.ClickOnAcceptAllCookieIfExist();
                     Assert.True(SharedPage.IsHeaderTitleShown(pageNames[i]), $"Title text '{pageNames[i]}' is not shown on '{pageNames[i]}' page");
                     DriverManager.NavigateBack();
+                    SharedPage.ClickOnAcceptAllCookieIfExist();
                 }
-                SharedPage.ClickOnAcceptAllCookieIfExist();
             }
         }
         [Then(@"I click on button beside (.*) in meny section")]

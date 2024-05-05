@@ -56,7 +56,7 @@ namespace FacebookTest.Utilities
                 ChromeOptions options = new();
                 options.AddArguments("headless");
                 //options.AddUserProfilePreference("profile.default_content_setting_values.cookies", 2);
-                options.AddArguments("window-size=1920,1080"); // Adjust window size as needed
+                options.AddArguments("window-size=1920,1080");
                 options.AddArguments("--no-sandbox");
                 options.AddArguments("--disable-gpu");
                 options.AddArguments("--no-first-run");
@@ -68,11 +68,21 @@ namespace FacebookTest.Utilities
             else if (ConfigValues.Browser.Equals("Edge"))
             {
                 EdgeOptions options = new();
-                options.AddUserProfilePreference("profile.default_content_setting_values.cookies", 2);
+                //options.AddUserProfilePreference("profile.default_content_setting_values.cookies", 2);
+                options.AddArguments("headless");
+                //options.AddUserProfilePreference("profile.default_content_setting_values.cookies", 2);
+                options.AddArguments("window-size=1920,1080");
+                options.AddArguments("--no-sandbox");
+                options.AddArguments("--disable-gpu");
+                options.AddArguments("--no-first-run");
+                options.AddArguments("--no-default-browser-check");
+                options.AddArguments("--ignore-certificate-errors");
+                options.AddArguments("--start-maximized");
                 return new EdgeDriver(options);
             }
             else if (ConfigValues.Browser.Equals("Safari"))
             {
+                SafariOptions options = new();
                 return new SafariDriver();
             }
             else

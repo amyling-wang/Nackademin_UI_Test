@@ -464,13 +464,16 @@ this.FeatureBackground();
                             "Kommunikation",
                             "Kommunikation"});
                 table4.AddRow(new string[] {
+                            "Samhällsbyggnad",
+                            "Samhällsbyggnad"});
+                table4.AddRow(new string[] {
                             "Spel",
                             "Spel"});
                 table4.AddRow(new string[] {
                             "Vård",
                             "Vård & hälsa"});
 #line 75
- testRunner.Then("I verify below mentioned links in meny section", ((string)(null)), table4, "Then ");
+ testRunner.Then("I verify below mentioned links in meny section under Utbildningar", ((string)(null)), table4, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
