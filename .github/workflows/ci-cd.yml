@@ -32,5 +32,8 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release
 
-      - name: Test
+      - name: Test smoke
         run: dotnet test **/*.csproj --filter TestCategory=Smoke -- TestRunParameters.Parameter\(name=\"browser\",value=\"Chrome\"\)
+      
+      - name: Test all
+        run: dotnet test **/*.csproj -- TestRunParameters.Parameter\(name=\"browser\",value=\"Chrome\"\)
