@@ -116,7 +116,7 @@ namespace FacebookTest.Objects
         }
         public static void ClickOnLinkInSidfooter(string linkText)
         {
-            LinkInSidfooterSection(linkText).MoveToElementAndClick();
+            LinkInSidfooterSection(linkText).MoveToElementAndClick(linkText);
         }
         public static void EnterEmailInFieldInSiteFooterSection(string email)
         {
@@ -129,7 +129,7 @@ namespace FacebookTest.Objects
         }
         public static void ClickOnLinkUnderArrowInMenySection(string link)
         {
-            LinkUnderArrowInMenySection(link).WaitAndClickElement();
+            LinkUnderArrowInMenySection(link).WaitAndClickElement(link);
         }
     }  
 }

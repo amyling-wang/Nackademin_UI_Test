@@ -104,6 +104,11 @@ namespace FacebookTest.Utilities
         {
             return GetDriver().FindElements(locator).Any();
         }
+
+        public static bool IsDisplayed(this By locator)
+        {
+            return locator.FindElement().Displayed;
+        }
         private static WebDriverWait CreateSpecificTimeWait(double? timeToWaitInMilliSeconds = null)
         {
             if (timeToWaitInMilliSeconds == null)
@@ -122,6 +127,12 @@ namespace FacebookTest.Utilities
         }
         public static void ClickElement(this By locator, string locatorDetails = null)
         {
+            locator.WaitToBecomeAvailable(locatorDetails);
+            var jsDriver = (IJavaScriptExecutor)GetDriver();
+            var element = locator.FindElement();
+            string highlightJavascript = @"arguments[0].style.cssText = ""border-width: 2px; border-style: solid; border-color: green"";";
+            jsDriver.ExecuteScript(highlightJavascript, new object[] { element });
+
             try
             {
                 locator.FindElement().Click();
@@ -138,10 +149,10 @@ namespace FacebookTest.Utilities
                 }
             }
         }
-        public static void MoveToElementAndClick(this By locator)
+        public static void MoveToElementAndClick(this By locator, string locatorDetails = null)
         {
             locator.MoveToElement();
-            locator.WaitAndClickElement();
+            locator.WaitAndClickElement(locatorDetails);
         }
         public static void MoveToElement(this By locator, string locatorDetails = null, bool isScrollIntoView = true)
         {
@@ -177,14 +188,17 @@ namespace FacebookTest.Utilities
         public static void ClickUsingJavaScriptExecutor(this By locator, string locatorDetails = null)
         {
             locator.WaitToBecomeAvailable(locatorDetails);
-            var element = GetDriver().FindElement(locator);
+            var jsDriver = (IJavaScriptExecutor)GetDriver(); 
+            var element = locator.FindElement();
+            string highlightJavascript = @"arguments[0].style.cssText = ""border-width: 2px; border-style: solid; border-color: red"";";
+            jsDriver.ExecuteScript(highlightJavascript, new object[] { element });
             try
             {
                 ((IJavaScriptExecutor)GetDriver()).ExecuteScript("arguments[0].click();", element);
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Exception occured while clicking using javascript, exception message " + ex.Message);
+                throw new ApplicationException($"Exception occured while clicking {locatorDetails} using javascript, exception message " + ex.Message);
             }
 
         }

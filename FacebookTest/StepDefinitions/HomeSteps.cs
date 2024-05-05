@@ -186,9 +186,8 @@ namespace FacebookTest.StepDefinitions
                     HomePage.ClickOnLinkUnderArrowInMenySection(links[i]);
                     Assert.True(SharedPage.IsHeaderTitleShown(pageNames[i]), $"Title text '{pageNames[i]}' is not shown on '{pageNames[i]}' page");
                     DriverManager.NavigateBack();
-                    //SharedPage.ClickOnAcceptAllCookieIfExist();
-
                 }
+                SharedPage.ClickOnAcceptAllCookieIfExist();
             }
         }
         [Then(@"I click on button beside (.*) in meny section")]

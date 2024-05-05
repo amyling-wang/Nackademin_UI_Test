@@ -1,6 +1,8 @@
 ﻿using FacebookTest.Config;
 using FacebookTest.Utilities;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 
 namespace FacebookTest.Objects
 {
@@ -45,15 +47,15 @@ namespace FacebookTest.Objects
         public void GoToStartSida()
         {
             GoToUrl();
-            //ClickOnAcceptAllCookieIfExist();
+            ClickOnAcceptAllCookieIfExist();
         }
-        //public static void ClickOnAcceptAllCookieIfExist()
-        //{
-        //    if (AcceptAllCookieButton().IsExist())
-        //    {
-        //        AcceptAllCookieButton().WaitAndClickElement();
-        //    }
-        //}
+        public static void ClickOnAcceptAllCookieIfExist()
+        {
+            if (AcceptAllCookieButton().IsExist() && AcceptAllCookieButton().IsDisplayed())
+            {
+                AcceptAllCookieButton().WaitAndClickElement();
+            }
+        }
 
     }
 }
