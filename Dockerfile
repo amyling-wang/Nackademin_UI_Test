@@ -14,31 +14,31 @@
 #CMD chromedriver --whitelisted-ips="" && dotnet test
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS base
-WORKDIR NackademinUITest
+WORKDIR /NackademinUITests
 
-ENV CHROME_VERSION="114"
-ENV CHROME_DRIVER_VERSION="114"
-#RUN apt-get update && apt-get install -y wget gnupg curl unzip
-RUN CHROME_DRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE) && \
-    wget -q -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip" && \
+# Install Chrome and ChromeDriver
+ENV CHROME_VERSION="114.0.5735.45"
+ENV CHROME_DRIVER_VERSION="114.0.5735.90"
+RUN apt-get update && apt-get install -y wget gnupg curl unzip
+RUN wget -q -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip" && \
     unzip /tmp/chromedriver.zip -d /usr/bin && \
-    chmod +x /usr/bin/chromedriver && \
-    echo $CHROME_DRIVER_VERSION > /tmp/chromedriver_version.txt
+    chmod +x /usr/bin/chromedriver
 
-RUN CHROME_VERSION=$(echo $CHROME_DRIVER_VERSION | cut -d'.' -f1) && \
-    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
-    echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list && \
-    apt-get update && \
-    apt-get install -y google-chrome-stable=$CHROME_VERSION*
+# Install Chrome from the specific URL
+RUN wget https://example.com/path/to/google-chrome-stable_$CHROME_VERSION_amd64.deb -O /tmp/google-chrome-stable.deb && \
+    dpkg -i /tmp/google-chrome-stable.deb || apt-get -f install -y
 
-#RUN wget -q -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip" && \
-   # unzip /tmp/chromedriver.zip -d /usr/bin && \
-   # chmod +x /usr/bin/chromedriver
-
+# Copy all project files and the script to the working directory
 COPY . .
-RUN dotnet restore
 
+# Restore and build the project
+RUN dotnet restore
 RUN dotnet build
 
-CMD ["dotnet", "test"]
+# Copy the test script and make it executable
+COPY run_tests.sh /NackademinUITests/run_tests.sh
+RUN chmod +x /NackademinUITests/run_tests.sh
+
+# Execute the test script
+CMD ["/NackademinUITests/run_tests.sh"]
 
