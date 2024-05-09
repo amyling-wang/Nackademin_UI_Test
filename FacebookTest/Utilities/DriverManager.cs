@@ -63,20 +63,21 @@ namespace FacebookTest.Utilities
                 options.AddArguments("--no-default-browser-check");
                 options.AddArguments("--ignore-certificate-errors");
                 options.AddArguments("--start-maximized");
+                options.AddArguments("--remote-debugging-port=9222");
                 return new ChromeDriver(options);               
             }
             else if (ConfigValues.Browser.Equals("Edge"))
             {
                 EdgeOptions options = new();
-                //options.AddUserProfilePreference("profile.default_content_setting_values.cookies", 2);
                 options.AddArguments("headless");
-                //options.AddUserProfilePreference("profile.default_content_setting_values.cookies", 2);
                 options.AddArguments("window-size=1920,1080");
                 options.AddArguments("--no-sandbox");
                 options.AddArguments("--disable-gpu");
                 options.AddArguments("--no-first-run");
                 options.AddArguments("--no-default-browser-check");
                 options.AddArguments("--ignore-certificate-errors");
+                options.AddArguments("--remote-debugging-port=9222"); 
+
                 options.AddArguments("--start-maximized");
                 return new EdgeDriver(options);
             }
@@ -87,7 +88,17 @@ namespace FacebookTest.Utilities
             }
             else
             {
-                return new ChromeDriver();
+                ChromeOptions options = new();
+                options.AddArguments("headless");
+                //options.AddUserProfilePreference("profile.default_content_setting_values.cookies", 2);
+                options.AddArguments("window-size=1920,1080");
+                options.AddArguments("--no-sandbox");
+                options.AddArguments("--disable-gpu");
+                options.AddArguments("--no-first-run");
+                options.AddArguments("--no-default-browser-check");
+                options.AddArguments("--ignore-certificate-errors");
+                options.AddArguments("--start-maximized");
+                return new ChromeDriver(options);
             }       
         }
         public static void NavigateBack()
