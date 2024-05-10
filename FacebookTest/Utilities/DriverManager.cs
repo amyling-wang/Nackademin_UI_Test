@@ -54,16 +54,20 @@ namespace FacebookTest.Utilities
             if (string.IsNullOrEmpty(ConfigValues.Browser)|| ConfigValues.Browser.Equals("Chrome"))
             {
                 ChromeOptions options = new();
-                options.AddArguments("headless");
+                if (ConfigValues.IsBrowserHeadless.ToString().ToLower() == "true")
+                {
+                    options.AddArgument("--headless=new");
+                }
+                //options.AddArgument("--headless=new");
                 //options.AddUserProfilePreference("profile.default_content_setting_values.cookies", 2);
-                options.AddArguments("window-size=1920,1080");
-                options.AddArguments("--no-sandbox");
-                options.AddArguments("--disable-gpu");
-                options.AddArguments("--no-first-run");
-                options.AddArguments("--no-default-browser-check");
-                options.AddArguments("--ignore-certificate-errors");
-                options.AddArguments("--start-maximized");
-                options.AddArguments("--remote-debugging-port=9222");
+                options.AddArgument("window-size=1920,1080");
+                options.AddArgument("--no-sandbox");
+                options.AddArgument("--disable-gpu");
+                options.AddArgument("--no-first-run");
+                options.AddArgument("--no-default-browser-check");
+                options.AddArgument("--ignore-certificate-errors");
+                options.AddArgument("--start-maximized");
+                options.AddArgument("--remote-debugging-port=9222");
                 return new ChromeDriver(options);               
             }
             else if (ConfigValues.Browser.Equals("Edge"))

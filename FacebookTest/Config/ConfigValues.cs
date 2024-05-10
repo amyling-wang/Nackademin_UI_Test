@@ -8,6 +8,7 @@ namespace FacebookTest.Config
         private static IConfigurationRoot _configuration = new ConfigurationBuilder().Build();
         private static string? url = TestContext.Parameters["url"];
         private static string? browser = TestContext.Parameters["browser"];
+        public static bool IsBrowserHeadless => Convert.ToBoolean(_configuration.GetSection("AppSettings:isBrowserHeadless").Value);
         //private static string username;
         //private static string password;
         public static void LoadConfiguration()
