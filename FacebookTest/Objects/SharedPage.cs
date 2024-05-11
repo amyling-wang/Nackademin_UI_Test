@@ -18,8 +18,10 @@ namespace FacebookTest.Objects
         public static By AcceptAllCookieButton() => By.XPath("//button[text()='Tillåt alla']");
         private static By HeaderTitle(string text) => By.XPath($"//span[text()='{text}']");
         private static By MainText() => By.XPath("//h1");
+        private static By MainText(string text) => By.XPath($"//h1[text()='{text}']");
         private static By Button(string buttonText) => By.XPath($"//a[text()='{buttonText}']");
         private static By LinkInTopMenuSection(string linkText) => By.XPath($"//ul[@id='primary-menu']//li[contains(@class,'menu-item')]/a[contains(text(),'{linkText}')]");
+        private static By NewsLetterSectionTitle => By.XPath("//*[text()='Få vårt nyhetsbrev']");
 
 
         //public void ClickOnTab(string tabName)
@@ -27,6 +29,14 @@ namespace FacebookTest.Objects
         //    OverlappElement.WaitAndClickElement();
         //    HomeTab(tabName).WaitAndClickElement();
         //}
+        public static bool IsNewsLetterSectionTitleShown()
+        {
+            return NewsLetterSectionTitle.IsExist();
+        }
+        public static void WaitForMaintextToBePresent(string text)
+        {
+            MainText(text).WaitToBecomeEnabled();
+        }
         public void ClickOnButton(string text)
         {
             Button(text).MoveToElementAndClick();
@@ -43,9 +53,9 @@ namespace FacebookTest.Objects
         }
         public static string GetPageTitleText()
         {
-            MainText().WaitToBecomeEnabled();
+            Thread.Sleep(TimeSpan.FromSeconds(2));
             var text = MainText().GetText();
-            return MainText().GetText();
+            return text;
         }
         public void GoToStartSida()
         {

@@ -1,4 +1,5 @@
 ﻿using FacebookTest.Objects;
+using FacebookTest.Utilities;
 using Xunit;
 
 namespace NackademinUITest.StepDefinitions
@@ -28,12 +29,13 @@ namespace NackademinUITest.StepDefinitions
         {
             Assert.True(UtbildningPage.IsEducationNamesSorted(), "Education names are not sorted");
         }
-        [When(@"I click on dropdown button (.*) and choose below mentoned options and verify")]
+        [Then(@"I click on dropdown button (.*) and choose below mentoned options and verify")]
         public void WhenIClickOnDropdownButtonOmradeAndChooseBelowMentonedOptionsAndVerify(string button, Table table)
         {
             var options = table.Rows.Select(t => t["Option"]).ToList();
             foreach(var option in options)
             {
+                SharedPage.WaitForMaintextToBePresent("Utbildningar");
                 UtbildningPage.ClickOnSortingDropdownButton(button);
                 UtbildningPage.ClickOnDropdownOption(option);
                 SharedPage.ClickOnAcceptAllCookieIfExist();

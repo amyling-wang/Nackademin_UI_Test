@@ -122,7 +122,7 @@ namespace FacebookTest.StepDefinitions
         [Then(@"I should see information text for section (.*)")]
         public static void ThenIShouldSeeInformationTextForSectionFragorOchSvar(string sectionName)
         {
-            Assert.True(HomePage.IsInformationTextShownForSection(sectionName), $"Information text for section '{sectionName}' is not present on Home page");
+            Assert.True(HomePage.IsInformationTextShownForSection(), $"Information text for section '{sectionName}' is not present on Home page");
         }
         [When(@"I click on any question")]
         public static void WhenIClickOnAnyQuestion()

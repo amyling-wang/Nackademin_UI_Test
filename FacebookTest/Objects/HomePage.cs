@@ -12,16 +12,17 @@ namespace FacebookTest.Objects
         private static By InformationTextUnderCart(string titleText) => By.XPath($"//div[text()='{titleText}']/following-sibling::div");
         private static By LäsMerLink(string titleText) => By.XPath($"//div[text()='{titleText}']/following-sibling::a");
         private static By ImgInSingleCartSection(string titleText) => By.XPath($"//h2[text()='{titleText}']//ancestor::div[contains(@class,'half text_content')]/following-sibling::div//img");
-        private static By SectionTitle(string titleText) => By.XPath($"//h2[text()='{titleText}']");
+        private static By SectionTitle(string titleText) => By.XPath($"(//*[text()='{titleText}'])[1]");
+
         private static By InformationTextForCartInSingleCartSection(string titleText) => By.XPath($"//h2[text()='{titleText}']/../following-sibling::div/p");
         private static By LinkUnderCartInSingelCartSection(string titleText, string buttonText) => By.XPath($"//h2[text()='{titleText}']/../following-sibling::div/a[text()='{buttonText}']");
         private static By TitleAboveCart(string titleUnderCart, string titleAboveCart) => By.XPath($"//h2[text()='{titleUnderCart}']/../preceding-sibling::p[text()='{titleAboveCart}']");
         private static By ArticlesForInspirations => By.XPath("//div[text()='Inspiration']//following-sibling::div[2]/div[contains(@class,'w-full')]");
-        private static By InformationTextForSection(string sectionName) => By.XPath($"//h2[text()='{sectionName}']/../following-sibling::div/p");
+        private static By InformationTextForSection => By.XPath($"(//*[text()='Frågor och svar'])[1]/../following-sibling::div/p");
         private static By CommonQuestions => By.XPath("//div[contains(@class,'faq_content')]");
         private static By AnswerToRandomQuestion => By.XPath("//div[contains(@class,'faq_answer')]/p");
         //private static By NewsLetterSectionTitle(string sectionName) => By.XPath($"//h2[text()='{sectionName}']");
-        private static By EmailFieldInNewsLetterSection(string sectionName, string field) => By.XPath($"//h2[text()='{sectionName}']//ancestor::div[contains(@class,'newsletter_block')]//input[@placeholder='{field}']");
+        private static By EmailFieldInNewsLetterSection(string sectionName, string field) => By.XPath($"//*[text()='{sectionName}']//ancestor::div[contains(@class,'newsletter_block')]//input[@placeholder='{field}']");
         private static By MessageForSendingMailAddress(string messageSubtext) => By.XPath($"//div[contains(@class,'newsletter_block')]//*[contains(text(),'{messageSubtext}')]");
         private static By PrenumereraButtonInNewsLetterSection => By.XPath("//div[contains(@class,'newsletter_block')]//input[@Value='Prenumerera']");
         private static By LinkInSidfooterSection(string linkText) => By.XPath($"//div[contains(@class,'column_links')]//a[text()='{linkText}']");
@@ -33,7 +34,7 @@ namespace FacebookTest.Objects
         {
             MessageForSendingMailAddress(subtext).WaitUntilElementIsVisible();
             return MessageForSendingMailAddress(subtext).IsExist();
-        }
+        }        
         //public static bool IsNewsLetterSectionTitleShown(string sectionName)
         //{
         //    NewsLetterSectionTitle(sectionName).MoveToElement();
@@ -43,9 +44,9 @@ namespace FacebookTest.Objects
         {
             return AnswerToRandomQuestion.IsExist();
         }
-        public static bool IsInformationTextShownForSection(string sectionName)
+        public static bool IsInformationTextShownForSection()
         {
-            return InformationTextForSection(sectionName).IsExist();
+            return InformationTextForSection.IsExist();
         }
         public static int GetCountOfInspirationArticles()
         {

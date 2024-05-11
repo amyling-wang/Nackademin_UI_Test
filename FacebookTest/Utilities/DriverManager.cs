@@ -54,20 +54,24 @@ namespace FacebookTest.Utilities
             if (string.IsNullOrEmpty(ConfigValues.Browser)|| ConfigValues.Browser.Equals("Chrome"))
             {
                 ChromeOptions options = new();
+                options.AddArgument("--no-sandbox");
+                options.AddUserProfilePreference("safebrowsing.enabled", true);
+                options.SetLoggingPreference(LogType.Browser, LogLevel.Severe);
+                options.AddArgument("--start-maximized");
+                options.AddArgument("--ignore-ssl-errors=yes");
+                options.AddArgument("--ignore-certificate-errors");
+                options.AddArgument("--disable-extensions");
+                options.AddArgument("--disable-popup-blocking");
+                options.AddArgument("--force-device-scale-factor=1");
+                options.AddArgument("--enable-automation");
+                options.AddArgument("--window-size=1920,1080");
                 if (ConfigValues.IsBrowserHeadless.ToString().ToLower() == "true")
                 {
                     options.AddArgument("--headless=new");
                 }
-                //options.AddArgument("--headless=new");
-                //options.AddUserProfilePreference("profile.default_content_setting_values.cookies", 2);
-                options.AddArgument("window-size=1920,1080");
-                options.AddArgument("--no-sandbox");
-                options.AddArgument("--disable-gpu");
-                options.AddArgument("--no-first-run");
-                options.AddArgument("--no-default-browser-check");
-                options.AddArgument("--ignore-certificate-errors");
-                options.AddArgument("--start-maximized");
-                options.AddArgument("--remote-debugging-port=9222");
+                options.AddArgument("disable-gpu");
+                options.AddArgument("--incognito");
+                options.AddArgument("--disable-dev-shm-usage");
                 return new ChromeDriver(options);               
             }
             else if (ConfigValues.Browser.Equals("Edge"))

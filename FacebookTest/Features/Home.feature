@@ -34,9 +34,9 @@ Scenario: Verify section for Frågor och Svar
 	And I should see information text for section Frågor och svar
 	When I click on any question
 	Then I should see related content under it
-@ignore
+
 Scenario Outline: Verify news letter section
-	Then I should see section with title Få vårt nyhetsbrev
+	Then I should see news letter section title on the page
 	Then I enter <Email> in Din e-postadress field in section Få vårt nyhetsbrev
 	When I click on button Prenumerera in section for Få vårt nyhetsbrev
 	Then I should see the message contains <Message> in section Få vårt nyhetsbrev
@@ -59,7 +59,7 @@ Scenario: Verify sidfooter for Home page
 		| Kontakta oss    | Kontakta oss  |
 		| Medarbetare     | Medarbetare   |
 		| Frågor och svar | FAQ           |
-@ignore
+
 Scenario: Verify post email in sidfooter section on Home page
 	Then I enter <Email> in Din e-postadress field in section site footer
 	When I click on button Prenumerera in section for site footer

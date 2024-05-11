@@ -41,5 +41,11 @@ namespace FacebookTest.StepDefinitions
             Assert.True(SharedPage.GetPageTitleText().Equals(pageTitle), $"Expected page title is {pageTitle}, but it is shown {SharedPage.GetPageTitleText()}");
 
         }
+        [Then(@"I should see news letter section title on the page")]
+        public static void ThenIShouldSeeNewsLetterSectionTitleOnThePage()
+        {
+            Assert.True(SharedPage.IsNewsLetterSectionTitleShown(), "News letter section title is not shown on the page");
+        }
+
     }
 }
