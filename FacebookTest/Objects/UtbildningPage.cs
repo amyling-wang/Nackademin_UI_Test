@@ -7,9 +7,9 @@ namespace FacebookTest.Objects
     {
         private static By UtbildningCard => By.XPath("//div[contains(@class,'utbildning_container')]");
         private static By SortingDropdownButton(string button) => By.XPath($"//span[text()='{button}']//parent::button[contains(@class,'toggle-dropdown')]");
-        private static By DropdownOption(string option) => By.XPath($"//label[text()='{option}']//preceding-sibling::input[@name='filter']");
+        private static By DropdownOption(string option) => By.XPath($"(//label[text()='{option}']//preceding-sibling::input[@type='radio'])[1]");
         private static By EducationNamesOnCards => By.XPath("//div[contains(@class,'utbildning_container')]//span[@class='h4']");
-        private static By EducationCategoryOnCards(string category) => By.XPath($"//div[contains(@class,'utbildning_container')]//span[contains(@class,'text-bodyMD uppercase')][contains(text(),'{category}')]");
+        private static By EducationCategoryOnCards(string category) => By.XPath($"//div[contains(@class,'utbildning_container')]//span[contains(text(),'{category}')]");
         private static By ResetFilterButton => By.XPath("//span[text()='Rensa alla filter']/..");
         public static int GetCountOfCards()
         {
@@ -21,10 +21,10 @@ namespace FacebookTest.Objects
         {
             SortingDropdownButton(button).WaitAndClickElement(button);
         }
-        public static void ClickOnDropdownOption(string option, string dropdownButton)
+        public static void ClickOnDropdownOption(string option)
         {
-            DropdownOption(option).WaitAndClickElement(option);
-            ClickOnSortingDropdownButton(dropdownButton);
+            DropdownOption(option).WaitToBecomeAvailable();
+            DropdownOption(option).MoveToElementAndClick(option);
         }
         public static bool IsEducationNamesSorted()
         {

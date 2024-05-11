@@ -123,6 +123,49 @@ this.FeatureBackground();
             }
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify filter functionality")]
+        public void VerifyFilterFunctionality()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify filter functionality", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 14
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Option"});
+                table5.AddRow(new string[] {
+                            "Design"});
+                table5.AddRow(new string[] {
+                            "Elteknik & energi"});
+                table5.AddRow(new string[] {
+                            "IT"});
+                table5.AddRow(new string[] {
+                            "Kommunikation"});
+                table5.AddRow(new string[] {
+                            "Samhällsbyggnad"});
+                table5.AddRow(new string[] {
+                            "Spel"});
+                table5.AddRow(new string[] {
+                            "Vård & hälsa"});
+#line 15
+ testRunner.When("I click on dropdown button Område and choose below mentoned options and verify", ((string)(null)), table5, "When ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

@@ -20,13 +20,29 @@ namespace NackademinUITest.StepDefinitions
         [Then(@"I choose option (.*) in dropdown for (.*)")]
         public void ThenIChooseOptionUtbildningsnamn(string option, string dropdownButton)
         {
-            UtbildningPage.ClickOnDropdownOption(option, dropdownButton);
+            UtbildningPage.ClickOnDropdownOption(option);
+            UtbildningPage.ClickOnSortingDropdownButton(dropdownButton);
         }
         [Then(@"I verify all cards are sorted by education names")]
         public static void ThenIVerifyAllCardsAreSortedByEducationNames()
         {
             Assert.True(UtbildningPage.IsEducationNamesSorted(), "Education names are not sorted");
         }
+        [When(@"I click on dropdown button (.*) and choose below mentoned options and verify")]
+        public void WhenIClickOnDropdownButtonOmradeAndChooseBelowMentonedOptionsAndVerify(string button, Table table)
+        {
+            var options = table.Rows.Select(t => t["Option"]).ToList();
+            foreach(var option in options)
+            {
+                UtbildningPage.ClickOnSortingDropdownButton(button);
+                UtbildningPage.ClickOnDropdownOption(option);
+                SharedPage.ClickOnAcceptAllCookieIfExist();
+                Assert.True(SharedPage.GetPageTitleText().Equals(option), $"Page did not redirect to {option} When clickling sorting on option '{option}' in {button}");
+                Assert.True(UtbildningPage.IsCategoryNameExistOnCards(option), $"Sorting for {option} in {button} is not working as expected");
+                UtbildningPage.ClickOnResetFilters();
+            }
+        }
+
 
     }
 }

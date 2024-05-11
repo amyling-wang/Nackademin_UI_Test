@@ -41,8 +41,10 @@ namespace FacebookTest.Objects
             HeaderTitle(titleText).WaitUntilElementIsVisible();
             return HeaderTitle(titleText).IsExist();
         }
-        public static string GetTextOnMainImage()
+        public static string GetPageTitleText()
         {
+            MainText().WaitToBecomeEnabled();
+            var text = MainText().GetText();
             return MainText().GetText();
         }
         public void GoToStartSida()

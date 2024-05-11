@@ -26,7 +26,7 @@ namespace FacebookTest.StepDefinitions
         public static void ThenIShouldSeeImageWithText(string text)
         {
             Assert.True(HomePage.IsMainImageShown(), "Main image is not shown on Nackademins Home page");
-            Assert.True(SharedPage.GetTextOnMainImage().Equals(text), $"Expected text on image is {text}, but it is shown {SharedPage.GetTextOnMainImage()} on Nackademins Home page");
+            Assert.True(SharedPage.GetPageTitleText().Equals(text), $"Expected text on image is {text}, but it is shown {SharedPage.GetPageTitleText()} on Nackademins Home page");
             
         }
         [When(@"I click on the button (.*)")]
@@ -91,7 +91,7 @@ namespace FacebookTest.StepDefinitions
                 DriverManager.SwitchDriverToChildWindow();
                 SharedPage.ClickOnAcceptAllCookieIfExist();
                 //var buttonTextArray = sectionLinks[i].Split(' ').Select(t => t.ToLower()).ToArray();
-                var mainTextForPage = SharedPage.GetTextOnMainImage();
+                var mainTextForPage = SharedPage.GetPageTitleText();
                 if (sectionLinks[i].Equals("Antagning"))
                 {
                     Assert.True(mainTextForPage.Equals("Välkommen till Nackademins antagning!"), $"Title on landed page does not contain button text '{sectionLinks[i]}");
