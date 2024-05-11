@@ -36,6 +36,7 @@ namespace FacebookTest.StepDefinitions
         [Then(@"I should see page with title (.*)")]
         public static void VerifyPageTitle(string pageTitle)
         {
+            SharedPage.ClickOnAcceptAllCookieIfExist();
             Assert.True(SharedPage.GetTextOnMainImage().Equals(pageTitle), $"Expected page title is {pageTitle}, but it is shown {SharedPage.GetTextOnMainImage()}");
 
         }

@@ -1,9 +1,4 @@
 ﻿using FacebookTest.Objects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace NackademinUITest.StepDefinitions
@@ -11,15 +6,26 @@ namespace NackademinUITest.StepDefinitions
     [Binding]
     internal class UtbildningarSteps
     {
-        [Then(@"I should see some cards on the page")]
-        public static void ThenIShouldSeeCardsOnThePage()
+        [Then(@"I should see (.*) cards on the page")]
+        public static void ThenIShouldSeeCardsOnThePage(int countOfCards)
         {
-            Assert.True(UtbildningPage.IsUtbildningCardsExists(), $"Expected count of utbildning cards is {count}, but it is shown {actualCount} cards on the page");
+            var autualCount = UtbildningPage.GetCountOfCards();
+            Assert.True(autualCount == countOfCards, $"Expeted cards count is {countOfCards} , but it is shown {autualCount} on the Utbildningar page");
         }
         [When(@"I click on dropdown button for (.*)")]
         public static void ClickOnDropdownButtonFor(string dropdownButton)
         {
-            
+            UtbildningPage.ClickOnSortingDropdownButton(dropdownButton);
+        }
+        [Then(@"I choose option (.*) in dropdown for (.*)")]
+        public void ThenIChooseOptionUtbildningsnamn(string option, string dropdownButton)
+        {
+            UtbildningPage.ClickOnDropdownOption(option, dropdownButton);
+        }
+        [Then(@"I verify all cards are sorted by education names")]
+        public static void ThenIVerifyAllCardsAreSortedByEducationNames()
+        {
+            Assert.True(UtbildningPage.IsEducationNamesSorted(), "Education names are not sorted");
         }
 
     }
