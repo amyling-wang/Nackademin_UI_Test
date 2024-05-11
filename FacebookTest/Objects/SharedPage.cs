@@ -19,6 +19,7 @@ namespace FacebookTest.Objects
         private static By HeaderTitle(string text) => By.XPath($"//span[text()='{text}']");
         private static By MainText() => By.XPath("//h1");
         private static By Button(string buttonText) => By.XPath($"//a[text()='{buttonText}']");
+        private static By LinkInTopMenuSection(string linkText) => By.XPath($"//ul[@id='primary-menu']//li[contains(@class,'menu-item')]/a[contains(text(),'{linkText}')]");
 
 
         //public void ClickOnTab(string tabName)
@@ -56,7 +57,11 @@ namespace FacebookTest.Objects
                 AcceptAllCookieButton().WaitAndClickElement();
             }
         }
-
+        public static void ClickOnLinkInTopMenuSection(string linkText)
+        {
+            LinkInTopMenuSection(linkText).WaitToBecomeClickable();
+            LinkInTopMenuSection(linkText).ClickElement();
+        }
     }
 }
     

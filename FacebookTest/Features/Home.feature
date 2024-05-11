@@ -8,7 +8,7 @@ Scenario: Verify main image section on Home
 	When I click on link navigates to Home page in page header
 	Then I should see image with text 'Din framtid börjar här'
 	When I click on the button Hitta utbildning
-	Then I should see page with title Utbildningar
+	Then I should be navigated to Utbildningar
 
 Scenario: Verify Program, Kurser and För Företag section
 	Then I verify below mentiond cards and related links for them
@@ -27,7 +27,7 @@ Scenario: Verify sections with with link to Om oss, Antagning and Hitta drömjob
 Scenario: Verify Inspiration section on Home page
 	Then I should see 3 articles by default under section with title Inspiration
 	When I click on the button Visa fler artiklar
-	Then I should see page with title Inspiration
+	Then I should be navigated to Inspiration
 	
 Scenario: Verify section for Frågor och Svar
 	Then I should see section with title Frågor och svar

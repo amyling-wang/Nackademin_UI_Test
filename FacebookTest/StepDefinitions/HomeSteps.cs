@@ -34,7 +34,7 @@ namespace FacebookTest.StepDefinitions
         {
             _homePage.ClickOnButton(buttonText);
         }
-        [Then(@"I should see page with title (.*)")]
+        [Then(@"I should be navigated to (.*)")]
         public static void ThenIShouldSeePageWithTitleUtbildningarOnAChildWindow(string pageName)
         {
             VerifyLandingPageInChildWindow(pageName);

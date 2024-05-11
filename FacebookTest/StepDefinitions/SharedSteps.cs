@@ -1,5 +1,7 @@
 ﻿using FacebookTest.Objects;
 using FacebookTest.Utilities;
+using Xunit;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace FacebookTest.StepDefinitions
 {
@@ -27,6 +29,17 @@ namespace FacebookTest.StepDefinitions
         public void NavigateToNackademin()
         {
             sharedPage.GoToStartSida();
-        }        
+        }
+        [When(@"I click on (.*) in main menu section")]
+        public static void ClickOnUtbildningarInMainMenuSection(string linkText)
+        {
+            SharedPage.ClickOnLinkInTopMenuSection(linkText);
+        }
+        [Then(@"I should see page with title (.*)")]
+        public static void VerifyPageTitle(string pageTitle)
+        {
+            Assert.True(SharedPage.GetTextOnMainImage().Equals(pageTitle), $"Expected page title is {pageTitle}, but it is shown {SharedPage.GetTextOnMainImage()}");
+
+        }
     }
 }
