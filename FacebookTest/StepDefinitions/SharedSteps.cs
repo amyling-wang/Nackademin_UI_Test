@@ -1,7 +1,5 @@
 ﻿using FacebookTest.Objects;
-using FacebookTest.Utilities;
 using Xunit;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace FacebookTest.StepDefinitions
 {
