@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 using FacebookTest.Config;
 using OpenQA.Selenium.Interactions;
+using System.Diagnostics;
 
 namespace FacebookTest.Utilities
 {
@@ -242,7 +243,26 @@ namespace FacebookTest.Utilities
         {
             return locator.FindElement().Text.Trim();
         }
-
+        public static string GetText(this IWebElement webElement)
+        {
+            int counter = 0;
+            int retryCounterForWorkaround = 25;
+            while (counter < retryCounterForWorkaround)
+            {
+                try
+                {
+                    return webElement.Text;
+                }
+                catch (StaleElementReferenceException)
+                {
+                    if (++counter == retryCounterForWorkaround)
+                    {
+                        throw;
+                    }
+                }
+            }
+            return webElement.Text;
+        }
         public static int GetCountOfElements(this By locator)
         {
             return GetDriver().FindElements(locator).Count;
@@ -254,6 +274,60 @@ namespace FacebookTest.Utilities
             locator.WaitToBecomeClickable();
             locator.FindElement().SendKeys(text);
         }
+        public static void WaitForPresenceOfAllElements(this By locator, double? timeToWaitInMilliSeconds = null)
+        {
+            try
+            {
+                var wait = CreateSpecificTimeWait(timeToWaitInMilliSeconds);
+                wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.PresenceOfAllElementsLocatedBy(locator));
+            }
+            catch (Exception ex)
+            {
+                throw new WebDriverTimeoutException($"Elements are not still present on the page {ex.Message}");
+            }
+        }
+        public static bool IsStale(this IWebElement element)
+        {
+            return ExpectedConditions.StalenessOf(element)(GetDriver());
+        }
+        public static List<string> GetTextFromListOfElements(this By locator)
+        {
+            var listOfText = new List<string>();
+            var elements = GetDriver().FindElements(locator);
+            if (elements.Count > 0)
+            {
+                locator.WaitForPresenceOfAllElements();
+                bool isStale = true;
+                Stopwatch sw = new();
+                sw.Start();
+                ConfigValues config = new();
+                while (isStale)
+                {
+                    for (int i = 0; i < elements.Count; i++)
+                    {
+                        if (elements[i].IsStale())
+                        {
+                            break;
+                        }
+                        if (i == elements.Count - 1)
+                        {
+                            isStale = false;
+                        }
+                    }
+                    elements = GetDriver().FindElements(locator);
+                    if (sw.ElapsedMilliseconds > config.PageLoadTiemout())
+                    {
+                        throw new ApplicationException($"Could not complete the operation in the provided time of {config.PageLoadTiemout} milliseconds");
+                    }
+                }
+                sw.Stop();
+                foreach (var element in elements)
+                {
+                    listOfText.Add(element.GetText().Trim());
+                }
+            }
 
+            return listOfText;
+        }
     }
 }
