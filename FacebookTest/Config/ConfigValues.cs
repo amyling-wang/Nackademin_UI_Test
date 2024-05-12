@@ -1,14 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
-using NUnit.Framework;
 
 namespace FacebookTest.Config
 {
     public class ConfigValues
     {
         private static IConfigurationRoot _configuration = new ConfigurationBuilder().Build();
-        private static string? url = TestContext.Parameters["url"];
-        private static string? browser = TestContext.Parameters["browser"];
-        public static bool IsBrowserHeadless => Convert.ToBoolean(_configuration.GetSection("AppSettings:isBrowserHeadless").Value);
+        private static string url;
+        private static string browser;
         //private static string username;
         //private static string password;
         public static void LoadConfiguration()
@@ -22,6 +20,8 @@ namespace FacebookTest.Config
             _configuration = builder.Build();            
 
         }
+       
+        public static bool IsBrowserHeadless => Convert.ToBoolean(_configuration.GetSection("AppSettings:isBrowserHeadless").Value);
         public static string? Url
         {
             get

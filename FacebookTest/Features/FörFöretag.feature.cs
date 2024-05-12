@@ -19,39 +19,41 @@ namespace NackademinUITest.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("FörFöretag")]
-    public partial class ForForetagFeature
+    public partial class ForForetagFeature : object, Xunit.IClassFixture<ForForetagFeature.FixtureData>, System.IDisposable
     {
         
-        private TechTalk.SpecFlow.ITestRunner testRunner;
+        private static TechTalk.SpecFlow.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
+        
+        private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
 #line 1 "FörFöretag.feature"
 #line hidden
         
-        [NUnit.Framework.OneTimeSetUpAttribute()]
-        public virtual void FeatureSetup()
+        public ForForetagFeature(ForForetagFeature.FixtureData fixtureData, NackademinUITest_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        {
+            this._testOutputHelper = testOutputHelper;
+            this.TestInitialize();
+        }
+        
+        public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "FörFöretag", null, ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        [NUnit.Framework.OneTimeTearDownAttribute()]
-        public virtual void FeatureTearDown()
+        public static void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
-        [NUnit.Framework.SetUpAttribute()]
         public void TestInitialize()
         {
         }
         
-        [NUnit.Framework.TearDownAttribute()]
         public void TestTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -60,7 +62,7 @@ namespace NackademinUITest.Features
         public void ScenarioInitialize(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioInitialize(scenarioInfo);
-            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<NUnit.Framework.TestContext>(NUnit.Framework.TestContext.CurrentContext);
+            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<Xunit.Abstractions.ITestOutputHelper>(_testOutputHelper);
         }
         
         public void ScenarioStart()
@@ -85,8 +87,14 @@ namespace NackademinUITest.Features
 #line hidden
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify main image section and on För företag page")]
+        void System.IDisposable.Dispose()
+        {
+            this.TestTearDown();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Verify main image section and on För företag page")]
+        [Xunit.TraitAttribute("FeatureTitle", "FörFöretag")]
+        [Xunit.TraitAttribute("Description", "Verify main image section and on För företag page")]
         public void VerifyMainImageSectionAndOnForForetagPage()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -112,8 +120,9 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify section for Närheten till arbetslivet är allt")]
+        [Xunit.SkippableFactAttribute(DisplayName="Verify section for Närheten till arbetslivet är allt")]
+        [Xunit.TraitAttribute("FeatureTitle", "FörFöretag")]
+        [Xunit.TraitAttribute("Description", "Verify section for Närheten till arbetslivet är allt")]
         public void VerifySectionForNarhetenTillArbetslivetArAllt()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -142,8 +151,9 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify sections with link to Utforska våra event and samarbeta med oss")]
+        [Xunit.SkippableFactAttribute(DisplayName="Verify sections with link to Utforska våra event and samarbeta med oss")]
+        [Xunit.TraitAttribute("FeatureTitle", "FörFöretag")]
+        [Xunit.TraitAttribute("Description", "Verify sections with link to Utforska våra event and samarbeta med oss")]
         public void VerifySectionsWithLinkToUtforskaVaraEventAndSamarbetaMedOss()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -181,8 +191,9 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify section for Samarbetspartners")]
+        [Xunit.SkippableFactAttribute(DisplayName="Verify section for Samarbetspartners")]
+        [Xunit.TraitAttribute("FeatureTitle", "FörFöretag")]
+        [Xunit.TraitAttribute("Description", "Verify section for Samarbetspartners")]
         public void VerifySectionForSamarbetspartners()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -214,8 +225,9 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify Relaterade artiklar on För företags page")]
+        [Xunit.SkippableFactAttribute(DisplayName="Verify Relaterade artiklar on För företags page")]
+        [Xunit.TraitAttribute("FeatureTitle", "FörFöretag")]
+        [Xunit.TraitAttribute("Description", "Verify Relaterade artiklar on För företags page")]
         public void VerifyRelateradeArtiklarOnForForetagsPage()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -247,9 +259,10 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify section with field")]
-        [NUnit.Framework.TestCaseAttribute("Adam", "Flexera", "name.eftername.test.com", "Hej 123 *", "problem", null)]
+        [Xunit.SkippableTheoryAttribute(DisplayName="Verify section with field")]
+        [Xunit.TraitAttribute("FeatureTitle", "FörFöretag")]
+        [Xunit.TraitAttribute("Description", "Verify section with field")]
+        [Xunit.InlineDataAttribute("Adam", "Flexera", "name.eftername.test.com", "Hej 123 *", "problem", new string[0])]
         public void VerifySectionWithField(string name, string company, string email, string message, string output, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -298,8 +311,9 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify sidfooter for För företag page")]
+        [Xunit.SkippableFactAttribute(DisplayName="Verify sidfooter for För företag page")]
+        [Xunit.TraitAttribute("FeatureTitle", "FörFöretag")]
+        [Xunit.TraitAttribute("Description", "Verify sidfooter for För företag page")]
         public void VerifySidfooterForForForetagPage()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -356,6 +370,22 @@ this.FeatureBackground();
 #line hidden
             }
             this.ScenarioCleanup();
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
+        [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        public class FixtureData : System.IDisposable
+        {
+            
+            public FixtureData()
+            {
+                ForForetagFeature.FeatureSetup();
+            }
+            
+            void System.IDisposable.Dispose()
+            {
+                ForForetagFeature.FeatureTearDown();
+            }
         }
     }
 }

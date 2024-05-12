@@ -19,39 +19,41 @@ namespace NackademinUITest.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Antagning")]
-    public partial class AntagningFeature
+    public partial class AntagningFeature : object, Xunit.IClassFixture<AntagningFeature.FixtureData>, System.IDisposable
     {
         
-        private TechTalk.SpecFlow.ITestRunner testRunner;
+        private static TechTalk.SpecFlow.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
+        
+        private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
 #line 1 "Antagning.feature"
 #line hidden
         
-        [NUnit.Framework.OneTimeSetUpAttribute()]
-        public virtual void FeatureSetup()
+        public AntagningFeature(AntagningFeature.FixtureData fixtureData, NackademinUITest_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        {
+            this._testOutputHelper = testOutputHelper;
+            this.TestInitialize();
+        }
+        
+        public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Antagning", null, ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        [NUnit.Framework.OneTimeTearDownAttribute()]
-        public virtual void FeatureTearDown()
+        public static void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
-        [NUnit.Framework.SetUpAttribute()]
         public void TestInitialize()
         {
         }
         
-        [NUnit.Framework.TearDownAttribute()]
         public void TestTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -60,7 +62,7 @@ namespace NackademinUITest.Features
         public void ScenarioInitialize(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioInitialize(scenarioInfo);
-            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<NUnit.Framework.TestContext>(NUnit.Framework.TestContext.CurrentContext);
+            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<Xunit.Abstractions.ITestOutputHelper>(_testOutputHelper);
         }
         
         public void ScenarioStart()
@@ -85,8 +87,14 @@ namespace NackademinUITest.Features
 #line hidden
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify main image section on Antagning")]
+        void System.IDisposable.Dispose()
+        {
+            this.TestTearDown();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Verify main image section on Antagning")]
+        [Xunit.TraitAttribute("FeatureTitle", "Antagning")]
+        [Xunit.TraitAttribute("Description", "Verify main image section on Antagning")]
         public void VerifyMainImageSectionOnAntagning()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -118,8 +126,9 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify sections under main")]
+        [Xunit.SkippableFactAttribute(DisplayName="Verify sections under main")]
+        [Xunit.TraitAttribute("FeatureTitle", "Antagning")]
+        [Xunit.TraitAttribute("Description", "Verify sections under main")]
         public void VerifySectionsUnderMain()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -156,9 +165,9 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify sidfooter for Home page")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
+        [Xunit.SkippableFactAttribute(DisplayName="Verify sidfooter for Home page", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "Antagning")]
+        [Xunit.TraitAttribute("Description", "Verify sidfooter for Home page")]
         public void VerifySidfooterForHomePage()
         {
             string[] tagsOfScenario = new string[] {
@@ -218,11 +227,11 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify post email in sidfooter section on Home page")]
-        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
-        [NUnit.Framework.TestCaseAttribute("name.eftername.test.com", "problem", null)]
-        [NUnit.Framework.TestCaseAttribute("name.eftername@test.com", "Tack", null)]
+        [Xunit.SkippableTheoryAttribute(DisplayName="Verify post email in sidfooter section on Home page", Skip="Ignored")]
+        [Xunit.TraitAttribute("FeatureTitle", "Antagning")]
+        [Xunit.TraitAttribute("Description", "Verify post email in sidfooter section on Home page")]
+        [Xunit.InlineDataAttribute("name.eftername.test.com", "problem", new string[0])]
+        [Xunit.InlineDataAttribute("name.eftername@test.com", "Tack", new string[0])]
         public void VerifyPostEmailInSidfooterSectionOnHomePage(string email, string message, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -260,6 +269,22 @@ this.FeatureBackground();
 #line hidden
             }
             this.ScenarioCleanup();
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
+        [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        public class FixtureData : System.IDisposable
+        {
+            
+            public FixtureData()
+            {
+                AntagningFeature.FeatureSetup();
+            }
+            
+            void System.IDisposable.Dispose()
+            {
+                AntagningFeature.FeatureTearDown();
+            }
         }
     }
 }
