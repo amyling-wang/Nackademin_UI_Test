@@ -70,7 +70,8 @@ namespace FacebookTest.Objects
         {
             if (AcceptAllCookieButton().IsExist() && AcceptAllCookieButton().IsDisplayed())
             {
-                AcceptAllCookieButton().WaitAndClickElement();
+                AcceptAllCookieButton().WaitToBecomeClickable();
+                AcceptAllCookieButton().MoveToElementAndClick();
             }
         }
         public static void ClickOnLinkInTopMenuSection(string linkText)

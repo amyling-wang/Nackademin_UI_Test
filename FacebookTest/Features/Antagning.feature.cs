@@ -119,12 +119,12 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify section under main section")]
-        public void VerifySectionUnderMainSection()
+        [NUnit.Framework.DescriptionAttribute("Verify sections under main")]
+        public void VerifySectionsUnderMain()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify section under main section", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify sections under main", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 11
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -148,6 +148,115 @@ this.FeatureBackground();
                             "Inför din studiestart"});
 #line 12
  testRunner.Then("I verify below mentiond cards and related links for them on Antagning page", ((string)(null)), table1, "Then ");
+#line hidden
+#line 17
+ testRunner.Then("I should see section with title Fler frågor?", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify sidfooter for Home page")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
+        public void VerifySidfooterForHomePage()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "ignore"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify sidfooter for Home page", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 20
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 2
+this.FeatureBackground();
+#line hidden
+#line 21
+ testRunner.When("I click on link navigates to Home page in page footer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Link name",
+                            "Landing page"});
+                table2.AddRow(new string[] {
+                            "Utbildningar",
+                            "Utbildningar"});
+                table2.AddRow(new string[] {
+                            "Antagning",
+                            "Antagning"});
+                table2.AddRow(new string[] {
+                            "För företag",
+                            "För företag"});
+                table2.AddRow(new string[] {
+                            "Inspiration",
+                            "Inspiration"});
+                table2.AddRow(new string[] {
+                            "Om Nackademin",
+                            "Om Nackademin"});
+                table2.AddRow(new string[] {
+                            "Pressrum",
+                            "Pressrum"});
+                table2.AddRow(new string[] {
+                            "Kontakta oss",
+                            "Kontakta oss"});
+                table2.AddRow(new string[] {
+                            "Medarbetare",
+                            "Medarbetare"});
+                table2.AddRow(new string[] {
+                            "Frågor och svar",
+                            "FAQ"});
+#line 22
+ testRunner.Then("I verify below mentioned links in site footer section", ((string)(null)), table2, "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify post email in sidfooter section on Home page")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
+        [NUnit.Framework.TestCaseAttribute("name.eftername.test.com", "ogiltig", null)]
+        [NUnit.Framework.TestCaseAttribute("name.eftername@test.com", "Tack", null)]
+        public void VerifyPostEmailInSidfooterSectionOnHomePage(string email, string message, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "ignore"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Email", email);
+            argumentsOfScenario.Add("Message", message);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify post email in sidfooter section on Home page", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 34
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 2
+this.FeatureBackground();
+#line hidden
+#line 35
+ testRunner.Then(string.Format("I enter {0} in Din e-postadress field in section site footer", email), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 36
+ testRunner.When("I click on button Prenumerera in section for site footer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 37
+ testRunner.Then(string.Format("I should see the message contains {0} in section site footer", message), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

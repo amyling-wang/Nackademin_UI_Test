@@ -26,6 +26,7 @@ namespace FacebookTest.StepDefinitions
         [Then(@"I should see image with text '(.*)'")]
         public static void ThenIShouldSeeImageWithText(string text)
         {
+            SharedPage.ClickOnAcceptAllCookieIfExist();
             Assert.True(HomePage.IsMainImageShown(), "Main image is not shown on Nackademins Home page");
             Assert.True(SharedPage.GetPageTitleText().Equals(text), $"Expected text on image is {text}, but it is shown {SharedPage.GetPageTitleText()} on Nackademins Home page");
             

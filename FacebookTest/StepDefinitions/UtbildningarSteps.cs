@@ -22,7 +22,7 @@ namespace NackademinUITest.StepDefinitions
         public void ThenIChooseOptionUtbildningsnamn(string option, string dropdownButton)
         {
             UtbildningPage.ClickOnDropdownOption(option);
-            UtbildningPage.ClickOnSortingDropdownButton(dropdownButton);
+            //UtbildningPage.ClickOnSortingDropdownButton(dropdownButton);
         }
         [Then(@"I verify all cards are sorted by education names")]
         public static void ThenIVerifyAllCardsAreSortedByEducationNames()

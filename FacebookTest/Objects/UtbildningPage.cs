@@ -7,7 +7,7 @@ namespace FacebookTest.Objects
     {
         private static By UtbildningCard => By.XPath("//div[contains(@class,'utbildning_container')]");
         private static By SortingDropdownButton(string button) => By.XPath($"//span[text()='{button}']//parent::button[contains(@class,'toggle-dropdown')]");
-        public static By DropdownOption(string option) => By.XPath($"(//label[text()='{option}']//preceding-sibling::input[@type='radio'])[1]");
+        public static By DropdownOption(string option) => By.XPath($"(//*[text()='{option}']//preceding-sibling::input[@type='radio'])[1]");
         private static By EducationNamesOnCards => By.XPath("//div[contains(@class,'utbildning_container')]//span[@class='h4']");
         private static By EducationCategoryOnCards(string category) => By.XPath($"//div[contains(@class,'utbildning_container')]//span[contains(text(),'{category}')]");
         private static By ResetFilterButton => By.XPath("//span[text()='Rensa alla filter']/..");

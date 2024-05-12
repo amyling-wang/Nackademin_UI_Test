@@ -32,7 +32,7 @@ namespace FacebookTest.StepDefinitions
         public static void ClickOnUtbildningarInMainMenuSection(string linkText)
         {
             SharedPage.ClickOnLinkInTopMenuSection(linkText);
-            SharedPage.ClickOnAcceptAllCookieIfExist();
+            //SharedPage.ClickOnAcceptAllCookieIfExist();
         }
         [Then(@"I should see page with title (.*)")]
         public static void VerifyPageTitle(string pageTitle)

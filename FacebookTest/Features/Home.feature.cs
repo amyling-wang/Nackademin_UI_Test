@@ -140,16 +140,16 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
-                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                             "Cart name"});
-                table4.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "Program"});
-                table4.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "Kurser"});
-                table4.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "För Företag"});
 #line 14
- testRunner.Then("I verify below mentiond cards and related links for them on Home page", ((string)(null)), table4, "Then ");
+ testRunner.Then("I verify below mentiond cards and related links for them on Home page", ((string)(null)), table5, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -175,24 +175,24 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
-                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                             "Section title",
                             "Section category",
                             "Section link"});
-                table5.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "30 år nära arbetslivet",
                             "NACKADEMIN",
                             "Om oss"});
-                table5.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "Starta din framtid hos Nackademin",
                             "ANTAGNING",
                             "Antagning"});
-                table5.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "Nå ditt drömjobb med Nackademin",
                             "VÄGEN TILL DRÖMJOBBET",
                             "Hitta drömjobbet"});
 #line 21
- testRunner.Then("I Verify below sections on the page", ((string)(null)), table5, "Then ");
+ testRunner.Then("I Verify below sections on the page", ((string)(null)), table6, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -330,38 +330,38 @@ this.FeatureBackground();
 #line 50
  testRunner.When("I click on link navigates to Home page in page footer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                             "Link name",
                             "Landing page"});
-                table6.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "Utbildningar",
                             "Utbildningar"});
-                table6.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "Antagning",
                             "Antagning"});
-                table6.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "För företag",
                             "För företag"});
-                table6.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "Inspiration",
                             "Inspiration"});
-                table6.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "Om Nackademin",
                             "Om Nackademin"});
-                table6.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "Pressrum",
                             "Pressrum"});
-                table6.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "Kontakta oss",
                             "Kontakta oss"});
-                table6.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "Medarbetare",
                             "Medarbetare"});
-                table6.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "Frågor och svar",
                             "FAQ"});
 #line 51
- testRunner.Then("I verify below mentioned links in site footer section", ((string)(null)), table6, "Then ");
+ testRunner.Then("I verify below mentioned links in site footer section", ((string)(null)), table7, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -427,53 +427,53 @@ this.FeatureBackground();
 #line 74
  testRunner.Then("I click on button beside Utbildningar in meny section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                             "Link name",
                             "Landing page"});
-                table7.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "Alla utbildningar",
                             "Utbildningar"});
-                table7.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "Kurser",
                             "Kurs"});
-                table7.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "Program",
                             "Program"});
-                table7.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "Platsbunden",
                             "Platsbunden"});
-                table7.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "Distans",
                             "Distans"});
-                table7.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "Online",
                             "Online"});
-                table7.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "YH-flex",
                             "YH-flex"});
-                table7.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "Design",
                             "Design"});
-                table7.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "Elteknik & energi",
                             "Elteknik & energi"});
-                table7.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "IT",
                             "IT"});
-                table7.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "Kommunikation",
                             "Kommunikation"});
-                table7.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "Samhällsbyggnad",
                             "Samhällsbyggnad"});
-                table7.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "Spel",
                             "Spel"});
-                table7.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "Vård",
                             "Vård & hälsa"});
 #line 75
- testRunner.Then("I verify below mentioned links in meny section under Utbildningar", ((string)(null)), table7, "Then ");
+ testRunner.Then("I verify below mentioned links in meny section under Utbildningar", ((string)(null)), table8, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
