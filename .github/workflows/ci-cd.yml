@@ -32,8 +32,8 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release
 
-      - name: Test smoke
-        run: dotnet test **/*.csproj --filter TestCategory=Smoke
+      # - name: Test smoke
+      #   run: dotnet test **/*.csproj --filter TestCategory=Smoke
       
-      # - name: Test all
-      #   run: dotnet test **/*.csproj
+      - name: Test all
+        run: dotnet test **/*.csproj
