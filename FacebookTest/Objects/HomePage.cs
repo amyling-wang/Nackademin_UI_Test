@@ -17,7 +17,7 @@ namespace FacebookTest.Objects
         private static By InformationTextForCartInSingleCartSection(string titleText) => By.XPath($"//h2[text()='{titleText}']/../following-sibling::div/p");
         private static By LinkUnderCartInSingelCartSection(string titleText, string buttonText) => By.XPath($"//h2[text()='{titleText}']/../following-sibling::div/a[text()='{buttonText}']");
         private static By TitleAboveCart(string titleUnderCart, string titleAboveCart) => By.XPath($"//h2[text()='{titleUnderCart}']/../preceding-sibling::p[text()='{titleAboveCart}']");
-        private static By ArticlesForInspirations => By.XPath("//div[text()='Inspiration']//following-sibling::div[2]/div[contains(@class,'w-full')]");
+        private static By InspirationArticles(string sectionTitle)=> By.XPath($"//div[text()='{sectionTitle}']//following-sibling::div/div[contains(@class,'w-full')]");
         private static By InformationTextForSection => By.XPath($"(//*[text()='Frågor och svar'])[1]/../following-sibling::div/p");
         private static By CommonQuestions => By.XPath("//div[contains(@class,'faq_content')]");
         private static By AnswerToRandomQuestion => By.XPath("//div[contains(@class,'faq_answer')]/p");
@@ -48,9 +48,9 @@ namespace FacebookTest.Objects
         {
             return InformationTextForSection.IsExist();
         }
-        public static int GetCountOfInspirationArticles()
+        public static int GetCountOfInspirationArticles(string sectionTitle)
         {
-            return ArticlesForInspirations.GetCountOfElements();
+            return InspirationArticles(sectionTitle).GetCountOfElements();
         }
         public static bool IsImgInSingleCartSectionShown(string title)
         {
@@ -60,7 +60,7 @@ namespace FacebookTest.Objects
         {
             return TitleAboveCart(titleUnderCart, titleAboveCart).IsExist();
         }
-        public static bool IsTitleForCartInSingleCartSectionShown(string title)
+        public static bool IsSectionWithTitleShown(string title)
         {
             return SectionTitle(title).IsExist();
         }

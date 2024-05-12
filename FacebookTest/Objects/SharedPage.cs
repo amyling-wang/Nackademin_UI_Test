@@ -29,6 +29,10 @@ namespace FacebookTest.Objects
         //    OverlappElement.WaitAndClickElement();
         //    HomeTab(tabName).WaitAndClickElement();
         //}
+        public static bool IsButtonShown(string button)
+        {
+            return Button(button).IsDisplayed();
+        }
         public static bool IsNewsLetterSectionTitleShown()
         {
             return NewsLetterSectionTitle.IsExist();

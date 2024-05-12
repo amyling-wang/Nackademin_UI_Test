@@ -84,7 +84,7 @@ namespace FacebookTest.StepDefinitions
             for(var i = 0; i < sectionTitles.Count; i++)
             {
                 Assert.True(HomePage.IsImgInSingleCartSectionShown(sectionTitles[i]), $"Image for '{sectionTitles[i]}' is not shown");
-                Assert.True(HomePage.IsTitleForCartInSingleCartSectionShown(sectionTitles[i]), $"Did not find any title '{sectionTitles[i]}' under cart");
+                Assert.True(HomePage.IsSectionWithTitleShown(sectionTitles[i]), $"Did not find any title '{sectionTitles[i]}' under cart");
                 Assert.True(HomePage.IsInformationTextForCartInSingleCartSectionShown(sectionTitles[i]), $"Information under cart for '{sectionTitles[i]} is not shown");
                 Assert.True(HomePage.IsTitleAboveCartShown(sectionTitles[i], sectionCategories[i]), $"Title above cart for '{sectionTitles[i]} is not shown");
                 HomePage.ClickOnButtonUnderCartInSingleCartSection(sectionTitles[i], sectionLinks[i]);
@@ -92,32 +92,34 @@ namespace FacebookTest.StepDefinitions
                 SharedPage.ClickOnAcceptAllCookieIfExist();
                 //var buttonTextArray = sectionLinks[i].Split(' ').Select(t => t.ToLower()).ToArray();
                 var mainTextForPage = SharedPage.GetPageTitleText();
-                if (sectionLinks[i].Equals("Antagning"))
+                switch (sectionLinks[i])
                 {
-                    Assert.True(mainTextForPage.Equals("Välkommen till Nackademins antagning!"), $"Title on landed page does not contain button text '{sectionLinks[i]}");
-                }
-                else if (sectionLinks[i].Equals("Om oss"))
-                {
-                    Assert.True(mainTextForPage.Equals("Om Nackademin"), $"Title on landed page does not contain button text '{sectionLinks[i]}");
-                }
-                else
-                {
-                    Assert.True(mainTextForPage.Contains("Nå ditt drömjobb"), $"Title on landed page does not contain button text '{sectionLinks[i]}");
-                }
+                    case "Om oss":
+                        Assert.True(mainTextForPage.Equals("Om Nackademin"), $"Title on landed page does not contain button text '{sectionLinks[i]}");
+                        break;
+                    case "Utforska våra event":
+                        Assert.True(mainTextForPage.Equals("Event"), $"Title on landed page does not contain button text '{sectionLinks[i]}");
+                        break;
+                    default:
+                        var sectionCategory = sectionCategories[i].ToLower();
+                        sectionCategory = char.ToUpper(sectionCategory[0]) + sectionCategory[1..];
+                        Assert.True(SharedPage.IsHeaderTitleShown(sectionCategory), $"Title on landed page does not contain button text '{sectionLinks[i]}");
+                        break;
+                }               
                 DriverManager.CloseWindow();
                 DriverManager.SwitchDriverToParentWindow();
             }
         }
-        [Then(@"I should see (.*) articles by default under section with title Inspiration")]
-        public static void ThenIShouldSeeArtiklarByDefaultUnderSectionWithTitleInspiration(int countOfArticles)
+        [Then(@"I should see (.*) articles by default under section with title (.*)")]
+        public static void ThenIShouldSeeArtiklarByDefaultUnderSectionWithTitleInspiration(int countOfArticles, string sectionTitle)
         {
-            var actualCount = HomePage.GetCountOfInspirationArticles();
+            var actualCount = HomePage.GetCountOfInspirationArticles(sectionTitle);
             Assert.True(actualCount == countOfArticles, $"Expected count for article is {countOfArticles}, but it is {actualCount}");
         }
         [Then(@"I should see section with title (.*)")]
         public static void ThenIShouldSeeSectionWithTitleFragorOchSvar(string sectionName)
         {
-            Assert.True(HomePage.IsTitleForCartInSingleCartSectionShown(sectionName), $"Section with name {sectionName} is not shown on Home page");
+            Assert.True(HomePage.IsSectionWithTitleShown(sectionName), $"Section with name {sectionName} is not shown on Home page");
         }
         [Then(@"I should see information text for section (.*)")]
         public static void ThenIShouldSeeInformationTextForSectionFragorOchSvar(string sectionName)

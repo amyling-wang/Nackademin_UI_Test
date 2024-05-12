@@ -65,6 +65,20 @@ Examples:
 	| name.eftername.test.com | ogiltig |
 	| name.eftername@test.com | Tack    |
 
+Scenario: Verify sidfooter for Utbildningar page
+	When I click on link navigates to Home page in page footer
+	Then I verify below mentioned links in site footer section
+		| Link name       | Landing page  |
+		| Utbildningar    | Utbildningar  |
+		| Antagning       | Antagning     |
+		| För företag     | För företag   |
+		| Inspiration     | Inspiration   |
+		| Om Nackademin   | Om Nackademin |
+		| Pressrum        | Pressrum      |
+		| Kontakta oss    | Kontakta oss  |
+		| Medarbetare     | Medarbetare   |
+		| Frågor och svar | FAQ           |
+
 
 
 
