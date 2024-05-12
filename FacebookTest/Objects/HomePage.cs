@@ -62,6 +62,7 @@ namespace FacebookTest.Objects
         }
         public static bool IsSectionWithTitleShown(string title)
         {
+            SectionTitle(title).WaitToBecomeEnabled();
             return SectionTitle(title).IsExist();
         }
         public static bool IsInformationTextForCartInSingleCartSectionShown(string title)

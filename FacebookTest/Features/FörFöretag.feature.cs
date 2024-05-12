@@ -162,20 +162,20 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                             "Section title",
                             "Section category",
                             "Section link"});
-                table1.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "Upptäck framtidens möjligheter",
                             "Event",
                             "Utforska våra event"});
-                table1.AddRow(new string[] {
+                table2.AddRow(new string[] {
                             "Bygg framgång tillsammans",
                             "Samarbeta med oss",
                             "Läs mer"});
 #line 15
- testRunner.Then("I Verify below sections on the page", ((string)(null)), table1, "Then ");
+ testRunner.Then("I Verify below sections on the page", ((string)(null)), table2, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -293,6 +293,66 @@ this.FeatureBackground();
 #line hidden
 #line 37
  testRunner.Then(string.Format("I should see a message contains {0} in the section", output), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify sidfooter for För företag page")]
+        public void VerifySidfooterForForForetagPage()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify sidfooter for För företag page", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 44
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+#line 45
+ testRunner.When("I click on link navigates to Home page in page footer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Link name",
+                            "Landing page"});
+                table3.AddRow(new string[] {
+                            "Utbildningar",
+                            "Utbildningar"});
+                table3.AddRow(new string[] {
+                            "Antagning",
+                            "Antagning"});
+                table3.AddRow(new string[] {
+                            "För företag",
+                            "För företag"});
+                table3.AddRow(new string[] {
+                            "Inspiration",
+                            "Inspiration"});
+                table3.AddRow(new string[] {
+                            "Om Nackademin",
+                            "Om Nackademin"});
+                table3.AddRow(new string[] {
+                            "Pressrum",
+                            "Pressrum"});
+                table3.AddRow(new string[] {
+                            "Kontakta oss",
+                            "Kontakta oss"});
+                table3.AddRow(new string[] {
+                            "Medarbetare",
+                            "Medarbetare"});
+                table3.AddRow(new string[] {
+                            "Frågor och svar",
+                            "FAQ"});
+#line 46
+ testRunner.Then("I verify below mentioned links in site footer section", ((string)(null)), table3, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

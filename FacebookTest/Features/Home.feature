@@ -11,7 +11,7 @@ Scenario: Verify main image section on Home
 	Then I should be navigated to Utbildningar
 
 Scenario: Verify Program, Kurser and För Företag section
-	Then I verify below mentiond cards and related links for them
+	Then I verify below mentiond cards and related links for them on Home page
 		| Cart name   |
 		| Program     |
 		| Kurser      |

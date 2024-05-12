@@ -2,6 +2,7 @@
 using FacebookTest.Utilities;
 using OpenQA.Selenium.Support.Events;
 using SeleniumExtras.PageObjects;
+using System.Security.Policy;
 using Xunit;
 using static System.Collections.Specialized.BitVector32;
 using static System.Net.Mime.MediaTypeNames;
@@ -47,8 +48,8 @@ namespace FacebookTest.StepDefinitions
             DriverManager.CloseWindow();
             DriverManager.SwitchDriverToParentWindow();
         }
-        [Then(@"I verify below mentiond cards and related links for them")]
-        public static void ThenIVerifyBelowMentiondCartsAndRelatedLinksForThem(Table table)
+        [Then(@"I verify below mentiond cards and related links for them on (.*) page")]
+        public static void ThenIVerifyBelowMentiondCartsAndRelatedLinksForThem(string pageType, Table table)
         {
             var cartNames = table.Rows.Select(r => r["Cart name"]).ToList();
             foreach (var cartName in cartNames)
@@ -58,7 +59,7 @@ namespace FacebookTest.StepDefinitions
                 Assert.True(HomePage.IsInformationTextShownUnderCartInMultipleCartSection(cartName), $"Information text under cart '{cartName}' is not shown on Home page");
                 HomePage.ClickOnLäsMerButtonUnderCart(cartName);
                 var pageTitle = cartName;
-                if(!pageTitle.Equals("För Företag"))
+                if(!pageTitle.Equals("För Företag") && !pageType.Equals("Antagning"))
                 {
                     if (pageTitle.Equals("Kurser"))
                     {
@@ -70,7 +71,18 @@ namespace FacebookTest.StepDefinitions
                 }
                 else
                 {
-                    VerifyLandingPageInChildWindow("För företag");
+                    if(cartName.Equals("Urval & antagningsprov"))
+                    {
+                        VerifyLandingPageInChildWindow("Urval och antagningsprov");
+                    }
+                    else if(cartName.Equals("Inför din studiestart"))
+                    {
+                        VerifyLandingPageInChildWindow("Inför studiestart");
+                    }
+                    else
+                    {
+                        VerifyLandingPageInChildWindow(cartName);
+                    }
                 }
             }
         }

@@ -144,62 +144,62 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
-                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Option"});
-                table6.AddRow(new string[] {
-                            "Design"});
-                table6.AddRow(new string[] {
-                            "Elteknik & energi"});
-                table6.AddRow(new string[] {
-                            "IT"});
-                table6.AddRow(new string[] {
-                            "Kommunikation"});
-                table6.AddRow(new string[] {
-                            "Samhällsbyggnad"});
-                table6.AddRow(new string[] {
-                            "Spel"});
-                table6.AddRow(new string[] {
-                            "Vård & hälsa"});
-#line 15
- testRunner.Then("I click on dropdown button Område and choose below mentoned options and verify", ((string)(null)), table6, "Then ");
-#line hidden
-                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Option"});
-                table7.AddRow(new string[] {
-                            "Kurs"});
-                table7.AddRow(new string[] {
-                            "Program"});
-#line 24
- testRunner.Then("I click on dropdown button Utbildningstyp and choose below mentoned options and v" +
-                        "erify", ((string)(null)), table7, "Then ");
-#line hidden
                 TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                             "Option"});
                 table8.AddRow(new string[] {
-                            "Distans"});
+                            "Design"});
                 table8.AddRow(new string[] {
-                            "Online"});
+                            "Elteknik & energi"});
                 table8.AddRow(new string[] {
-                            "Platsbunden"});
+                            "IT"});
                 table8.AddRow(new string[] {
-                            "YH-flex"});
-#line 28
- testRunner.Then("I click on dropdown button Studieform and choose below mentoned options and verif" +
-                        "y", ((string)(null)), table8, "Then ");
+                            "Kommunikation"});
+                table8.AddRow(new string[] {
+                            "Samhällsbyggnad"});
+                table8.AddRow(new string[] {
+                            "Spel"});
+                table8.AddRow(new string[] {
+                            "Vård & hälsa"});
+#line 15
+ testRunner.Then("I click on dropdown button Område and choose below mentoned options and verify", ((string)(null)), table8, "Then ");
 #line hidden
                 TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                             "Option"});
                 table9.AddRow(new string[] {
+                            "Kurs"});
+                table9.AddRow(new string[] {
+                            "Program"});
+#line 24
+ testRunner.Then("I click on dropdown button Utbildningstyp and choose below mentoned options and v" +
+                        "erify", ((string)(null)), table9, "Then ");
+#line hidden
+                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Option"});
+                table10.AddRow(new string[] {
                             "Distans"});
-                table9.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "Online"});
-                table9.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "Platsbunden"});
-                table9.AddRow(new string[] {
+                table10.AddRow(new string[] {
+                            "YH-flex"});
+#line 28
+ testRunner.Then("I click on dropdown button Studieform and choose below mentoned options and verif" +
+                        "y", ((string)(null)), table10, "Then ");
+#line hidden
+                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Option"});
+                table11.AddRow(new string[] {
+                            "Distans"});
+                table11.AddRow(new string[] {
+                            "Online"});
+                table11.AddRow(new string[] {
+                            "Platsbunden"});
+                table11.AddRow(new string[] {
                             "YH-flex"});
 #line 34
  testRunner.Then("I click on dropdown button Studieform and choose below mentoned options and verif" +
-                        "y", ((string)(null)), table9, "Then ");
+                        "y", ((string)(null)), table11, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -313,6 +313,66 @@ this.FeatureBackground();
 #line hidden
 #line 61
  testRunner.Then(string.Format("I should see the message contains {0} in section site footer", message), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify sidfooter for Utbildningar page")]
+        public void VerifySidfooterForUtbildningarPage()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify sidfooter for Utbildningar page", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 68
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+#line 69
+ testRunner.When("I click on link navigates to Home page in page footer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Link name",
+                            "Landing page"});
+                table12.AddRow(new string[] {
+                            "Utbildningar",
+                            "Utbildningar"});
+                table12.AddRow(new string[] {
+                            "Antagning",
+                            "Antagning"});
+                table12.AddRow(new string[] {
+                            "För företag",
+                            "För företag"});
+                table12.AddRow(new string[] {
+                            "Inspiration",
+                            "Inspiration"});
+                table12.AddRow(new string[] {
+                            "Om Nackademin",
+                            "Om Nackademin"});
+                table12.AddRow(new string[] {
+                            "Pressrum",
+                            "Pressrum"});
+                table12.AddRow(new string[] {
+                            "Kontakta oss",
+                            "Kontakta oss"});
+                table12.AddRow(new string[] {
+                            "Medarbetare",
+                            "Medarbetare"});
+                table12.AddRow(new string[] {
+                            "Frågor och svar",
+                            "FAQ"});
+#line 70
+ testRunner.Then("I verify below mentioned links in site footer section", ((string)(null)), table12, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
