@@ -221,7 +221,7 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Verify post email in sidfooter section on Home page")]
         [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
-        [NUnit.Framework.TestCaseAttribute("name.eftername.test.com", "ogiltig", null)]
+        [NUnit.Framework.TestCaseAttribute("name.eftername.test.com", "problem", null)]
         [NUnit.Framework.TestCaseAttribute("name.eftername@test.com", "Tack", null)]
         public void VerifyPostEmailInSidfooterSectionOnHomePage(string email, string message, string[] exampleTags)
         {
@@ -256,7 +256,7 @@ this.FeatureBackground();
  testRunner.When("I click on button Prenumerera in section for site footer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 37
- testRunner.Then(string.Format("I should see the message contains {0} in section site footer", message), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("I should see a message contains {0} in the section", message), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

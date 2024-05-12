@@ -30,7 +30,15 @@ namespace NackademinUITest.StepDefinitions
         [Then(@"I should see a message contains (.*) in the section")]
         public void ThenIShouldSeeAMessageContainsProblemInTheSection(string message)
         {
-            var actualMessage = FörFöretagPage.GetErrorMessage();
+            var actualMessage = "";
+            if (message.Equals("problem"))
+            {
+                actualMessage = FörFöretagPage.GetErrorMessage();                
+            }
+            else
+            {
+                actualMessage = HomePage.GetTextOfSuccessMessage();
+            }
             Assert.True(actualMessage.Contains(message), $"Message does not contain {message}");
         }
         [When(@"I click on button Skicka")]

@@ -1,4 +1,5 @@
 ﻿using FacebookTest.Config;
+using FacebookTest.Objects;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
@@ -77,7 +78,7 @@ namespace FacebookTest.Utilities
             else if (ConfigValues.Browser.Equals("Edge"))
             {
                 EdgeOptions options = new();
-                options.AddArguments("headless");
+                //options.AddArguments("headless");
                 options.AddArguments("window-size=1920,1080");
                 options.AddArguments("--no-sandbox");
                 options.AddArguments("--disable-gpu");
@@ -112,6 +113,7 @@ namespace FacebookTest.Utilities
         public static void NavigateBack()
         {
             GetDriver().Navigate().Back();
+            SharedPage.ClickOnAcceptAllCookieIfExist();
         }
     }
 }

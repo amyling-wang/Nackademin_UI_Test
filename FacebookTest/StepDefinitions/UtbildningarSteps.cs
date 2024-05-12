@@ -32,6 +32,7 @@ namespace NackademinUITest.StepDefinitions
         [Then(@"I click on dropdown button (.*) and choose below mentoned options and verify")]
         public void WhenIClickOnDropdownButtonOmradeAndChooseBelowMentonedOptionsAndVerify(string button, Table table)
         {
+            //SharedPage.ClickOnAcceptAllCookieIfExist();
             var options = table.Rows.Select(t => t["Option"]).ToList();
             foreach(var option in options)
             {

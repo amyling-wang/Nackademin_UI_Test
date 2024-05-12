@@ -5,7 +5,6 @@ Background:
 	
 @Smoke
 Scenario: Verify main image section on Home
-	When I click on link navigates to Home page in page header
 	Then I should see image with text 'Din framtid börjar här'
 	When I click on the button Hitta utbildning
 	Then I should be navigated to Utbildningar
@@ -39,11 +38,11 @@ Scenario Outline: Verify news letter section
 	Then I should see news letter section title on the page
 	Then I enter <Email> in Din e-postadress field in section Få vårt nyhetsbrev
 	When I click on button Prenumerera in section for Få vårt nyhetsbrev
-	Then I should see the message contains <Message> in section Få vårt nyhetsbrev
+	Then I should see a message contains <Message> in the section
 
 Examples: 
 	| Email                   | Message |
-	| name.eftername.test.com | ogiltig |
+	| name.eftername.test.com | problem |
 	| name.eftername@test.com | Tack    |
 
 Scenario: Verify sidfooter for Home page
@@ -63,11 +62,11 @@ Scenario: Verify sidfooter for Home page
 Scenario: Verify post email in sidfooter section on Home page
 	Then I enter <Email> in Din e-postadress field in section site footer
 	When I click on button Prenumerera in section for site footer
-	Then I should see the message contains <Message> in section site footer
+	Then I should see a message contains <Message> in the section
 
 Examples: 
 	| Email                   | Message |
-	| name.eftername.test.com | ogiltig |
+	| name.eftername.test.com | problem |
 	| name.eftername@test.com | Tack    |
 
 Scenario: Verify Home Page meny section

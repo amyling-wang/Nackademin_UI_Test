@@ -32,18 +32,19 @@ namespace FacebookTest.StepDefinitions
         public static void ClickOnUtbildningarInMainMenuSection(string linkText)
         {
             SharedPage.ClickOnLinkInTopMenuSection(linkText);
-            //SharedPage.ClickOnAcceptAllCookieIfExist();
+            SharedPage.ClickOnAcceptAllCookieIfExist();
         }
         [Then(@"I should see page with title (.*)")]
         public static void VerifyPageTitle(string pageTitle)
         {
-            SharedPage.ClickOnAcceptAllCookieIfExist();
+            //SharedPage.ClickOnAcceptAllCookieIfExist();
             Assert.True(SharedPage.GetPageTitleText().Equals(pageTitle), $"Expected page title is {pageTitle}, but it is shown {SharedPage.GetPageTitleText()}");
 
         }
         [Then(@"I should see news letter section title on the page")]
         public static void ThenIShouldSeeNewsLetterSectionTitleOnThePage()
         {
+            //SharedPage.ClickOnAcceptAllCookieIfExist();
             Assert.True(SharedPage.IsNewsLetterSectionTitleShown(), "News letter section title is not shown on the page");
         }
 

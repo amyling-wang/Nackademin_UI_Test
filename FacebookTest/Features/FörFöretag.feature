@@ -58,9 +58,9 @@ Scenario: Verify sidfooter for För företag page
 #Scenario: Verify post email in sidfooter section on Home page
 #	Then I enter <Email> in Din e-postadress field in section site footer
 #	When I click on button Prenumerera in section for site footer
-#	Then I should see the message contains <Message> in section site footer
+#	Then I should see a message contains <Message> in the section
 #
 #Examples: 
 #	| Email                   | Message |
-#	| name.eftername.test.com | ogiltig |
+#	| name.eftername.test.com | problem |
 #	| name.eftername@test.com | Tack    |

@@ -23,23 +23,29 @@ namespace FacebookTest.Objects
         private static By AnswerToRandomQuestion => By.XPath("//div[contains(@class,'faq_answer')]/p");
         //private static By NewsLetterSectionTitle(string sectionName) => By.XPath($"//h2[text()='{sectionName}']");
         private static By EmailFieldInNewsLetterSection(string sectionName, string field) => By.XPath($"//*[text()='{sectionName}']//ancestor::div[contains(@class,'newsletter_block')]//input[@placeholder='{field}']");
-        private static By MessageForSendingMailAddress(string messageSubtext) => By.XPath($"//div[contains(@class,'newsletter_block')]//*[contains(text(),'{messageSubtext}')]");
+        //private static By MessageForSendingMailAddress(string messageSubtext) => By.XPath($"//div[contains(@class,'newsletter_block')]//*[contains(text(),'{messageSubtext}')]");
         private static By PrenumereraButtonInNewsLetterSection => By.XPath("//div[contains(@class,'newsletter_block')]//input[@Value='Prenumerera']");
         private static By LinkInSidfooterSection(string linkText) => By.XPath($"//div[contains(@class,'column_links')]//a[text()='{linkText}']");
         private static By EmailFieldInSiteFooterSection => By.XPath("//footer[@id='site-footer']//input[@placeholder='Din e-postadress']");
         private static By PrenumereraButtonInSiteFooter => By.XPath("//footer[@id='site-footer']//input[@value='Prenumerera']");
         private static By ArrowButtonInMenySection(string link) => By.XPath($"//a[contains(text(),'{link}')]/button");
         private static By LinkUnderArrowInMenySection(string link) => By.XPath($"//li[contains(@class,'menu_item')]/a[contains(text(),'{link}')]");
-        public static bool IsMessageWithSubtextExist(string subtext)
-        {
-            MessageForSendingMailAddress(subtext).WaitUntilElementIsVisible();
-            return MessageForSendingMailAddress(subtext).IsExist();
-        }        
+        private static By SuccessMessage => By.XPath("//div[contains(text(),'Tack för att du kontaktade oss!')]");
+        //public static bool IsMessageWithSubtextExist(string subtext)
+        //{
+        //    MessageForSendingMailAddress(subtext).WaitToBecomeEnabled();
+        //    return MessageForSendingMailAddress(subtext).IsExist();
+        //}        
         //public static bool IsNewsLetterSectionTitleShown(string sectionName)
         //{
         //    NewsLetterSectionTitle(sectionName).MoveToElement();
         //    return NewsLetterSectionTitle(sectionName).IsExist();
         //}
+        public static string GetTextOfSuccessMessage()
+        {
+            SuccessMessage.WaitToBecomeEnabled();
+            return SuccessMessage.GetText();
+        }
         public static bool IsAnswerToRandomQuestionShown()
         {
             return AnswerToRandomQuestion.IsExist();
