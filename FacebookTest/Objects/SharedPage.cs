@@ -69,7 +69,8 @@ namespace FacebookTest.Objects
         }
         public static void ClickOnAcceptAllCookieIfExist()
         {
-            if (CookiePopup.IsDisplayed() && AcceptAllCookieButton().IsExist() && AcceptAllCookieButton().IsDisplayed())
+            Thread.Sleep(TimeSpan.FromSeconds(1));
+            if (AcceptAllCookieButton().IsExist() && AcceptAllCookieButton().IsDisplayed())
             {
                 AcceptAllCookieButton().WaitToBecomeClickable();
                 AcceptAllCookieButton().MoveToElementAndClick();

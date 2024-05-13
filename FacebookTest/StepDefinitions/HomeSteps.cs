@@ -71,6 +71,10 @@ namespace FacebookTest.StepDefinitions
                     {
                         VerifyLandingPageInChildWindow("Inför studiestart");
                     }
+                    else if (cartName.Equals("För Företag"))
+                    {
+                        VerifyLandingPageInChildWindow("För företag");
+                    }
                     else
                     {
                         VerifyLandingPageInChildWindow(cartName);
