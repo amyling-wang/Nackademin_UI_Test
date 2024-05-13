@@ -22,6 +22,7 @@ namespace FacebookTest.Objects
         private static By Button(string buttonText) => By.XPath($"//a[text()='{buttonText}']");
         private static By LinkInTopMenuSection(string linkText) => By.XPath($"//ul[@id='primary-menu']//li[contains(@class,'menu-item')]/a[contains(text(),'{linkText}')]");
         private static By NewsLetterSectionTitle => By.XPath("//*[text()='Få vårt nyhetsbrev']");
+        private static By CookiePopup => By.XPath("//div[@id='CybotCookiebotDialog']");
 
 
         //public void ClickOnTab(string tabName)
@@ -68,6 +69,7 @@ namespace FacebookTest.Objects
         }
         public static void ClickOnAcceptAllCookieIfExist()
         {
+            Thread.Sleep(TimeSpan.FromSeconds(1));
             if (AcceptAllCookieButton().IsExist() && AcceptAllCookieButton().IsDisplayed())
             {
                 AcceptAllCookieButton().WaitToBecomeClickable();
