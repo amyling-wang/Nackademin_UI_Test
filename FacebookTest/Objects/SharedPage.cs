@@ -72,8 +72,8 @@ namespace FacebookTest.Objects
             Thread.Sleep(TimeSpan.FromSeconds(1));
             if (AcceptAllCookieButton().IsExist() && AcceptAllCookieButton().IsDisplayed())
             {
-                AcceptAllCookieButton().WaitToBecomeClickable();
-                AcceptAllCookieButton().MoveToElementAndClick();
+                //AcceptAllCookieButton().WaitToBecomeClickable();
+                AcceptAllCookieButton().ClickElement();
             }
         }
         public static void ClickOnLinkInTopMenuSection(string linkText)
