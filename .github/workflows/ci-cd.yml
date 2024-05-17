@@ -33,7 +33,7 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: Test smoke
-        run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Smoke
+        run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Inspiration
       
       # - name: Test all
       #   run: dotnet test FacebookTest/NackademinUITest.csproj
