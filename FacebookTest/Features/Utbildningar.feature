@@ -4,7 +4,7 @@ Feature: Utbildningar
 Background: 
 	Given I navigate to Nackademin
 	When I click on Utbildningar in main menu section
-
+@Smoke
 Scenario: Verify main section with education cards
 	Then I should see page with title Utbildningar
 	Then I should see 15 cards on the page
