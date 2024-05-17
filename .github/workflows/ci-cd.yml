@@ -67,10 +67,10 @@ jobs:
           dotnet-version: '6.x'
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore FacebookTest/NackademinUITest.csproj
 
       - name: Build
-        run: dotnet build --configuration Release
+        run: dotnet build FacebookTest/NackademinUITest.csproj
 
   test-home:
     name: Test
