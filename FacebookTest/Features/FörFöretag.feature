@@ -1,4 +1,5 @@
-﻿Feature: FörFöretag
+﻿@Foretag
+Feature: FörFöretag
 
 Background: 
 	Given I navigate to Nackademin

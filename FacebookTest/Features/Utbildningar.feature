@@ -1,4 +1,5 @@
-﻿Feature: Utbildningar
+﻿@Utbildning
+Feature: Utbildningar
 
 Background: 
 	Given I navigate to Nackademin

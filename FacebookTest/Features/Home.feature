@@ -1,9 +1,9 @@
-﻿Feature: Home
+﻿@Home
+Feature: Home
 
 Background: 
 	Given I navigate to Nackademin
 	
-@Smoke
 Scenario: Verify main image section on Home
 	Then I should see image with text 'Din framtid börjar här'
 	When I click on the button Hitta utbildning

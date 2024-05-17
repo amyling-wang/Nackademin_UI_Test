@@ -1,4 +1,5 @@
-﻿Feature: Inspiration
+﻿@Inspiration
+Feature: Inspiration
 
 Background: 
 	Given I navigate to Nackademin
