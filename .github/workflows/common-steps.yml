@@ -1,7 +1,7 @@
 name: Common Steps
 on:
   workflow_run:
-    workflows: ./.github/workflows/cicd.yml
+    workflows: ["./.github/workflows/ci-cd.yml"]
     types:
       - completed
 
@@ -23,7 +23,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v4
         with:
-        dotnet-version: '6.x'
+            dotnet-version: '6.x'
 
       - name: Restore dependencies
         run: dotnet restore
