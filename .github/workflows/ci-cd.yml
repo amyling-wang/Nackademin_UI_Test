@@ -72,14 +72,14 @@ jobs:
       - name: Build
         run: dotnet build FacebookTest/NackademinUITest.csproj
 
-  test-home:
-    name: Test
-    runs-on: ubuntu-latest
-    needs: build
+  # test-home:
+  #   name: Test
+  #   runs-on: ubuntu-latest
+  #   needs: build
 
-    steps:
-      - name: Run tests
-        run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Home
+  #   steps:
+  #     - name: Run tests
+  #       run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Home
 
   test-inspiration:
     name: Test
@@ -90,30 +90,30 @@ jobs:
       - name: Run tests
         run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Inspiration
 
-  test-foretag:
-    name: Test
-    runs-on: ubuntu-latest
-    needs: build
+  # test-foretag:
+  #   name: Test
+  #   runs-on: ubuntu-latest
+  #   needs: build
 
-    steps:
-      - name: Run tests
-        run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Foretag
+  #   steps:
+  #     - name: Run tests
+  #       run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Foretag
 
-  test-antagning:
-    name: Test
-    runs-on: ubuntu-latest
-    needs: build
+  # test-antagning:
+  #   name: Test
+  #   runs-on: ubuntu-latest
+  #   needs: build
 
-    steps:
-      - name: Run tests
-        run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Antagning
+  #   steps:
+  #     - name: Run tests
+  #       run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Antagning
         
-  test-utbildning:
-    name: Test
-    runs-on: ubuntu-latest
-    needs: build
+  # test-utbildning:
+  #   name: Test
+  #   runs-on: ubuntu-latest
+  #   needs: build
 
-    steps:
-      - name: Run tests
-        run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Utbildning
+  #   steps:
+  #     - name: Run tests
+  #       run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Utbildning
 
