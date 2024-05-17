@@ -1,42 +1,3 @@
-name: CI/CD
-
-on:
-  push:
-    branches:
-      - master
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Chaching
-        uses: actions/cache@v3
-        with:
-          path: ~/.nuget/packages
-          key: ${{ runner.os }}-dotnet-${{ hashFiles('**/global.json') }}
-          restore-keys: |
-            ${{ runner.os }}-dotnet-
-
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '6.x'
-
-      - name: Restore dependencies
-        run: dotnet restore
-
-      - name: Build
-        run: dotnet build --configuration Release
-
-      - name: Test smoke
-        run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Inspiration
-      
-      # - name: Test all
-      #   run: dotnet test FacebookTest/NackademinUITest.csproj
 # name: CI/CD
 
 # on:
@@ -46,14 +7,13 @@ jobs:
 
 # jobs:
 #   build:
-#     name: Build
 #     runs-on: ubuntu-latest
 
 #     steps:
 #       - name: Checkout code
 #         uses: actions/checkout@v4
 
-#       - name: Cache NuGet packages
+#       - name: Chaching
 #         uses: actions/cache@v3
 #         with:
 #           path: ~/.nuget/packages
@@ -67,53 +27,93 @@ jobs:
 #           dotnet-version: '6.x'
 
 #       - name: Restore dependencies
-#         run: dotnet restore FacebookTest/NackademinUITest.csproj
+#         run: dotnet restore
 
 #       - name: Build
-#         run: dotnet build FacebookTest/NackademinUITest.csproj
+#         run: dotnet build --configuration Release
 
-#   test-home:
-#     name: Test
-#     runs-on: ubuntu-latest
-#     needs: build
-
-#     steps:
-#       - name: Run tests
-#         run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Home
-
-#   test-inspiration:
-#     name: Test
-#     runs-on: ubuntu-latest
-#     needs: build
-
-#     steps:
-#       - name: Run tests
+#       - name: Test smoke
 #         run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Inspiration
+      
+      # - name: Test all
+      #   run: dotnet test FacebookTest/NackademinUITest.csproj
+name: CI/CD
 
-#   test-foretag:
-#     name: Test
-#     runs-on: ubuntu-latest
-#     needs: build
+on:
+  push:
+    branches:
+      - master
 
-#     steps:
-#       - name: Run tests
-#         run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Foretag
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
 
-#   test-antagning:
-#     name: Test
-#     runs-on: ubuntu-latest
-#     needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-#     steps:
-#       - name: Run tests
-#         run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Antagning
+      - name: Cache NuGet packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-dotnet-${{ hashFiles('**/global.json') }}
+          restore-keys: |
+            ${{ runner.os }}-dotnet-
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '6.x'
+
+      - name: Restore dependencies
+        run: dotnet restore FacebookTest/NackademinUITest.csproj
+
+      - name: Build
+        run: dotnet build FacebookTest/NackademinUITest.csproj
+
+  test-home:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Run tests
+        run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Home
+
+  test-inspiration:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Run tests
+        run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Inspiration
+
+  test-foretag:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Run tests
+        run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Foretag
+
+  test-antagning:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Run tests
+        run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Antagning
         
-#   test-utbildning:
-#     name: Test
-#     runs-on: ubuntu-latest
-#     needs: build
+  test-utbildning:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: build
 
-#     steps:
-#       - name: Run tests
-#         run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Utbildning
+    steps:
+      - name: Run tests
+        run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Utbildning
 
