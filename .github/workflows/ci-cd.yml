@@ -36,4 +36,4 @@ jobs:
       #   run: dotnet test **/*.csproj --filter TestCategory=Smoke
       
       - name: Test all
-        run: dotnet test FacebookTest/NackademinUITest.csproj
+        run: dotnet test NackademinUITest/NackademinUITest.csproj
