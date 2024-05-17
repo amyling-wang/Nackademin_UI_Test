@@ -9,28 +9,28 @@
 #   build:
 #     runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v4
+    # steps:
+    #   - name: Checkout code
+    #     uses: actions/checkout@v4
 
-#       - name: Chaching
-#         uses: actions/cache@v3
-#         with:
-#           path: ~/.nuget/packages
-#           key: ${{ runner.os }}-dotnet-${{ hashFiles('**/global.json') }}
-#           restore-keys: |
-#             ${{ runner.os }}-dotnet-
+    #   - name: Chaching
+    #     uses: actions/cache@v3
+    #     with:
+    #       path: ~/.nuget/packages
+    #       key: ${{ runner.os }}-dotnet-${{ hashFiles('**/global.json') }}
+    #       restore-keys: |
+    #         ${{ runner.os }}-dotnet-
 
-#       - name: Setup .NET Core
-#         uses: actions/setup-dotnet@v4
-#         with:
-#           dotnet-version: '6.x'
+    #   - name: Setup .NET Core
+    #     uses: actions/setup-dotnet@v4
+    #     with:
+    #       dotnet-version: '6.x'
 
-#       - name: Restore dependencies
-#         run: dotnet restore
+    #   - name: Restore dependencies
+    #     run: dotnet restore
 
-#       - name: Build
-#         run: dotnet build --configuration Release
+    #   - name: Build
+    #     run: dotnet build --configuration Release
 
 #       # - name: Test smoke
 #       #   run: dotnet test **/*.csproj --filter TestCategory=Smoke
@@ -67,7 +67,7 @@ jobs:
           dotnet-version: '6.x'
 
       - name: Restore dependencies
-        run: dotnet restore "FacebookTest/NackademinUITest.csproj"
+        run: dotnet restore FacebookTest/NackademinUITest.csproj
 
       - name: Build
         run: dotnet build FacebookTest/NackademinUITest.csproj
@@ -78,9 +78,6 @@ jobs:
     needs: build
 
     steps:
-      - name: Restore dependencies
-        run: dotnet restore
-
       - name: Run tests
         run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Home
 
@@ -90,9 +87,6 @@ jobs:
     needs: build
 
     steps:
-      - name: Restore dependencies
-        run: dotnet restore
-
       - name: Run tests
         run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Inspiration
 
@@ -102,9 +96,6 @@ jobs:
     needs: build
 
     steps:
-      - name: Restore dependencies
-        run: dotnet restore
-
       - name: Run tests
         run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Foretag
 
@@ -114,9 +105,6 @@ jobs:
     needs: build
 
     steps:
-      - name: Restore dependencies
-        run: dotnet restore
-
       - name: Run tests
         run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Antagning
         
@@ -126,9 +114,6 @@ jobs:
     needs: build
 
     steps:
-      - name: Restore dependencies
-        run: dotnet restore
-
       - name: Run tests
         run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Utbildning
 
