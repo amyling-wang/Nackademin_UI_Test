@@ -1,4 +1,4 @@
-﻿@Utbildning
+﻿@Utbildningar
 Feature: Utbildningar
 
 Background: 
