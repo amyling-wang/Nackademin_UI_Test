@@ -1,0 +1,144 @@
+version: 2.1
+
+parameters:
+ test_type:
+  type: string
+  default: ""
+ test_category:
+  type: string
+  default: ""
+
+workflows:
+  build_projects:
+    jobs:
+    - build_projects:
+       name: Building projects
+       context: snowcontext
+       filters:
+            branches:
+               ignore: 
+                 - master
+				 
+jobs:
+  build_projects:
+      docker: 
+       - image: mcr.microsoft.com/dotnet/sdk:6.0
+      resource_class: small
+      steps:
+        - checkout        
+        - run: 
+           name: Build UI Tests project
+           command: dotnet build "FacebookTest\NackademinUITest.csproj" --source $NUGET_PACKAGE_REGISTRY_URL
+           
+  run_saas_ui_tests:
+    docker: 
+     - image: mcr.microsoft.com/dotnet/sdk:6.0
+    parameters:
+      browser:
+        type: string
+        default: chrome
+    environment:
+      type: string
+      default: dev
+    steps:
+     - checkout
+     - ensure_credentials_provider
+     - install_xunit_to_junit_tool 
+     - run:
+          name: Install Docker Compose
+          command: |
+            set -x
+            curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+            chmod +x /usr/local/bin/docker-compose
+     - setup_remote_docker:
+          docker_layer_caching: false
+     - run:
+        name: Install Docker client
+        command: |
+          set -x
+          VER="20.10.9"
+          curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
+          tar -xz -C /tmp -f /tmp/docker-$VER.tgz
+          mv /tmp/docker/* /usr/bin
+     - run:
+        name: Run UI Tests
+        no_output_timeout: 40m
+        command: |
+           echo $DOCKER_PASSWORD | docker login $CONTAINER_REGISTRY_URL -u $DOCKER_USERNAME --password-stdin
+           export ENVIRONMENT=<< parameters.environment >>
+           export BROWSER=<< parameters.browser >>
+           export FEED_URL=$NUGET_PACKAGE_REGISTRY_URL
+           export PAT=$AZURE_DEVOPS_EXT_PAT
+           export SNOW_ATLAS_EMAIL=$SNOW_ATLAS_EMAIL
+           export SNOW_ATLAS_PASSWORD=$SNOW_ATLAS_PASSWORD
+           export SNOW_ATLAS_TENANT=$SNOW_ATLAS_TENANT
+           export AHA_PASSWORD=${AHA_PASSWORD}
+           export AHA_ADDRESS=${AHA_ADDRESS}
+           export MICROSOFT_TENANT=${MICROSOFT_TENANT}
+           export MICROSOFT_CLIENT_ID=${MICROSOFT_CLIENT_ID}
+           export MICROSOFT_CLIENT_SECRET=${MICROSOFT_CLIENT_SECRET}
+           export SALESFORCE_LOGIN_URL=${SALESFORCE_LOGIN_URL}
+           export SALESFORCE_CLIENT_ID=${SALESFORCE_CLIENT_ID}
+           export SALESFORCE_CLIENT_SECRET=${SALESFORCE_CLIENT_SECRET}
+           export SALESFORCE_REFRESH_TOKEN=${SALESFORCE_REFRESH_TOKEN}
+           export ADOBE_TECHNICAL_ACCOUNT_ID=${ADOBE_TECHNICAL_ACCOUNT_ID}
+           export ADOBE_CLIENT_ID=${ADOBE_CLIENT_ID}
+           export ADOBE_CLIENT_SECRET=${ADOBE_CLIENT_SECRET}
+           export ADOBE_ORGANIZATION_ID=${ADOBE_ORGANIZATION_ID}
+           export ADOBE_PRIVATE_CERTIFICATE_KEY=${ADOBE_PRIVATE_CERTIFICATE_KEY}
+           export GOOGLE_CUSTOMER_ID=${GOOGLE_CUSTOMER_ID}
+           export GOOGLE_ADMIN_EMAIL=${GOOGLE_ADMIN_EMAIL}
+           export GOOGLE_SERVICE_ACCOUNT_KEY=${GOOGLE_SERVICE_ACCOUNT_KEY}
+           export OKTA_ORGANIZATION_URL=${OKTA_ORGANIZATION_URL}
+           export OKTA_API_TOKEN=${OKTA_API_TOKEN}
+           export ZOOM_API_ACCOUNTID=${ZOOM_API_ACCOUNTID}
+           export ZOOM_API_CLIENTSECRET=${ZOOM_API_CLIENTSECRET}
+           export ZOOM_API_CLIENTID=${ZOOM_API_CLIENTID}
+           export AZURE_TENANT=${AZURE_TENANT}
+           export AZURE_CLIENTID=${AZURE_CLIENTID}
+           export AZURE_CLIENTSECRET=${AZURE_CLIENTSECRET}
+           export MONDAY_API_TOKEN=${MONDAY_API_TOKEN}
+           export ZENDESK_SUBDOMAIN=${ZENDESK_SUBDOMAIN}
+           export ZENDESK_TOKEN=${ZENDESK_TOKEN}
+           export ZENDESK_USERNAME=${ZENDESK_USERNAME}
+           docker-compose -f "SaaS.UI.Tests/docker-compose.yml" run run-tests
+     - run:
+        name: Show all containers with statuses
+        command: docker ps -a
+     - run:
+        name: Get Test execution result
+        command: |
+                 containerId=$(docker ps -aqf "name=saasuitests_run-tests")
+                 echo "Container Id $containerId"
+                 logs=$(docker logs -n 2 "$containerId")
+                 echo "$logs"
+                 case "$logs" in *"Passed!"*)
+                 echo "Test execution was successful" && exit 0;;
+                 *) echo "Test execution failed" && exit 1;;
+                 esac
+     - run: 
+        name: Copy project folder from docker container
+        when: always
+        command: |
+                containerId=$(docker ps -aqf "name=saasuitests_run-tests")
+                docker start $containerId
+                echo "Container Id- $(docker ps -aq)"
+                docker cp $containerId:/SaaS.UI.Tests OutputFolder
+     - run:
+        name: Convert xunit file to junit
+        command: |
+           dotnet xunit-to-junit "OutputFolder/Xunit_result.xml" "OutputFolder/JunitResults/Junit_result.xml"
+        when: always
+     - store_test_results:
+        path: OutputFolder/JunitResults
+     - store_artifacts:
+        path: OutputFolder/bin/Debug/net6.0/Screenshots
+     - store_artifacts:
+        path: OutputFolder/JunitResults
+     - run: 
+        name: Docker compose down
+        when: always
+        command: |
+            export BROWSER=<< parameters.browser >>
+            cd SaaS.UI.Tests
+            docker-compose down

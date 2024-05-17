@@ -19,56 +19,58 @@ namespace NackademinUITest.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Inspiration")]
-    public partial class InspirationFeature
+    public partial class InspirationFeature : object, Xunit.IClassFixture<InspirationFeature.FixtureData>, System.IDisposable
     {
         
-        private TechTalk.SpecFlow.ITestRunner testRunner;
+        private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-        private static string[] featureTags = ((string[])(null));
+        private string[] _featureTags = ((string[])(null));
+        
+        private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
 #line 1 "Inspiration.feature"
 #line hidden
         
-        [NUnit.Framework.OneTimeSetUpAttribute()]
-        public virtual void FeatureSetup()
+        public InspirationFeature(InspirationFeature.FixtureData fixtureData, NackademinUITest_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        {
+            this._testOutputHelper = testOutputHelper;
+            this.TestInitialize();
+        }
+        
+        public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Inspiration", null, ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Inspiration", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        [NUnit.Framework.OneTimeTearDownAttribute()]
-        public virtual void FeatureTearDown()
+        public static void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
-        [NUnit.Framework.SetUpAttribute()]
-        public void TestInitialize()
+        public virtual void TestInitialize()
         {
         }
         
-        [NUnit.Framework.TearDownAttribute()]
-        public void TestTearDown()
+        public virtual void TestTearDown()
         {
             testRunner.OnScenarioEnd();
         }
         
-        public void ScenarioInitialize(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
+        public virtual void ScenarioInitialize(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioInitialize(scenarioInfo);
-            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<NUnit.Framework.TestContext>(NUnit.Framework.TestContext.CurrentContext);
+            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<Xunit.Abstractions.ITestOutputHelper>(_testOutputHelper);
         }
         
-        public void ScenarioStart()
+        public virtual void ScenarioStart()
         {
             testRunner.OnScenarioStart();
         }
         
-        public void ScenarioCleanup()
+        public virtual void ScenarioCleanup()
         {
             testRunner.CollectScenarioErrors();
         }
@@ -85,17 +87,33 @@ namespace NackademinUITest.Features
 #line hidden
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify main section with inspiration cards")]
-        public void VerifyMainSectionWithInspirationCards()
+        void System.IDisposable.Dispose()
+        {
+            this.TestTearDown();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Verify main section with inspiration cards")]
+        [Xunit.TraitAttribute("FeatureTitle", "Inspiration")]
+        [Xunit.TraitAttribute("Description", "Verify main section with inspiration cards")]
+        public virtual void VerifyMainSectionWithInspirationCards()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify main section with inspiration cards", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify main section with inspiration cards", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
             {
                 testRunner.SkipScenario();
             }
@@ -122,6 +140,22 @@ this.FeatureBackground();
 #line hidden
             }
             this.ScenarioCleanup();
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
+        [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        public class FixtureData : System.IDisposable
+        {
+            
+            public FixtureData()
+            {
+                InspirationFeature.FeatureSetup();
+            }
+            
+            void System.IDisposable.Dispose()
+            {
+                InspirationFeature.FeatureTearDown();
+            }
         }
     }
 }
