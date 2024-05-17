@@ -21,14 +21,14 @@ namespace NackademinUITest.Features
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("Utbildningar")]
-    [NUnit.Framework.CategoryAttribute("Utbildning")]
+    [NUnit.Framework.CategoryAttribute("Utbildningar")]
     public partial class UtbildningarFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private static string[] featureTags = new string[] {
-                "Utbildning"};
+                "Utbildningar"};
         
 #line 1 "Utbildningar.feature"
 #line hidden
@@ -89,9 +89,11 @@ namespace NackademinUITest.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Verify main section with education cards")]
+        [NUnit.Framework.CategoryAttribute("Smoke")]
         public void VerifyMainSectionWithEducationCards()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "Smoke"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify main section with education cards", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 8

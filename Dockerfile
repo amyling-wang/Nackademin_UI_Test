@@ -19,7 +19,7 @@ RUN wget --no-verbose -O /tmp/chrome.deb https://dl.google.com/linux/chrome/deb/
 COPY . .
 RUN dotnet restore
 RUN dotnet build
-CMD dotnet test **/*.csproj -- TestRunParameters.Parameter\(name=\"browser\",value=\"Chrome\"\)
+CMD dotnet test NackademinUITest.csproj -- TestRunParameters.Parameter\(name=\"browser\",value=\"Chrome\"\)
 
 
 
