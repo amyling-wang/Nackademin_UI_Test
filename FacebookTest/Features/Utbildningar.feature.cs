@@ -19,41 +19,41 @@ namespace NackademinUITest.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class UtbildningarFeature : object, Xunit.IClassFixture<UtbildningarFeature.FixtureData>, System.IDisposable
+    [NUnit.Framework.TestFixtureAttribute()]
+    [NUnit.Framework.DescriptionAttribute("Utbildningar")]
+    [NUnit.Framework.CategoryAttribute("Utbildning")]
+    public partial class UtbildningarFeature
     {
         
-        private static TechTalk.SpecFlow.ITestRunner testRunner;
+        private TechTalk.SpecFlow.ITestRunner testRunner;
         
-        private static string[] featureTags = ((string[])(null));
-        
-        private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
+        private static string[] featureTags = new string[] {
+                "Utbildning"};
         
 #line 1 "Utbildningar.feature"
 #line hidden
         
-        public UtbildningarFeature(UtbildningarFeature.FixtureData fixtureData, NackademinUITest_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
-        {
-            this._testOutputHelper = testOutputHelper;
-            this.TestInitialize();
-        }
-        
-        public static void FeatureSetup()
+        [NUnit.Framework.OneTimeSetUpAttribute()]
+        public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Utbildningar", null, ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        public static void FeatureTearDown()
+        [NUnit.Framework.OneTimeTearDownAttribute()]
+        public virtual void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
+        [NUnit.Framework.SetUpAttribute()]
         public void TestInitialize()
         {
         }
         
+        [NUnit.Framework.TearDownAttribute()]
         public void TestTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -62,7 +62,7 @@ namespace NackademinUITest.Features
         public void ScenarioInitialize(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioInitialize(scenarioInfo);
-            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<Xunit.Abstractions.ITestOutputHelper>(_testOutputHelper);
+            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<NUnit.Framework.TestContext>(NUnit.Framework.TestContext.CurrentContext);
         }
         
         public void ScenarioStart()
@@ -77,30 +77,24 @@ namespace NackademinUITest.Features
         
         public virtual void FeatureBackground()
         {
-#line 3
-#line hidden
 #line 4
- testRunner.Given("I navigate to Nackademin", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 5
+ testRunner.Given("I navigate to Nackademin", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 6
  testRunner.When("I click on Utbildningar in main menu section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
         }
         
-        void System.IDisposable.Dispose()
-        {
-            this.TestTearDown();
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Verify main section with education cards")]
-        [Xunit.TraitAttribute("FeatureTitle", "Utbildningar")]
-        [Xunit.TraitAttribute("Description", "Verify main section with education cards")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify main section with education cards")]
         public void VerifyMainSectionWithEducationCards()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify main section with education cards", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 7
+#line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -110,37 +104,36 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 3
+#line 4
 this.FeatureBackground();
 #line hidden
-#line 8
+#line 9
  testRunner.Then("I should see page with title Utbildningar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 9
+#line 10
  testRunner.Then("I should see 15 cards on the page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 10
+#line 11
  testRunner.When("I click on dropdown button for Sortera", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 11
+#line 12
  testRunner.Then("I choose option Utbildningsnamn in dropdown for Sortera", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 12
+#line 13
  testRunner.And("I verify all cards are sorted by education names", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify filter functionality")]
-        [Xunit.TraitAttribute("FeatureTitle", "Utbildningar")]
-        [Xunit.TraitAttribute("Description", "Verify filter functionality")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify filter functionality")]
         public void VerifyFilterFunctionality()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify filter functionality", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 14
+#line 15
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -150,7 +143,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 3
+#line 4
 this.FeatureBackground();
 #line hidden
                 TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -169,7 +162,7 @@ this.FeatureBackground();
                             "Spel"});
                 table9.AddRow(new string[] {
                             "Vård & hälsa"});
-#line 15
+#line 16
  testRunner.Then("I click on dropdown button Område and choose below mentoned options and verify", ((string)(null)), table9, "Then ");
 #line hidden
                 TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -178,7 +171,7 @@ this.FeatureBackground();
                             "Kurs"});
                 table10.AddRow(new string[] {
                             "Program"});
-#line 24
+#line 25
  testRunner.Then("I click on dropdown button Utbildningstyp and choose below mentoned options and v" +
                         "erify", ((string)(null)), table10, "Then ");
 #line hidden
@@ -192,7 +185,7 @@ this.FeatureBackground();
                             "Platsbunden"});
                 table11.AddRow(new string[] {
                             "YH-flex"});
-#line 28
+#line 29
  testRunner.Then("I click on dropdown button Studieform and choose below mentoned options and verif" +
                         "y", ((string)(null)), table11, "Then ");
 #line hidden
@@ -206,7 +199,7 @@ this.FeatureBackground();
                             "Platsbunden"});
                 table12.AddRow(new string[] {
                             "YH-flex"});
-#line 34
+#line 35
  testRunner.Then("I click on dropdown button Studieform and choose below mentoned options and verif" +
                         "y", ((string)(null)), table12, "Then ");
 #line hidden
@@ -214,15 +207,14 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify section for Frågor och Svar")]
-        [Xunit.TraitAttribute("FeatureTitle", "Utbildningar")]
-        [Xunit.TraitAttribute("Description", "Verify section for Frågor och Svar")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify section for Frågor och Svar")]
         public void VerifySectionForFragorOchSvar()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify section for Frågor och Svar", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 41
+#line 42
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -232,30 +224,29 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 3
+#line 4
 this.FeatureBackground();
 #line hidden
-#line 42
+#line 43
  testRunner.Then("I should see section with title Frågor och svar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 43
+#line 44
  testRunner.And("I should see information text for section Frågor och svar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 44
+#line 45
  testRunner.When("I click on any question", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 45
+#line 46
  testRunner.Then("I should see related content under it", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableTheoryAttribute(DisplayName="Verify news letter section")]
-        [Xunit.TraitAttribute("FeatureTitle", "Utbildningar")]
-        [Xunit.TraitAttribute("Description", "Verify news letter section")]
-        [Xunit.InlineDataAttribute("name.eftername.test.com", "problem", new string[0])]
-        [Xunit.InlineDataAttribute("name.eftername@test.com", "Tack", new string[0])]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify news letter section")]
+        [NUnit.Framework.TestCaseAttribute("name.eftername.test.com", "problem", null)]
+        [NUnit.Framework.TestCaseAttribute("name.eftername@test.com", "Tack", null)]
         public void VerifyNewsLetterSection(string email, string message, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -263,7 +254,7 @@ this.FeatureBackground();
             argumentsOfScenario.Add("Email", email);
             argumentsOfScenario.Add("Message", message);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify news letter section", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 47
+#line 48
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -273,30 +264,29 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 3
+#line 4
 this.FeatureBackground();
 #line hidden
-#line 48
+#line 49
  testRunner.Then("I should see news letter section title on the page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 49
+#line 50
  testRunner.Then(string.Format("I enter {0} in Din e-postadress field in section Få vårt nyhetsbrev", email), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 50
+#line 51
  testRunner.When("I click on button Prenumerera in section for Få vårt nyhetsbrev", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 51
+#line 52
  testRunner.Then(string.Format("I should see a message contains {0} in the section", message), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableTheoryAttribute(DisplayName="Verify post email in sidfooter section on Home page")]
-        [Xunit.TraitAttribute("FeatureTitle", "Utbildningar")]
-        [Xunit.TraitAttribute("Description", "Verify post email in sidfooter section on Home page")]
-        [Xunit.InlineDataAttribute("name.eftername.test.com", "problem", new string[0])]
-        [Xunit.InlineDataAttribute("name.eftername@test.com", "Tack", new string[0])]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify post email in sidfooter section on Home page")]
+        [NUnit.Framework.TestCaseAttribute("name.eftername.test.com", "problem", null)]
+        [NUnit.Framework.TestCaseAttribute("name.eftername@test.com", "Tack", null)]
         public void VerifyPostEmailInSidfooterSectionOnHomePage(string email, string message, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -304,7 +294,7 @@ this.FeatureBackground();
             argumentsOfScenario.Add("Email", email);
             argumentsOfScenario.Add("Message", message);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify post email in sidfooter section on Home page", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 58
+#line 59
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -314,31 +304,30 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 3
+#line 4
 this.FeatureBackground();
 #line hidden
-#line 59
+#line 60
  testRunner.Then(string.Format("I enter {0} in Din e-postadress field in section site footer", email), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 60
+#line 61
  testRunner.When("I click on button Prenumerera in section for site footer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 61
+#line 62
  testRunner.Then(string.Format("I should see a message contains {0} in the section", message), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify sidfooter for Utbildningar page")]
-        [Xunit.TraitAttribute("FeatureTitle", "Utbildningar")]
-        [Xunit.TraitAttribute("Description", "Verify sidfooter for Utbildningar page")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify sidfooter for Utbildningar page")]
         public void VerifySidfooterForUtbildningarPage()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify sidfooter for Utbildningar page", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 68
+#line 69
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -348,10 +337,10 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 3
+#line 4
 this.FeatureBackground();
 #line hidden
-#line 69
+#line 70
  testRunner.When("I click on link navigates to Home page in page footer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
                 TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -384,27 +373,11 @@ this.FeatureBackground();
                 table13.AddRow(new string[] {
                             "Frågor och svar",
                             "FAQ"});
-#line 70
+#line 71
  testRunner.Then("I verify below mentioned links in site footer section", ((string)(null)), table13, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
-        }
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
-        [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        public class FixtureData : System.IDisposable
-        {
-            
-            public FixtureData()
-            {
-                UtbildningarFeature.FeatureSetup();
-            }
-            
-            void System.IDisposable.Dispose()
-            {
-                UtbildningarFeature.FeatureTearDown();
-            }
         }
     }
 }

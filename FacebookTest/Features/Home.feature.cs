@@ -19,41 +19,41 @@ namespace NackademinUITest.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class HomeFeature : object, Xunit.IClassFixture<HomeFeature.FixtureData>, System.IDisposable
+    [NUnit.Framework.TestFixtureAttribute()]
+    [NUnit.Framework.DescriptionAttribute("Home")]
+    [NUnit.Framework.CategoryAttribute("Home")]
+    public partial class HomeFeature
     {
         
-        private static TechTalk.SpecFlow.ITestRunner testRunner;
+        private TechTalk.SpecFlow.ITestRunner testRunner;
         
-        private static string[] featureTags = ((string[])(null));
-        
-        private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
+        private static string[] featureTags = new string[] {
+                "Home"};
         
 #line 1 "Home.feature"
 #line hidden
         
-        public HomeFeature(HomeFeature.FixtureData fixtureData, NackademinUITest_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
-        {
-            this._testOutputHelper = testOutputHelper;
-            this.TestInitialize();
-        }
-        
-        public static void FeatureSetup()
+        [NUnit.Framework.OneTimeSetUpAttribute()]
+        public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Home", null, ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        public static void FeatureTearDown()
+        [NUnit.Framework.OneTimeTearDownAttribute()]
+        public virtual void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
+        [NUnit.Framework.SetUpAttribute()]
         public void TestInitialize()
         {
         }
         
+        [NUnit.Framework.TearDownAttribute()]
         public void TestTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -62,7 +62,7 @@ namespace NackademinUITest.Features
         public void ScenarioInitialize(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioInitialize(scenarioInfo);
-            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<Xunit.Abstractions.ITestOutputHelper>(_testOutputHelper);
+            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<NUnit.Framework.TestContext>(NUnit.Framework.TestContext.CurrentContext);
         }
         
         public void ScenarioStart()
@@ -77,26 +77,18 @@ namespace NackademinUITest.Features
         
         public virtual void FeatureBackground()
         {
-#line 3
-#line hidden
 #line 4
+#line hidden
+#line 5
  testRunner.Given("I navigate to Nackademin", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
         }
         
-        void System.IDisposable.Dispose()
-        {
-            this.TestTearDown();
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Verify main image section on Home")]
-        [Xunit.TraitAttribute("FeatureTitle", "Home")]
-        [Xunit.TraitAttribute("Description", "Verify main image section on Home")]
-        [Xunit.TraitAttribute("Category", "Smoke")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify main image section on Home")]
         public void VerifyMainImageSectionOnHome()
         {
-            string[] tagsOfScenario = new string[] {
-                    "Smoke"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify main image section on Home", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 7
@@ -109,7 +101,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 3
+#line 4
 this.FeatureBackground();
 #line hidden
 #line 8
@@ -125,9 +117,8 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Program, Kurser and För Företag section")]
-        [Xunit.TraitAttribute("FeatureTitle", "Home")]
-        [Xunit.TraitAttribute("Description", "Verify Program, Kurser and För Företag section")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify Program, Kurser and För Företag section")]
         public void VerifyProgramKurserAndForForetagSection()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -143,7 +134,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 3
+#line 4
 this.FeatureBackground();
 #line hidden
                 TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -161,9 +152,8 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify sections with with link to Om oss, Antagning and Hitta drömjobbet")]
-        [Xunit.TraitAttribute("FeatureTitle", "Home")]
-        [Xunit.TraitAttribute("Description", "Verify sections with with link to Om oss, Antagning and Hitta drömjobbet")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify sections with with link to Om oss, Antagning and Hitta drömjobbet")]
         public void VerifySectionsWithWithLinkToOmOssAntagningAndHittaDromjobbet()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -179,7 +169,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 3
+#line 4
 this.FeatureBackground();
 #line hidden
                 TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -205,9 +195,8 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Inspiration section on Home page")]
-        [Xunit.TraitAttribute("FeatureTitle", "Home")]
-        [Xunit.TraitAttribute("Description", "Verify Inspiration section on Home page")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify Inspiration section on Home page")]
         public void VerifyInspirationSectionOnHomePage()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -223,7 +212,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 3
+#line 4
 this.FeatureBackground();
 #line hidden
 #line 27
@@ -239,9 +228,8 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify section for Frågor och Svar")]
-        [Xunit.TraitAttribute("FeatureTitle", "Home")]
-        [Xunit.TraitAttribute("Description", "Verify section for Frågor och Svar")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify section for Frågor och Svar")]
         public void VerifySectionForFragorOchSvar()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -257,7 +245,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 3
+#line 4
 this.FeatureBackground();
 #line hidden
 #line 32
@@ -276,11 +264,10 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableTheoryAttribute(DisplayName="Verify news letter section")]
-        [Xunit.TraitAttribute("FeatureTitle", "Home")]
-        [Xunit.TraitAttribute("Description", "Verify news letter section")]
-        [Xunit.InlineDataAttribute("name.eftername.test.com", "problem", new string[0])]
-        [Xunit.InlineDataAttribute("name.eftername@test.com", "Tack", new string[0])]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify news letter section")]
+        [NUnit.Framework.TestCaseAttribute("name.eftername.test.com", "problem", null)]
+        [NUnit.Framework.TestCaseAttribute("name.eftername@test.com", "Tack", null)]
         public void VerifyNewsLetterSection(string email, string message, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -298,7 +285,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 3
+#line 4
 this.FeatureBackground();
 #line hidden
 #line 38
@@ -317,9 +304,8 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify sidfooter for Home page")]
-        [Xunit.TraitAttribute("FeatureTitle", "Home")]
-        [Xunit.TraitAttribute("Description", "Verify sidfooter for Home page")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify sidfooter for Home page")]
         public void VerifySidfooterForHomePage()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -335,7 +321,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 3
+#line 4
 this.FeatureBackground();
 #line hidden
 #line 49
@@ -378,11 +364,10 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableTheoryAttribute(DisplayName="Verify post email in sidfooter section on Home page")]
-        [Xunit.TraitAttribute("FeatureTitle", "Home")]
-        [Xunit.TraitAttribute("Description", "Verify post email in sidfooter section on Home page")]
-        [Xunit.InlineDataAttribute("name.eftername.test.com", "problem", new string[0])]
-        [Xunit.InlineDataAttribute("name.eftername@test.com", "Tack", new string[0])]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify post email in sidfooter section on Home page")]
+        [NUnit.Framework.TestCaseAttribute("name.eftername.test.com", "problem", null)]
+        [NUnit.Framework.TestCaseAttribute("name.eftername@test.com", "Tack", null)]
         public void VerifyPostEmailInSidfooterSectionOnHomePage(string email, string message, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -400,7 +385,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 3
+#line 4
 this.FeatureBackground();
 #line hidden
 #line 63
@@ -416,9 +401,8 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Verify Home Page meny section")]
-        [Xunit.TraitAttribute("FeatureTitle", "Home")]
-        [Xunit.TraitAttribute("Description", "Verify Home Page meny section")]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Verify Home Page meny section")]
         public void VerifyHomePageMenySection()
         {
             string[] tagsOfScenario = ((string[])(null));
@@ -434,7 +418,7 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 3
+#line 4
 this.FeatureBackground();
 #line hidden
 #line 73
@@ -490,22 +474,6 @@ this.FeatureBackground();
 #line hidden
             }
             this.ScenarioCleanup();
-        }
-        
-        [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
-        [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        public class FixtureData : System.IDisposable
-        {
-            
-            public FixtureData()
-            {
-                HomeFeature.FeatureSetup();
-            }
-            
-            void System.IDisposable.Dispose()
-            {
-                HomeFeature.FeatureTearDown();
-            }
         }
     }
 }
