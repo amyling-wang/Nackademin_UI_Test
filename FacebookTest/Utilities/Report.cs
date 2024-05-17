@@ -9,9 +9,7 @@ namespace FacebookTest.Utilities
 
         public static string addScreenshot(IWebDriver driver, ScenarioContext scenarioContext)
         {
-            ITakesScreenshot takesScreenshot = (ITakesScreenshot)driver;
-            //DateTime dateTime = DateTime.Now;
-            //string dateTimeString = dateTime.ToString().Replace("/", "-").Replace(":", "-");
+            ITakesScreenshot takesScreenshot = (ITakesScreenshot)driver;            
             Screenshot screenshot = takesScreenshot.GetScreenshot();
             string screenshotLocation = Path.Combine(testResultPath, scenarioContext.ScenarioInfo.Title + ".png");
             if (File.Exists(screenshotLocation))

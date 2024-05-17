@@ -1,9 +1,6 @@
 ﻿using FacebookTest.Config;
 using FacebookTest.Utilities;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
-
 namespace FacebookTest.Objects
 {
     internal class SharedPage 
