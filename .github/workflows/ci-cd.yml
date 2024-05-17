@@ -134,7 +134,7 @@ jobs:
         run: dotnet restore
 
       - name: Test smoke
-        run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Inspiration
+        run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Home
 
   Run-antagning-test:
     runs-on: ubuntu-latest
