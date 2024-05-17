@@ -67,7 +67,7 @@ jobs:
           dotnet-version: '6.x'
 
       - name: Restore dependencies
-        run: dotnet restore NackademinUITest.sln
+        run: dotnet restore "FacebookTest/NackademinUITest.csproj"
 
       - name: Build
         run: dotnet build FacebookTest/NackademinUITest.csproj
