@@ -83,7 +83,7 @@ jobs:
 
       - name: Test inspiration page
         run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Inspiration\
-            --logger "trx;LogFileName=inspirationTests.xml" \
+            --logger "nunit;LogFileName=inspirationTests.xml" \
             --results-directory ./TestReportsTemp
         continue-on-error: true
 
