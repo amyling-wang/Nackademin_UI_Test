@@ -86,7 +86,7 @@ jobs:
         continue-on-error: true
 
       - name: Copy artifacts
-        run: cp -r FacebookTest/TestResults/* output/nackademin-ui-test-results/
+        run: cp -r "FacebookTest/TestResult.xml" "output/nackademin-ui-test-results/"
 
       - name: Archive test results
         uses: actions/upload-artifact@v4
