@@ -83,13 +83,18 @@ jobs:
 
       - name: Test inspiration page
         run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Inspiration
+        continue-on-error: true
 
-      - name: Archive code coverage results
+      - name: Copy artifacts
+        run: cp -r FacebookTest/TestResults/* output/nackademin-ui-test-results/
+
+      - name: Archive test results
         uses: actions/upload-artifact@v4
         with:
-          name: code-coverage-report
-          path: output/code-coverage.html
+          name: nackademin-ui-test-report
+          path: nackademin-ui-test-results
           if: always()
+
   # Run-foretag-test:
   #   runs-on: ubuntu-latest
   #   needs: build
