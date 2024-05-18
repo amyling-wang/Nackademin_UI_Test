@@ -82,11 +82,13 @@ jobs:
         run: dotnet restore
 
       - name: Test inspiration page
-        run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Inspiration
+        run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Inspiration\
+            --logger "trx;LogFileName=inspirationTests.xml" \
+            --results-directory ./TestReportsTemp
         continue-on-error: true
 
       - name: Copy artifacts
-        run: cp -r "FacebookTest/TestResult.xml" "output/nackademin-ui-test-results/"
+        run: cp -r "FacebookTest/TestReportsTemp/inspirationTests.xml" "output/nackademin-ui-test-results/"
 
       - name: Archive test results
         uses: actions/upload-artifact@v4
