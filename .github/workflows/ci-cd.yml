@@ -90,6 +90,9 @@ jobs:
             --results-directory ./TestReportsTemp
         continue-on-error: true
 
+      - name: List files in TestReportsTemp directory
+        run: ls -la ./FacebookTest/TestReportsTemp
+
       - name: Copy artifacts
         run: cp -r "FacebookTest/TestReportsTemp/inspirationTests.xml" "output/nackademin-ui-test-results/"
 
