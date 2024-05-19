@@ -1,4 +1,5 @@
-﻿Feature: Antagning
+﻿@Antagning
+Feature: Antagning
 Background: 
 	Given I navigate to Nackademin
 	When I click on Antagning in main menu section

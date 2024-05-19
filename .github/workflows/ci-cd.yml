@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-
+      
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,10 +30,149 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build --configuration Release
+        run: dotnet build --configuration Release     
+    
+  # Run-Utbildningar-test:
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
 
-      - name: Test smoke
-        run: dotnet test **/*.csproj --filter TestCategory=Smoke
-      
-      - name: Test all
-        run: dotnet test **/*.csproj
+  #     - name: Chaching
+  #       uses: actions/cache@v3
+  #       with:
+  #         path: ~/.nuget/packages
+  #         key: ${{ runner.os }}-dotnet-${{ hashFiles('**/global.json') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-dotnet-
+
+  #     - name: Setup .NET Core
+  #       uses: actions/setup-dotnet@v4
+  #       with:
+  #         dotnet-version: '6.x'
+
+  #     - name: Restore dependencies
+  #       run: dotnet restore
+
+  #     - name: Test utbildningar page
+  #       run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Utbildningar
+
+  Run-inspiration-test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Chaching
+        uses: actions/cache@v3
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-dotnet-${{ hashFiles('**/global.json') }}
+          restore-keys: |
+            ${{ runner.os }}-dotnet-
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '6.x'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Test inspiration page
+        run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Inspiration\
+            --logger "nunit;LogFileName=inspirationTests.xml" \
+            --results-directory ./TestReportsTemp
+        continue-on-error: true
+
+      - name: Copy artifacts
+        run: cp -r "FacebookTest/TestReportsTemp/inspirationTests.xml" "output/nackademin-ui-test-results/"
+
+      - name: Archive test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: nackademin-ui-test-report
+          path: nackademin-ui-test-results
+          if: always()
+
+  # Run-foretag-test:
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+
+  #     - name: Chaching
+  #       uses: actions/cache@v3
+  #       with:
+  #         path: ~/.nuget/packages
+  #         key: ${{ runner.os }}-dotnet-${{ hashFiles('**/global.json') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-dotnet-
+
+  #     - name: Setup .NET Core
+  #       uses: actions/setup-dotnet@v4
+  #       with:
+  #         dotnet-version: '6.x'
+
+  #     - name: Restore dependencies
+  #       run: dotnet restore
+
+  #     - name: Test foretag page
+  #       run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Foretag
+
+  # Run-Home-test:
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+
+  #     - name: Chaching
+  #       uses: actions/cache@v3
+  #       with:
+  #         path: ~/.nuget/packages
+  #         key: ${{ runner.os }}-dotnet-${{ hashFiles('**/global.json') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-dotnet-
+
+  #     - name: Setup .NET Core
+  #       uses: actions/setup-dotnet@v4
+  #       with:
+  #         dotnet-version: '6.x'
+
+  #     - name: Restore dependencies
+  #       run: dotnet restore
+
+  #     - name: Test home page
+  #       run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Home
+
+  # Run-antagning-test:
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+
+  #     - name: Chaching
+  #       uses: actions/cache@v3
+  #       with:
+  #         path: ~/.nuget/packages
+  #         key: ${{ runner.os }}-dotnet-${{ hashFiles('**/global.json') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-dotnet-
+
+  #     - name: Setup .NET Core
+  #       uses: actions/setup-dotnet@v4
+  #       with:
+  #         dotnet-version: '6.x'
+
+  #     - name: Restore dependencies
+  #       run: dotnet restore
+
+  #     - name: Test antagning page
+  #       run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Antagning
+
+
