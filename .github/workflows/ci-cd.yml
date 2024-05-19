@@ -85,16 +85,14 @@ jobs:
         run: mkdir -p ./FacebookTest/TestReportsTemp
 
       - name: Test inspiration page
-        run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Inspiration\
-            --logger "nunit;LogFileName=inspirationTests.xml" \
-            --results-directory ./TestReportsTemp
+        run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Inspiration --logger "nunit;LogFileName=inspirationTests.xml" --results-directory ../FacebookTest/TestReportsTemp
         continue-on-error: true
 
       - name: List files in TestReportsTemp directory
         run: ls -la ./FacebookTest/TestReportsTemp
 
       - name: Copy artifacts
-        run: cp -r "FacebookTest/TestReportsTemp/inspirationTests.xml" "output/nackademin-ui-test-results/"
+        run: cp -r "./FacebookTest/TestReportsTemp/inspirationTests.xml" "output/nackademin-ui-test-results/"
 
       - name: Archive test results
         uses: actions/upload-artifact@v4
