@@ -81,6 +81,9 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
+      - name: Create test reports directory
+        run: mkdir -p ./TestReportsTemp
+
       - name: Test inspiration page
         run: dotnet test FacebookTest/NackademinUITest.csproj --filter TestCategory=Inspiration\
             --logger "nunit;LogFileName=inspirationTests.xml" \
