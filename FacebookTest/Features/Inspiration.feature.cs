@@ -108,7 +108,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 9
- testRunner.Then("I should see page with title test", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should see page with title Inspiration", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 10
  testRunner.Then("I should see 20 cards on the page by default", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

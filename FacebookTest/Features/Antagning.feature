@@ -31,7 +31,7 @@ Scenario: Verify sidfooter for Home page
 		| Kontakta oss    | Kontakta oss  |
 		| Medarbetare     | Medarbetare   |
 		| Frågor och svar | FAQ           |
-@ignore
+
 Scenario: Verify post email in sidfooter section on Home page
 	Then I enter <Email> in Din e-postadress field in section site footer
 	When I click on button Prenumerera in section for site footer

@@ -17,8 +17,7 @@ namespace FacebookTest.Config
               //  .AddJsonFile("secrets.json")
                 .AddJsonFile("appsettings.json");
                // .AddJsonFile($"appsettings.{enviromentName}.json", true);
-            _configuration = builder.Build();            
-
+            _configuration = builder.Build();
         }
        
         public static bool IsBrowserHeadless => Convert.ToBoolean(_configuration.GetSection("AppSettings:isBrowserHeadless").Value);

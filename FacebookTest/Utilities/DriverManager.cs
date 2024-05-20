@@ -38,6 +38,7 @@ namespace FacebookTest.Utilities
         public static void SwitchDriverToParentWindow()
         {
             GetDriver().SwitchTo().Window(GetDriver().WindowHandles[0]);
+            SharedPage.ClickOnAcceptAllCookieIfExist();
         }
         public static void CloseWindow()
         {
@@ -76,16 +77,24 @@ namespace FacebookTest.Utilities
             else if (ConfigValues.Browser.Equals("Edge"))
             {
                 EdgeOptions options = new();
-                //options.AddArguments("headless");
-                options.AddArguments("window-size=1920,1080");
-                options.AddArguments("--no-sandbox");
-                options.AddArguments("--disable-gpu");
-                options.AddArguments("--no-first-run");
-                options.AddArguments("--no-default-browser-check");
-                options.AddArguments("--ignore-certificate-errors");
-                options.AddArguments("--remote-debugging-port=9222"); 
-
-                options.AddArguments("--start-maximized");
+                options.AddArgument("--no-sandbox");
+                options.AddUserProfilePreference("safebrowsing.enabled", true);
+                options.SetLoggingPreference(LogType.Browser, LogLevel.Severe);
+                options.AddArgument("--start-maximized");
+                options.AddArgument("--ignore-ssl-errors=yes");
+                options.AddArgument("--ignore-certificate-errors");
+                options.AddArgument("--disable-extensions");
+                options.AddArgument("--disable-popup-blocking");
+                options.AddArgument("--force-device-scale-factor=1");
+                options.AddArgument("--enable-automation");
+                options.AddArgument("--window-size=1920,1080");
+                if (ConfigValues.IsBrowserHeadless.ToString().ToLower() == "true")
+                {
+                    options.AddArgument("--headless=new");
+                }
+                options.AddArgument("disable-gpu");
+                options.AddArgument("--incognito");
+                options.AddArgument("--disable-dev-shm-usage");
                 return new EdgeDriver(options);
             }
             else if (ConfigValues.Browser.Equals("Safari"))

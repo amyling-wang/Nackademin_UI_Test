@@ -39,8 +39,8 @@ namespace FacebookTest.Hooks
         [AfterStep]
         public void AfterStep(ScenarioContext scenarioContext)
         {
-            string stepType = scenarioContext.StepContext.StepInfo.StepDefinitionType.ToString();
-            string stepName = scenarioContext.StepContext.StepInfo.Text;
+            //string stepType = scenarioContext.StepContext.StepInfo.StepDefinitionType.ToString();
+            //string stepName = scenarioContext.StepContext.StepInfo.Text;
             var driver = _container.Resolve<IWebDriver>();
             var exception = scenarioContext.TestError;
             if (scenarioContext.TestError != null && !exception.Message.Contains("Skippping test"))

@@ -184,7 +184,6 @@ namespace FacebookTest.StepDefinitions
         [Then(@"I verify below mentioned links in site footer section")]
         public void ThenIVerifyBelowMentionedLinksInSiteFooterSection(Table table)
         {
-            //SharedPage.ClickOnAcceptAllCookieIfExist();
             var links = table.Rows.Select(r => r["Link name"]).ToList();
             var pageNames = table.Rows.Select(r => r["Landing page"]).ToList();
             for (int i = 0; i < links.Count; i++)
