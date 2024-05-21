@@ -68,39 +68,6 @@ jobs:
            export ENVIRONMENT=<< parameters.environment >>
            export BROWSER=<< parameters.browser >>
            export FEED_URL=$NUGET_PACKAGE_REGISTRY_URL
-           export PAT=$AZURE_DEVOPS_EXT_PAT
-           export SNOW_ATLAS_EMAIL=$SNOW_ATLAS_EMAIL
-           export SNOW_ATLAS_PASSWORD=$SNOW_ATLAS_PASSWORD
-           export SNOW_ATLAS_TENANT=$SNOW_ATLAS_TENANT
-           export AHA_PASSWORD=${AHA_PASSWORD}
-           export AHA_ADDRESS=${AHA_ADDRESS}
-           export MICROSOFT_TENANT=${MICROSOFT_TENANT}
-           export MICROSOFT_CLIENT_ID=${MICROSOFT_CLIENT_ID}
-           export MICROSOFT_CLIENT_SECRET=${MICROSOFT_CLIENT_SECRET}
-           export SALESFORCE_LOGIN_URL=${SALESFORCE_LOGIN_URL}
-           export SALESFORCE_CLIENT_ID=${SALESFORCE_CLIENT_ID}
-           export SALESFORCE_CLIENT_SECRET=${SALESFORCE_CLIENT_SECRET}
-           export SALESFORCE_REFRESH_TOKEN=${SALESFORCE_REFRESH_TOKEN}
-           export ADOBE_TECHNICAL_ACCOUNT_ID=${ADOBE_TECHNICAL_ACCOUNT_ID}
-           export ADOBE_CLIENT_ID=${ADOBE_CLIENT_ID}
-           export ADOBE_CLIENT_SECRET=${ADOBE_CLIENT_SECRET}
-           export ADOBE_ORGANIZATION_ID=${ADOBE_ORGANIZATION_ID}
-           export ADOBE_PRIVATE_CERTIFICATE_KEY=${ADOBE_PRIVATE_CERTIFICATE_KEY}
-           export GOOGLE_CUSTOMER_ID=${GOOGLE_CUSTOMER_ID}
-           export GOOGLE_ADMIN_EMAIL=${GOOGLE_ADMIN_EMAIL}
-           export GOOGLE_SERVICE_ACCOUNT_KEY=${GOOGLE_SERVICE_ACCOUNT_KEY}
-           export OKTA_ORGANIZATION_URL=${OKTA_ORGANIZATION_URL}
-           export OKTA_API_TOKEN=${OKTA_API_TOKEN}
-           export ZOOM_API_ACCOUNTID=${ZOOM_API_ACCOUNTID}
-           export ZOOM_API_CLIENTSECRET=${ZOOM_API_CLIENTSECRET}
-           export ZOOM_API_CLIENTID=${ZOOM_API_CLIENTID}
-           export AZURE_TENANT=${AZURE_TENANT}
-           export AZURE_CLIENTID=${AZURE_CLIENTID}
-           export AZURE_CLIENTSECRET=${AZURE_CLIENTSECRET}
-           export MONDAY_API_TOKEN=${MONDAY_API_TOKEN}
-           export ZENDESK_SUBDOMAIN=${ZENDESK_SUBDOMAIN}
-           export ZENDESK_TOKEN=${ZENDESK_TOKEN}
-           export ZENDESK_USERNAME=${ZENDESK_USERNAME}
            docker-compose -f "SaaS.UI.Tests/docker-compose.yml" run run-tests
      - run:
         name: Show all containers with statuses
